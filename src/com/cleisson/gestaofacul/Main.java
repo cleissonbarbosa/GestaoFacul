@@ -5,10 +5,26 @@
  */
 package com.cleisson.gestaofacul;
 
+import static com.cleisson.gestaofacul.SalvarNoPc.ReadFile;
+import static com.cleisson.gestaofacul.SalvarNoPc.WriteFile;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonWriter;
+import java.awt.Cursor;
+import java.awt.List;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -62,6 +78,7 @@ public class Main extends javax.swing.JFrame {
         verProfessores = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
+        progressoTabela = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
@@ -86,6 +103,7 @@ public class Main extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(680, 500));
 
         jTabbedPane1.setBackground(java.awt.SystemColor.controlLtHighlight);
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
 
         tabCadastroProfFun.setBackground(java.awt.SystemColor.controlLtHighlight);
 
@@ -93,22 +111,25 @@ public class Main extends javax.swing.JFrame {
         nome.setToolTipText("Informe o nome completo");
         nome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         nome.setName(""); // NOI18N
-        nome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nomeMouseClicked(evt);
+        nome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomeFocusGained(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                nomeMouseExited(evt);
-            }
-        });
-        nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeActionPerformed(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomeFocusLost(evt);
             }
         });
 
         matricula.setText("Matricula");
         matricula.setToolTipText("Insira apenas numeros");
+        matricula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                matriculaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                matriculaFocusLost(evt);
+            }
+        });
         matricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 matriculaActionPerformed(evt);
@@ -117,23 +138,47 @@ public class Main extends javax.swing.JFrame {
 
         endereco.setText("Endereço");
         endereco.setToolTipText("Informe o endereço completo");
-        endereco.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                enderecoMouseClicked(evt);
+        endereco.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                enderecoFocusGained(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                enderecoMouseExited(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                enderecoFocusLost(evt);
             }
         });
 
         salario.setText("Salario");
         salario.setToolTipText("Informe o salario, é permitido o uso de virgula e ponto");
+        salario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                salarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                salarioFocusLost(evt);
+            }
+        });
 
         dataDeAdimissao.setText("Data de Admissão");
         dataDeAdimissao.setToolTipText("Insira apenas numeros");
+        dataDeAdimissao.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                dataDeAdimissaoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dataDeAdimissaoFocusLost(evt);
+            }
+        });
 
         telefone.setText("(xx) xxxx-xxxx");
         telefone.setToolTipText("Insira apenas numeros");
+        telefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                telefoneFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                telefoneFocusLost(evt);
+            }
+        });
 
         btnSalvar.setFont(new java.awt.Font("Tekton Pro Cond", 0, 18)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(0, 153, 51));
@@ -149,6 +194,7 @@ public class Main extends javax.swing.JFrame {
 
         escolha.setFont(escolas.getFont());
         escolha.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professores", "Funcionarios" }));
+        escolha.setBorder(null);
         escolha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 escolhaActionPerformed(evt);
@@ -303,6 +349,10 @@ public class Main extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/EscolaImagem.png"))); // NOI18N
 
+        progressoTabela.setBackground(new java.awt.Color(204, 204, 204));
+        progressoTabela.setForeground(new java.awt.Color(102, 102, 102));
+        progressoTabela.setStringPainted(true);
+
         javax.swing.GroupLayout tabCadastroEscolasLayout = new javax.swing.GroupLayout(tabCadastroEscolas);
         tabCadastroEscolas.setLayout(tabCadastroEscolasLayout);
         tabCadastroEscolasLayout.setHorizontalGroup(
@@ -322,7 +372,8 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSalvarEscola)
                                 .addGap(12, 12, 12)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(progressoTabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tabCadastroEscolasLayout.setVerticalGroup(
@@ -342,7 +393,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(escolhaEscola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(2, 2, 2)
+                .addComponent(progressoTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
         );
@@ -404,8 +457,18 @@ public class Main extends javax.swing.JFrame {
             //Exibe Painel de confirmação
             if (JOptionPane.showConfirmDialog(null, "Tem Certeza que deseja Salvar?", "Salvar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 //Convertendo as entradas do usuario(String) em numeros
-                dataAdimicao = Integer.parseInt(this.dataDeAdimissao.getText());
-                matriculaFunc = Integer.parseInt(this.matricula.getText());
+                String dataEmUmFormato = dataDeAdimissao.getText();
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                Date data = null;
+                try {
+                    data = formato.parse(dataEmUmFormato);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                formato.applyPattern("ddMMyyyy");
+                String dataFormatada = formato.format(data);
+                dataAdimicao = Integer.parseInt(dataFormatada);
+                matriculaFunc = Integer.parseInt(this.matricula.getText()) + cadastroDB.size();
                 salarioFunc = Float.parseFloat(this.salario.getText());
                 telefoneFunc = Integer.parseInt(this.telefone.getText());
                 //Logica para quando o usuario seleciona o item professor    
@@ -425,12 +488,13 @@ public class Main extends javax.swing.JFrame {
                     novoCadastro = new CadastrosDB(dataAdimicao, this.endereco.getText(), matriculaFunc,
                             this.nome.getText(), salarioFunc, telefoneFunc, this.setor.getSelectedItem().toString());
                     exibeCadastro += novoCadastro.getNome() + " | " + novoCadastro.getMatricula() + "\n";
-                     //Adicionando o novo objeto no Arrey List
+                    //Adicionando o novo objeto no Arrey List
                     cadastroDB.add(novoCadastro);
                 }
                 qtn.setText("Quantidade de cadastros: " + cadastroDB.size());
                 //escolha.addItem("teste");
             }
+            salvarDados();;
         } catch (Exception e) {
             //Menssagem de Erro caso usuario insira uma entrada invalida
             JOptionPane.showMessageDialog(null, ">>   ATENÇÂO!  <<\nVerifique se você não preencheu algum campo incorretamente!\n\n"
@@ -438,6 +502,19 @@ public class Main extends javax.swing.JFrame {
                     + "> É necessario preencher todos os campos!", "Erro! Não foi possível salvar!!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+    private void salvarDados() {
+        Gson gson = new Gson();
+        CadastrosDB cadastro;
+        String json = gson.toJson(cadastroDB);
+        WriteFile(json, "registro.txt");
+        java.lang.reflect.Type tipo = new TypeToken<ArrayList<CadastrosDB>>() {
+        }.getType();
+        ArrayList<CadastrosDB> listaDePessoas = new ArrayList<>();
+        for (String s : ReadFile("registro.txt")) {
+            listaDePessoas = gson.fromJson(s, tipo);
+            listaDePessoas.forEach(p -> System.out.println("Nome: " + p.getNome() + " Matricula: " + p.getMatricula()));
+        }
+    }
 
     private void matriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculaActionPerformed
         // TODO add your handling code here:
@@ -450,13 +527,46 @@ public class Main extends javax.swing.JFrame {
     private void btnSalvarEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEscolaActionPerformed
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
+
                 Escolas novaEscola = new Escolas(nomeEscola.getText());
-                escolhaEscola.addItem(novaEscola.getNome());
-                escolas.addItem(novaEscola.getNome());
+                if (!escolasDB.isEmpty()) {
+                    if (escolaExiste(nomeEscola.getText())) {
+
+                    } else {
+                        escolasDB.add(novaEscola);
+                        escolhaEscola.addItem(novaEscola.getNome());
+                        escolas.addItem(novaEscola.getNome());
+                        Gson gson = new Gson();
+                        Escolas cadastro;
+                        String json = gson.toJson(escolasDB);
+                        WriteFile(json, "registroEscolas.txt");
+                    }
+
+                } else {
+                    escolasDB.add(novaEscola);
+                    escolhaEscola.addItem(novaEscola.getNome());
+                    escolas.addItem(novaEscola.getNome());
+                    Gson gson = new Gson();
+                    Escolas cadastro;
+                    String json = gson.toJson(escolasDB);
+                    WriteFile(json, "registroEscolas.txt");
+                }
+
             }
         });
     }//GEN-LAST:event_btnSalvarEscolaActionPerformed
-
+    private boolean escolaExiste(String escola) {
+        boolean existe = false;
+        for (int i = 0; i < escolasDB.size(); i++) {
+            Escolas novo = (Escolas) escolasDB.get(i);
+            if (nomeEscola.getText().equals(novo.getNome())) {
+                JOptionPane.showMessageDialog(null, "Ja existe essa escola na base de dados!\nPor favor tente novamente.", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                existe = true;
+                break;
+            }
+        }
+        return existe;
+    }
 
     private void escolhaEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolhaEscolaActionPerformed
         SwingUtilities.invokeLater(new Runnable() {
@@ -468,6 +578,34 @@ public class Main extends javax.swing.JFrame {
                     novoCadastro = (CadastrosDB) cadastroDB.get(i);
                     //Verifica se o item selecionado é igual ao cadastrado
                     if (novoCadastro.getEscolaOuSetor().equals(escolhaEscola.getSelectedItem().toString())) {
+                        final SwingWorker w = new SwingWorker() {
+                            @Override
+                            protected Object doInBackground() throws Exception {
+                                for (int i = 1; i <= 100; i++) {
+                                    try {
+                                        if (i < 100) {
+                                            setCursor(new Cursor(Cursor.WAIT_CURSOR));
+                                        }
+                                        if (i == 100) {
+                                            setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                                        }
+                                        if (i == 30) {
+                                            progressoTabela.setToolTipText("Quase terminando");
+                                        }
+
+                                        progressoTabela.setValue(i);
+                                        progressoTabela.setString(i + "%");
+                                        Thread.sleep(verProfessores.getRowCount());
+                                    } catch (InterruptedException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                }
+                                return 0;
+                            }
+                        };
+                        if (linhas != verProfessores.getRowCount() || verProfessores.getRowCount() == 0) {
+                            w.execute();
+                        }
                         //Enquanto o cadastro for diferente do loop anterior..
                         if (i > 0 && matriculaAnterior != novoCadastro.getMatricula()) {
                             try {
@@ -487,7 +625,7 @@ public class Main extends javax.swing.JFrame {
                                 verProfessores.setValueAt(novoCadastro.getEndereco(), linhas, 2);
                                 verProfessores.setValueAt(novoCadastro.getTelefone(), linhas, 3);
                             }
-                          //Verifica se é a primeira passagem do loop
+                            //Verifica se é a primeira passagem do loop
                         } else if (i == 0) {
                             try {
                                 //Enquanto houver linhas suficientes na tabela..
@@ -510,7 +648,7 @@ public class Main extends javax.swing.JFrame {
                             //decrementa em linhas se matricula for igual o da varredura anterior.
                             linhas--;
                         }
-                        
+
                         linhas++;
                         //Remove as linhas desnecessarias da tabela
                         while (verProfessores.getRowCount() > linhas) {
@@ -519,8 +657,11 @@ public class Main extends javax.swing.JFrame {
                             modelo.removeRow(verProfessores.getRowCount() - linhas);
                         }
                         matriculaAnterior = novoCadastro.getMatricula();
-                      //Remove todas as linhas da tabela  
-                    } else if (escolhaEscola.getSelectedItem().equals("Escolha uma Escola")) {
+                        //Remove todas as linhas da tabela  
+                    } else if (escolhaEscola.getSelectedItem()
+                            .equals("Escolha uma Escola")) {
+                        progressoTabela.setValue(0);
+                        progressoTabela.setString("0%");
                         JTable t = new JTable(verProfessores.getModel());
                         DefaultTableModel modelo = (DefaultTableModel) t.getModel();
                         modelo.removeRow(verProfessores.getRowCount() - 1);
@@ -528,37 +669,96 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             }
-        });
+        }
+        );
 
     }//GEN-LAST:event_escolhaEscolaActionPerformed
 
-    private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomeActionPerformed
-    //Eventos ao clicar no Editor de texto
-    private void nomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeMouseClicked
+    private void nomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeFocusGained
         if (nome.getText().equals("Nome completo")) {
             nome.setText("");
         }
-    }//GEN-LAST:event_nomeMouseClicked
+    }//GEN-LAST:event_nomeFocusGained
 
-    private void nomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeMouseExited
+    private void nomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeFocusLost
         if (nome.getText().equals("")) {
             nome.setText("Nome completo");
         }
-    }//GEN-LAST:event_nomeMouseExited
+    }//GEN-LAST:event_nomeFocusLost
 
-    private void enderecoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enderecoMouseClicked
+    private void enderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_enderecoFocusGained
         if (endereco.getText().equals("Endereço")) {
             endereco.setText("");
         }
-    }//GEN-LAST:event_enderecoMouseClicked
+    }//GEN-LAST:event_enderecoFocusGained
 
-    private void enderecoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enderecoMouseExited
+    private void enderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_enderecoFocusLost
         if (endereco.getText().equals("")) {
             endereco.setText("Endereço");
         }
-    }//GEN-LAST:event_enderecoMouseExited
+    }//GEN-LAST:event_enderecoFocusLost
+
+    private void matriculaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_matriculaFocusGained
+        if (matricula.getText().equals("Matricula")) {
+            matricula.setText("");
+        }
+    }//GEN-LAST:event_matriculaFocusGained
+
+    private void matriculaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_matriculaFocusLost
+        if (matricula.getText().equals("")) {
+            matricula.setText("Matricula");
+        }
+    }//GEN-LAST:event_matriculaFocusLost
+
+    private void dataDeAdimissaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataDeAdimissaoFocusGained
+        if (dataDeAdimissao.getText().equals("Data de Admissão")) {
+            dataDeAdimissao.setText("");
+        }
+    }//GEN-LAST:event_dataDeAdimissaoFocusGained
+
+    private void dataDeAdimissaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataDeAdimissaoFocusLost
+        if (dataDeAdimissao.getText().equals("")) {
+            dataDeAdimissao.setText("Data de Admissão");
+        }
+
+        String dataEmUmFormato = dataDeAdimissao.getText();
+        SimpleDateFormat formato = new SimpleDateFormat("ddMMyyyy");
+        Date data = null;
+        try {
+            data = formato.parse(dataEmUmFormato);
+
+        } catch (ParseException ex) {
+            Logger.getLogger(Main.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        formato.applyPattern("dd/MM/yyyy");
+        String dataFormatada = formato.format(data);
+        dataDeAdimissao.setText(dataFormatada);
+    }//GEN-LAST:event_dataDeAdimissaoFocusLost
+
+    private void telefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFocusGained
+        if (telefone.getText().equals("(xx) xxxx-xxxx")) {
+            telefone.setText("");
+        }
+    }//GEN-LAST:event_telefoneFocusGained
+
+    private void telefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFocusLost
+        if (telefone.getText().equals("")) {
+            telefone.setText("(xx) xxxx-xxxx");
+        }
+    }//GEN-LAST:event_telefoneFocusLost
+
+    private void salarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_salarioFocusGained
+        if (salario.getText().equals("Salario")) {
+            salario.setText("");
+        }
+    }//GEN-LAST:event_salarioFocusGained
+
+    private void salarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_salarioFocusLost
+        if (salario.getText().equals("")) {
+            salario.setText("Salario");
+        }
+    }//GEN-LAST:event_salarioFocusLost
 
     /**
      * @param args the command line arguments
@@ -574,16 +774,24 @@ public class Main extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -592,6 +800,33 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
+                Gson gson = new Gson();
+                java.lang.reflect.Type tipo = new TypeToken<ArrayList<CadastrosDB>>() {
+                }.getType();
+                ArrayList<CadastrosDB> listaDePessoas = new ArrayList<>();
+                for (String s : ReadFile("registro.txt")) {
+                    cadastroDB = gson.fromJson(s, tipo);
+                    //cadastroDB.forEach(p -> add("Nome: " + p.getNome() + " Matricula: " + p.getMatricula()));
+                }
+                java.lang.reflect.Type tipoEscolas = new TypeToken<ArrayList<Escolas>>() {
+                }.getType();
+                ArrayList<Escolas> listaDeEscolas = new ArrayList<>();
+                for (String e : ReadFile("registroEscolas.txt")) {
+                    escolasDB = gson.fromJson(e, tipoEscolas);
+                    if (!escolasDB.isEmpty()) {
+                        String aux = "";
+                        for (int i = 0; i < escolasDB.size(); i++) {
+                            Escolas novo = (Escolas) escolasDB.get(i);
+                            if (aux.equals(novo.getNome())) {
+                            } else {
+                                escolhaEscola.addItem(novo.getNome());
+                                escolas.addItem(novo.getNome());
+                            }
+                            aux = novo.getNome();
+                        }
+                    }
+                }
+
             }
         });
     }
@@ -601,9 +836,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvarEscola;
     private javax.swing.JTextField dataDeAdimissao;
     private javax.swing.JTextField endereco;
-    private javax.swing.JComboBox<String> escolas;
+    private static javax.swing.JComboBox<String> escolas;
     private javax.swing.JComboBox<String> escolha;
-    private javax.swing.JComboBox<String> escolhaEscola;
+    private static javax.swing.JComboBox<String> escolhaEscola;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -619,6 +854,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField matricula;
     private javax.swing.JTextField nome;
     private javax.swing.JTextField nomeEscola;
+    private javax.swing.JProgressBar progressoTabela;
     private javax.swing.JLabel qtn;
     private javax.swing.JTextField salario;
     private javax.swing.JComboBox<String> setor;
@@ -629,7 +865,8 @@ public class Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     CadastrosDB novoCadastro, anterior;
     private String exibeCadastro = "";
-    public ArrayList cadastroDB = new ArrayList();
+    public static ArrayList cadastroDB = new ArrayList();
+    public static ArrayList escolasDB = new ArrayList();
     private int dataAdimicao;
     private int matriculaFunc;
     private float salarioFunc;
