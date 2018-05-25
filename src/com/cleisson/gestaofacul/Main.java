@@ -10,6 +10,7 @@ import static com.cleisson.gestaofacul.SalvarNoPc.WriteFile;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonWriter;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.List;
 import java.awt.event.ActionListener;
@@ -52,6 +53,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollBar1 = new javax.swing.JScrollBar();
+        jLabel6 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         tabCadastroProfFun = new javax.swing.JPanel();
         nome = new javax.swing.JTextField();
@@ -70,6 +72,7 @@ public class Main extends javax.swing.JFrame {
         qtn = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        txtEscolha = new javax.swing.JLabel();
         tabCadastroEscolas = new javax.swing.JPanel();
         nomeEscola = new javax.swing.JTextField();
         btnSalvarEscola = new javax.swing.JButton();
@@ -94,6 +97,8 @@ public class Main extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(jTable1);
+
+        jLabel6.setText("jLabel6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gestão - Projeto da disciplina P.O.O");
@@ -186,6 +191,7 @@ public class Main extends javax.swing.JFrame {
         btnSalvar.setText("Salvar");
         btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvar.setIconTextGap(8);
+        btnSalvar.setName(""); // NOI18N
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -222,6 +228,8 @@ public class Main extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroImagem.png"))); // NOI18N
 
+        txtEscolha.setText("Escolha a escola:");
+
         javax.swing.GroupLayout tabCadastroProfFunLayout = new javax.swing.GroupLayout(tabCadastroProfFun);
         tabCadastroProfFun.setLayout(tabCadastroProfFunLayout);
         tabCadastroProfFunLayout.setHorizontalGroup(
@@ -256,18 +264,23 @@ public class Main extends javax.swing.JFrame {
                                         .addComponent(escolha, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(jLabel3))))
                         .addGap(0, 10, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
+                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(btnSalvar)
-                                .addGap(88, 88, 88)))
-                        .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(qtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(setor, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                        .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
+                                        .addComponent(btnSalvar)
+                                        .addGap(88, 88, 88)))
+                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(qtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(setor, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
         );
         tabCadastroProfFunLayout.setVerticalGroup(
@@ -294,7 +307,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dataDeAdimissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEscolha)
+                .addGap(2, 2, 2)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(setor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -302,7 +317,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(qtn)
                     .addComponent(btnSalvar))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         nome.getAccessibleContext().setAccessibleName("");
@@ -441,10 +456,12 @@ public class Main extends javax.swing.JFrame {
                 if (escolha.getSelectedItem().equals("Professores")) {
                     //Habilita o escolas e desabilita o setor
                     escolas.setEnabled(true);
+                    txtEscolha.setEnabled(true);
                     setor.setEnabled(false);
                 } else {
                     //inverte caso seja selecionado outra opção
                     escolas.setEnabled(false);
+                    txtEscolha.setEnabled(false);
                     setor.setEnabled(true);
                 }
             }
@@ -495,13 +512,22 @@ public class Main extends javax.swing.JFrame {
                 //escolha.addItem("teste");
             }
             salvarDados();;
+            btnSalvar.setName("Salvo");
         } catch (Exception e) {
             //Menssagem de Erro caso usuario insira uma entrada invalida
-            JOptionPane.showMessageDialog(null, ">>   ATENÇÂO!  <<\nVerifique se você não preencheu algum campo incorretamente!\n\n"
-                    + "> Não é permitido inserir Letras no lugar de numeros vice-versa.\n"
-                    + "> É necessario preencher todos os campos!", "Erro! Não foi possível salvar!!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "                                 >>   ATENÇÂO!  <<\nVerifique se você preencheu algum campo incorretamente!\n\n"
+                    + "> NÃO é permitido inserir LETRAS no lugar de numeros vice-versa.\n"
+                    + "> É NECESSARIO preencher TODOS os campos!\n\n Os campos incorretos estaram em vermelho!" , "Erro! Não foi possível salvar!!", JOptionPane.ERROR_MESSAGE);
+            btnSalvar.setName("Salvo");
+            VerificaErro erro = new VerificaErro();
+            erro.encontrar(matricula);
+            erro.encontrar(salario);
+            erro.encontrar(telefone);
+            erro.encontrar(escolas);
+            erro.encontrar(setor);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
     private void salvarDados() {
         Gson gson = new Gson();
         CadastrosDB cadastro;
@@ -702,6 +728,10 @@ public class Main extends javax.swing.JFrame {
         if (matricula.getText().equals("Matricula")) {
             matricula.setText("");
         }
+        if (matricula.getBackground().equals(Color.red)) {
+            matricula.setBackground(Color.white);
+            matricula.setForeground(Color.black);
+        }
     }//GEN-LAST:event_matriculaFocusGained
 
     private void matriculaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_matriculaFocusLost
@@ -713,6 +743,10 @@ public class Main extends javax.swing.JFrame {
     private void dataDeAdimissaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataDeAdimissaoFocusGained
         if (dataDeAdimissao.getText().equals("Data de Admissão")) {
             dataDeAdimissao.setText("");
+        }
+        if (dataDeAdimissao.getBackground().equals(Color.red)) {
+            dataDeAdimissao.setBackground(Color.white);
+            dataDeAdimissao.setForeground(Color.black);
         }
     }//GEN-LAST:event_dataDeAdimissaoFocusGained
 
@@ -726,19 +760,25 @@ public class Main extends javax.swing.JFrame {
         Date data = null;
         try {
             data = formato.parse(dataEmUmFormato);
-
+            formato.applyPattern("dd/MM/yyyy");
+            String dataFormatada = formato.format(data);
+            dataDeAdimissao.setText(dataFormatada);
         } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Por favor insira apenas numeros.\nFORMATO DA DATA: DD/MM/AAAA", "ERRO!", JOptionPane.WARNING_MESSAGE);
+            dataDeAdimissao.setBackground(Color.red);
             Logger.getLogger(Main.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-        formato.applyPattern("dd/MM/yyyy");
-        String dataFormatada = formato.format(data);
-        dataDeAdimissao.setText(dataFormatada);
+
     }//GEN-LAST:event_dataDeAdimissaoFocusLost
 
     private void telefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFocusGained
         if (telefone.getText().equals("(xx) xxxx-xxxx")) {
             telefone.setText("");
+        }
+        if (telefone.getBackground().equals(Color.red)) {
+            telefone.setBackground(Color.white);
+            telefone.setForeground(Color.black);
         }
     }//GEN-LAST:event_telefoneFocusGained
 
@@ -752,6 +792,11 @@ public class Main extends javax.swing.JFrame {
         if (salario.getText().equals("Salario")) {
             salario.setText("");
         }
+        if (salario.getBackground().equals(Color.red)) {
+            salario.setBackground(Color.white);
+            salario.setForeground(Color.black);
+        }
+
     }//GEN-LAST:event_salarioFocusGained
 
     private void salarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_salarioFocusLost
@@ -844,6 +889,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -861,6 +907,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel tabCadastroEscolas;
     private javax.swing.JPanel tabCadastroProfFun;
     private javax.swing.JTextField telefone;
+    private javax.swing.JLabel txtEscolha;
     private javax.swing.JTable verProfessores;
     // End of variables declaration//GEN-END:variables
     CadastrosDB novoCadastro, anterior;

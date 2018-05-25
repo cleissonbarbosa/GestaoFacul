@@ -25,6 +25,11 @@
     </Container>
     <Component class="javax.swing.JScrollBar" name="jScrollBar1">
     </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel6"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -160,21 +165,29 @@
                               </Group>
                               <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="escolas" min="-2" pref="431" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtEscolha" min="-2" pref="274" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="escolas" min="-2" pref="431" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="qtn" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="setor" min="-2" pref="212" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="qtn" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="setor" min="-2" pref="212" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -211,7 +224,9 @@
                           <Component id="dataDeAdimissao" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="salario" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtEscolha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="setor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="escolas" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -221,7 +236,7 @@
                           <Component id="qtn" min="-2" max="-2" attributes="0"/>
                           <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -311,10 +326,14 @@
                   <Color id="Cursor Padr&#xe3;o"/>
                 </Property>
                 <Property name="iconTextGap" type="int" value="8"/>
+                <Property name="name" type="java.lang.String" value="" noResource="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JComboBox" name="escolha">
               <Properties>
@@ -402,6 +421,11 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagens/CadastroImagem.png"/>
                 </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="txtEscolha">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Escolha a escola:"/>
               </Properties>
             </Component>
           </SubComponents>

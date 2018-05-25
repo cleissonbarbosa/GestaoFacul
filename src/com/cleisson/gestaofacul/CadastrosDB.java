@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author cleisson
  */
 public class CadastrosDB {
-    
+
     private int dataDeAdimissao;
     private String endereco;
     private int matricula;
@@ -33,8 +33,7 @@ public class CadastrosDB {
     public void setEscolaOuSetor(String escolaOuSetor) {
         this.escolaOuSetor = escolaOuSetor;
     }
-    
-    
+
     public int getDataDeAdimissao() {
         return dataDeAdimissao;
     }
@@ -82,7 +81,5 @@ public class CadastrosDB {
     public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
-    
-    
-    
+
 }

@@ -22,9 +22,10 @@ import java.util.logging.Logger;
  * @author cleisson
  */
 public class SalvarNoPc {
-    public static void WriteFile(String json, String caminho){ 
-           Path arquivo = Paths.get(caminho);
-        if (!Files.exists(arquivo)) { 
+
+    public static void WriteFile(String json, String caminho) {
+        Path arquivo = Paths.get(caminho);
+        if (!Files.exists(arquivo)) {
             BufferedWriter bw = null;
             try {
                 Files.createFile(arquivo);
@@ -46,7 +47,7 @@ public class SalvarNoPc {
                 bw2 = new BufferedWriter(new FileWriter(arquivo.toFile()));
                 bw = new BufferedWriter(new FileWriter(arquivo.toFile(), true));
                 //bw.newLine();
-                
+
                 bw.write(json);
             } catch (IOException ex) {
                 Logger.getLogger(SalvarNoPc.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,7 +60,7 @@ public class SalvarNoPc {
                 }
             }
         }
-    
+
     }
 
     /**
@@ -67,10 +68,10 @@ public class SalvarNoPc {
      * @param caminho
      * @return
      */
-    public static ArrayList<String> ReadFile(String caminho){
+    public static ArrayList<String> ReadFile(String caminho) {
         ArrayList<String> linhas = new ArrayList<>();
         Path arquivo = Paths.get(caminho);
-        if(Files.exists(arquivo)){
+        if (Files.exists(arquivo)) {
             try {
                 linhas = (ArrayList<String>) Files.readAllLines(arquivo, Charset.defaultCharset());
             } catch (IOException ex) {
