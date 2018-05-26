@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author cleisson
  */
-public class CadastrosDB {
+public class Administrativo {
 
     private int dataDeAdimissao;
     private String endereco;
@@ -14,24 +14,24 @@ public class CadastrosDB {
     private String nome;
     private float salario;
     private int telefone;
-    private String escolaOuSetor;
+    private String setor;
 
-    public CadastrosDB(int dataDeAdimissao, String endereco, int matricula, String nome, float salario, int telefone, String escolaOuSetor) {
+    public Administrativo(int dataDeAdimissao, String endereco, int matricula, String nome, float salario, int telefone, String setor) {
         this.dataDeAdimissao = dataDeAdimissao;
         this.endereco = endereco;
         this.matricula = matricula;
         this.nome = nome;
         this.salario = salario;
         this.telefone = telefone;
-        this.escolaOuSetor = escolaOuSetor;
+        this.setor = setor;
     }
 
     public String getEscolaOuSetor() {
-        return escolaOuSetor;
+        return setor;
     }
 
     public void setEscolaOuSetor(String escolaOuSetor) {
-        this.escolaOuSetor = escolaOuSetor;
+        this.setor = escolaOuSetor;
     }
 
     public int getDataDeAdimissao() {

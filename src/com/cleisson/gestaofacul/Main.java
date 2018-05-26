@@ -9,13 +9,9 @@ import static com.cleisson.gestaofacul.SalvarNoPc.ReadFile;
 import static com.cleisson.gestaofacul.SalvarNoPc.WriteFile;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonWriter;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.List;
-import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.awt.HeadlessException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
+import sun.net.www.content.image.gif;
 
 /**
  *
@@ -67,12 +64,12 @@ public class Main extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         escolas = new javax.swing.JComboBox<>();
 
-        setor = new javax.swing.JComboBox<>();
-        this.setor.setEnabled(false);
-        qtn = new javax.swing.JLabel();
+        setorSeletor = new javax.swing.JComboBox<>();
+        this.setorSeletor.setEnabled(false);
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtEscolha = new javax.swing.JLabel();
+        btnCadastrarSetor = new javax.swing.JButton();
         tabCadastroEscolas = new javax.swing.JPanel();
         nomeEscola = new javax.swing.JTextField();
         btnSalvarEscola = new javax.swing.JButton();
@@ -82,6 +79,31 @@ public class Main extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         progressoTabela = new javax.swing.JProgressBar();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        tabCurso = new javax.swing.JPanel();
+        txtCurso = new javax.swing.JLabel();
+        nomeCurso = new javax.swing.JTextField();
+        escolasCurso = new javax.swing.JComboBox<>();
+        btnSalvarCurso = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        txtDisciplinas = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        nomeDisciplina = new javax.swing.JTextField();
+        cursosSeletor = new javax.swing.JComboBox<>();
+        btnSalvarDisciplinas = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        txtDisciplinas1 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        nomeTurma = new javax.swing.JTextField();
+        DisciplinaSeletor = new javax.swing.JComboBox<>();
+        btnSalvarTurmas = new javax.swing.JButton();
+        ProfessorSeletor = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
@@ -105,10 +127,13 @@ public class Main extends javax.swing.JFrame {
         setBackground(java.awt.SystemColor.controlLtHighlight);
         setIconImages(null);
         setLocation(new java.awt.Point(150, 150));
-        setMinimumSize(new java.awt.Dimension(680, 500));
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setResizable(false);
+        setSize(new java.awt.Dimension(690, 500));
 
-        jTabbedPane1.setBackground(java.awt.SystemColor.controlLtHighlight);
-        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 0, 0));
 
         tabCadastroProfFun.setBackground(java.awt.SystemColor.controlLtHighlight);
 
@@ -174,7 +199,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        telefone.setText("(xx) xxxx-xxxx");
+        telefone.setText("Telefone");
         telefone.setToolTipText("Insira apenas numeros");
         telefone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -209,26 +234,29 @@ public class Main extends javax.swing.JFrame {
 
         jLabel2.setText("Quem você quer cadastrar?");
 
-        escolas.setFont(new java.awt.Font("Niagara Engraved", 0, 18)); // NOI18N
+        escolas.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
 
-        setor.setFont(escolas.getFont());
-        setor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Limpeza", "Suporte", "Tecnico de Informatica", "Motorista" }));
-        setor.addActionListener(new java.awt.event.ActionListener() {
+        setorSeletor.setFont(escolas.getFont());
+        setorSeletor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                setorActionPerformed(evt);
+                setorSeletorActionPerformed(evt);
             }
         });
 
-        qtn.setText("0");
-
-        jLabel3.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("Cadastro de professores e funcionarios");
-        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroImagem.png"))); // NOI18N
 
         txtEscolha.setText("Escolha a escola:");
+
+        btnCadastrarSetor.setText("Cadastrar setor");
+        btnCadastrarSetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarSetorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabCadastroProfFunLayout = new javax.swing.GroupLayout(tabCadastroProfFun);
         tabCadastroProfFun.setLayout(tabCadastroProfFunLayout);
@@ -236,40 +264,37 @@ public class Main extends javax.swing.JFrame {
             tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                        .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                    .addComponent(dataDeAdimissao, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                        .addComponent(dataDeAdimissao, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                            .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(matricula))
-                                        .addComponent(nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addGap(105, 105, 105)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(escolha, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel3))))
-                        .addGap(0, 10, Short.MAX_VALUE))
+                                        .addComponent(matricula))
+                                    .addComponent(nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                            .addGap(105, 105, 105)
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(txtEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
                                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
@@ -278,10 +303,11 @@ public class Main extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
                                         .addComponent(btnSalvar)
                                         .addGap(88, 88, 88)))
-                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(qtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(setor, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap())
+                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(setorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCadastrarSetor))))
+                        .addGap(49, 49, 49)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tabCadastroProfFunLayout.setVerticalGroup(
             tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,9 +316,8 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -311,13 +336,13 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(txtEscolha)
                 .addGap(2, 2, 2)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(setor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(setorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(qtn)
-                    .addComponent(btnSalvar))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnCadastrarSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         nome.getAccessibleContext().setAccessibleName("");
@@ -368,54 +393,305 @@ public class Main extends javax.swing.JFrame {
         progressoTabela.setForeground(new java.awt.Color(102, 102, 102));
         progressoTabela.setStringPainted(true);
 
+        jLabel8.setFont(new java.awt.Font("SimSun", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel8.setText("Cadastrar Escolas");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
+        jLabel9.setText("Lista de Professores relacionados a escolas");
+
         javax.swing.GroupLayout tabCadastroEscolasLayout = new javax.swing.GroupLayout(tabCadastroEscolas);
         tabCadastroEscolas.setLayout(tabCadastroEscolasLayout);
         tabCadastroEscolasLayout.setHorizontalGroup(
             tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroEscolasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jLabel8))
+                    .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalvarEscola)))
+                .addGap(28, 28, 28))
             .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
+                    .addComponent(progressoTabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
                         .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(escolhaEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroEscolasLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nomeEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSalvarEscola)
-                                .addGap(12, 12, 12)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(progressoTabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         tabCadastroEscolasLayout.setVerticalGroup(
             tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nomeEscola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSalvarEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroEscolasLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5)
-                        .addGap(40, 40, 40)))
+                        .addGap(3, 3, 3))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(escolhaEscola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(progressoTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cadastro de Escolas", tabCadastroEscolas);
+
+        tabCurso.setBackground(java.awt.SystemColor.window);
+
+        txtCurso.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
+        txtCurso.setForeground(new java.awt.Color(102, 102, 102));
+        txtCurso.setText("Cadastro de Cursos");
+
+        nomeCurso.setText("Nome do Curso");
+
+        escolasCurso.setFont(escolas.getFont());
+
+        btnSalvarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/save.png"))); // NOI18N
+        btnSalvarCurso.setText("Salvar");
+        btnSalvarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarCursoActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CursoImagem.png"))); // NOI18N
+        jLabel10.setMinimumSize(new java.awt.Dimension(341, 300));
+
+        javax.swing.GroupLayout tabCursoLayout = new javax.swing.GroupLayout(tabCurso);
+        tabCurso.setLayout(tabCursoLayout);
+        tabCursoLayout.setHorizontalGroup(
+            tabCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCursoLayout.createSequentialGroup()
+                .addGroup(tabCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabCursoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(tabCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nomeCurso)
+                            .addComponent(escolasCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(tabCursoLayout.createSequentialGroup()
+                        .addGroup(tabCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabCursoLayout.createSequentialGroup()
+                                .addGap(306, 306, 306)
+                                .addComponent(btnSalvarCurso))
+                            .addGroup(tabCursoLayout.createSequentialGroup()
+                                .addGap(248, 248, 248)
+                                .addComponent(txtCurso))
+                            .addGroup(tabCursoLayout.createSequentialGroup()
+                                .addGap(318, 318, 318)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 244, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        tabCursoLayout.setVerticalGroup(
+            tabCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCursoLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCurso)
+                .addGap(52, 52, 52)
+                .addComponent(nomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(escolasCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(btnSalvarCurso)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Cadstro de Curso", tabCurso);
+
+        jPanel1.setBackground(java.awt.SystemColor.controlLtHighlight);
+
+        txtDisciplinas.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
+        txtDisciplinas.setForeground(new java.awt.Color(102, 102, 102));
+        txtDisciplinas.setText("Cadastro de Disciplinas");
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/disciplinasImagem.png"))); // NOI18N
+        jLabel11.setMinimumSize(new java.awt.Dimension(341, 300));
+
+        nomeDisciplina.setText("Nome da disciplina");
+
+        cursosSeletor.setFont(escolas.getFont());
+
+        btnSalvarDisciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/save.png"))); // NOI18N
+        btnSalvarDisciplinas.setText("Salvar");
+        btnSalvarDisciplinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarDisciplinasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nomeDisciplina)
+                            .addComponent(cursosSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(306, 306, 306)
+                                .addComponent(btnSalvarDisciplinas))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(205, 205, 205)
+                                .addComponent(txtDisciplinas)))
+                        .addGap(0, 227, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(307, 307, 307)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDisciplinas)
+                .addGap(52, 52, 52)
+                .addComponent(nomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(cursosSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(btnSalvarDisciplinas)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Cadastro Disciplinas", jPanel1);
+
+        jPanel2.setBackground(java.awt.SystemColor.controlLtHighlight);
+
+        txtDisciplinas1.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
+        txtDisciplinas1.setForeground(new java.awt.Color(102, 102, 102));
+        txtDisciplinas1.setText("Cadastro de Turmas");
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turmasImagem.png"))); // NOI18N
+        jLabel12.setMinimumSize(new java.awt.Dimension(341, 300));
+
+        nomeTurma.setText("Nome da Turma");
+
+        DisciplinaSeletor.setFont(escolas.getFont());
+
+        btnSalvarTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/save.png"))); // NOI18N
+        btnSalvarTurmas.setText("Salvar");
+        btnSalvarTurmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarTurmasActionPerformed(evt);
+            }
+        });
+
+        ProfessorSeletor.setFont(escolas.getFont());
+
+        jLabel7.setText("Escolha uma disciplina:");
+
+        jLabel13.setText("Escolha um professor:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(307, 307, 307)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(237, 237, 237)
+                                .addComponent(txtDisciplinas1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(307, 307, 307)
+                                .addComponent(btnSalvarTurmas))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel7)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nomeTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+                            .addComponent(DisciplinaSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ProfessorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 590, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDisciplinas1)
+                .addGap(36, 36, 36)
+                .addComponent(nomeTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DisciplinaSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ProfessorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(btnSalvarTurmas)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Cadastro de Turmas", jPanel2);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel14.setText("Em Desenvolvimento");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(187, 187, 187)
+                .addComponent(jLabel14)
+                .addContainerGap(199, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(187, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addGap(167, 167, 167))
+        );
+
+        jTabbedPane1.addTab("Cadastro de Alunos", jPanel3);
 
         jLabel1.setText("Desenvolvido por: Cleisson B.");
 
@@ -450,20 +726,18 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void escolhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolhaActionPerformed
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //Verifica se foi selecionado o item professor
-                if (escolha.getSelectedItem().equals("Professores")) {
-                    //Habilita o escolas e desabilita o setor
-                    escolas.setEnabled(true);
-                    txtEscolha.setEnabled(true);
-                    setor.setEnabled(false);
-                } else {
-                    //inverte caso seja selecionado outra opção
-                    escolas.setEnabled(false);
-                    txtEscolha.setEnabled(false);
-                    setor.setEnabled(true);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            //Verifica se foi selecionado o item professor
+            if (escolha.getSelectedItem().equals("Professores")) {
+                //Habilita o escolas e desabilita o setor
+                escolas.setEnabled(true);
+                txtEscolha.setEnabled(true);
+                setorSeletor.setEnabled(false);
+            } else {
+                //inverte caso seja selecionado outra opção
+                escolas.setEnabled(false);
+                txtEscolha.setEnabled(false);
+                setorSeletor.setEnabled(true);
             }
         });
     }//GEN-LAST:event_escolhaActionPerformed
@@ -485,103 +759,87 @@ public class Main extends javax.swing.JFrame {
                 formato.applyPattern("ddMMyyyy");
                 String dataFormatada = formato.format(data);
                 dataAdimicao = Integer.parseInt(dataFormatada);
-                matriculaFunc = Integer.parseInt(this.matricula.getText()) + cadastroDB.size();
+                matriculaFunc = Integer.parseInt(this.matricula.getText()) + 1;
                 salarioFunc = Float.parseFloat(this.salario.getText());
                 telefoneFunc = Integer.parseInt(this.telefone.getText());
                 //Logica para quando o usuario seleciona o item professor    
                 if (this.escolha.getSelectedItem().equals("Professores")) {
                     String escola = this.escolas.getSelectedItem().toString();
                     //Cria novo objeto com as entradas do usuario
-                    novoCadastro = new CadastrosDB(dataAdimicao, this.endereco.getText(), matriculaFunc,
+                    professor = new Professor(dataAdimicao, this.endereco.getText(), matriculaFunc,
                             nome.getText(),
                             salarioFunc,
                             telefoneFunc,
                             escola);
-                    exibeCadastro += novoCadastro.getNome() + " | " + novoCadastro.getMatricula() + "\n";
+                    exibeCadastro = professor.getNome() + " | " + professor.getMatricula() + "\n";
                     //Adicionando o novo objeto no Arrey List
-                    cadastroDB.add(novoCadastro);
+                    professorDB.add(professor);
+                    ProfessorSeletor.addItem(professor.getNome());
+                    salvarDados(professorDB, "registroProfessor.txt");
                 } else {
                     //Logica para quando o usuario seleciona outro item   
-                    novoCadastro = new CadastrosDB(dataAdimicao, this.endereco.getText(), matriculaFunc,
-                            this.nome.getText(), salarioFunc, telefoneFunc, this.setor.getSelectedItem().toString());
-                    exibeCadastro += novoCadastro.getNome() + " | " + novoCadastro.getMatricula() + "\n";
+                    administrativo = new Administrativo(dataAdimicao, this.endereco.getText(), matriculaFunc,
+                            this.nome.getText(), salarioFunc, telefoneFunc, this.setorSeletor.getSelectedItem().toString());
+                    exibeCadastro = administrativo.getNome() + " | " + administrativo.getMatricula() + "\n";
                     //Adicionando o novo objeto no Arrey List
-                    cadastroDB.add(novoCadastro);
+                    administrativoDB.add(administrativo);
+                    salvarDados(administrativoDB, "registroAdm.txt");
                 }
-                qtn.setText("Quantidade de cadastros: " + cadastroDB.size());
-                //escolha.addItem("teste");
             }
-            salvarDados();;
+
+            JOptionPane.showMessageDialog(null, exibeCadastro + "Salvo", "Salvo!", JOptionPane.INFORMATION_MESSAGE);
             btnSalvar.setName("Salvo");
         } catch (Exception e) {
             //Menssagem de Erro caso usuario insira uma entrada invalida
             JOptionPane.showMessageDialog(null, "                                 >>   ATENÇÂO!  <<\nVerifique se você preencheu algum campo incorretamente!\n\n"
                     + "> NÃO é permitido inserir LETRAS no lugar de numeros vice-versa.\n"
-                    + "> É NECESSARIO preencher TODOS os campos!\n\n Os campos incorretos estaram em vermelho!" , "Erro! Não foi possível salvar!!", JOptionPane.ERROR_MESSAGE);
+                    + "> É NECESSARIO preencher TODOS os campos!\n\n Os campos incorretos estaram em vermelho!", "Erro! Não foi possível salvar!!", JOptionPane.ERROR_MESSAGE);
             btnSalvar.setName("Salvo");
             VerificaErro erro = new VerificaErro();
             erro.encontrar(matricula);
             erro.encontrar(salario);
             erro.encontrar(telefone);
             erro.encontrar(escolas);
-            erro.encontrar(setor);
+            erro.encontrar(setorSeletor);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void salvarDados() {
+    private void salvarDados(ArrayList lista, String nomeDoArquivo) {
         Gson gson = new Gson();
-        CadastrosDB cadastro;
-        String json = gson.toJson(cadastroDB);
-        WriteFile(json, "registro.txt");
-        java.lang.reflect.Type tipo = new TypeToken<ArrayList<CadastrosDB>>() {
-        }.getType();
-        ArrayList<CadastrosDB> listaDePessoas = new ArrayList<>();
-        for (String s : ReadFile("registro.txt")) {
-            listaDePessoas = gson.fromJson(s, tipo);
-            listaDePessoas.forEach(p -> System.out.println("Nome: " + p.getNome() + " Matricula: " + p.getMatricula()));
-        }
+        String json = gson.toJson(lista);
+        WriteFile(json, nomeDoArquivo);
     }
 
     private void matriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_matriculaActionPerformed
 
-    private void setorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setorActionPerformed
+    private void setorSeletorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setorSeletorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_setorActionPerformed
+    }//GEN-LAST:event_setorSeletorActionPerformed
 
     private void btnSalvarEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEscolaActionPerformed
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-
-                Escolas novaEscola = new Escolas(nomeEscola.getText());
-                if (!escolasDB.isEmpty()) {
-                    if (escolaExiste(nomeEscola.getText())) {
-
-                    } else {
-                        escolasDB.add(novaEscola);
-                        escolhaEscola.addItem(novaEscola.getNome());
-                        escolas.addItem(novaEscola.getNome());
-                        Gson gson = new Gson();
-                        Escolas cadastro;
-                        String json = gson.toJson(escolasDB);
-                        WriteFile(json, "registroEscolas.txt");
-                    }
+        SwingUtilities.invokeLater(() -> {
+            Escolas novaEscola = new Escolas(nomeEscola.getText());
+            if (!escolasDB.isEmpty()) {
+                if (escolaExiste()) {
 
                 } else {
                     escolasDB.add(novaEscola);
                     escolhaEscola.addItem(novaEscola.getNome());
                     escolas.addItem(novaEscola.getNome());
-                    Gson gson = new Gson();
-                    Escolas cadastro;
-                    String json = gson.toJson(escolasDB);
-                    WriteFile(json, "registroEscolas.txt");
+                    salvarDados(escolasDB, "registroEscolas.txt");
                 }
 
+            } else {
+                escolasDB.add(novaEscola);
+                escolhaEscola.addItem(novaEscola.getNome());
+                escolas.addItem(novaEscola.getNome());
+                salvarDados(escolasDB, "registroEscolas.txt");
             }
         });
     }//GEN-LAST:event_btnSalvarEscolaActionPerformed
-    private boolean escolaExiste(String escola) {
+    private boolean escolaExiste() {
         boolean existe = false;
         for (int i = 0; i < escolasDB.size(); i++) {
             Escolas novo = (Escolas) escolasDB.get(i);
@@ -595,108 +853,105 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void escolhaEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolhaEscolaActionPerformed
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                int matriculaAnterior = 0;
-                int linhas = 0;
-                for (int i = 0; i < cadastroDB.size(); i++) {
-                    //atribui ao objeto um cadastro alocano na arrey
-                    novoCadastro = (CadastrosDB) cadastroDB.get(i);
-                    //Verifica se o item selecionado é igual ao cadastrado
-                    if (novoCadastro.getEscolaOuSetor().equals(escolhaEscola.getSelectedItem().toString())) {
-                        final SwingWorker w = new SwingWorker() {
-                            @Override
-                            protected Object doInBackground() throws Exception {
-                                for (int i = 1; i <= 100; i++) {
-                                    try {
-                                        if (i < 100) {
-                                            setCursor(new Cursor(Cursor.WAIT_CURSOR));
-                                        }
-                                        if (i == 100) {
-                                            setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                                        }
-                                        if (i == 30) {
-                                            progressoTabela.setToolTipText("Quase terminando");
-                                        }
-
-                                        progressoTabela.setValue(i);
-                                        progressoTabela.setString(i + "%");
-                                        Thread.sleep(verProfessores.getRowCount());
-                                    } catch (InterruptedException ex) {
-                                        ex.printStackTrace();
+        SwingUtilities.invokeLater(() -> {
+            int matriculaAnterior = 0;
+            int linhas = 0;
+            for (int i = 0; i < professorDB.size(); i++) {
+                //atribui ao objeto um cadastro alocano na arrey
+                professor = (Professor) professorDB.get(i);
+                //Verifica se o item selecionado é igual ao cadastrado
+                if (professor.getEscolaOuSetor().equals(escolhaEscola.getSelectedItem().toString())) {
+                    final SwingWorker w = new SwingWorker() {
+                        @Override
+                        protected Object doInBackground() throws Exception {
+                            for (int i = 1; i <= 100; i++) {
+                                try {
+                                    if (i < 100) {
+                                        setCursor(new Cursor(Cursor.WAIT_CURSOR));
                                     }
-                                }
-                                return 0;
-                            }
-                        };
-                        if (linhas != verProfessores.getRowCount() || verProfessores.getRowCount() == 0) {
-                            w.execute();
-                        }
-                        //Enquanto o cadastro for diferente do loop anterior..
-                        if (i > 0 && matriculaAnterior != novoCadastro.getMatricula()) {
-                            try {
-                                //Enquanto houver linhas suficientes na tabela, vai preenchendo..
-                                verProfessores.setValueAt(novoCadastro.getNome(), linhas, 0);
-                                verProfessores.setValueAt(novoCadastro.getMatricula(), linhas, 1);
-                                verProfessores.setValueAt(novoCadastro.getEndereco(), linhas, 2);
-                                verProfessores.setValueAt(novoCadastro.getTelefone(), linhas, 3);
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
-                                JTable t = new JTable(verProfessores.getModel());
-                                DefaultTableModel modelo = (DefaultTableModel) t.getModel();
-                                modelo.addRow(new Object[]{null, null});
-                                //Preenche a linha vazia que foi criada
-                                verProfessores.setValueAt(novoCadastro.getNome(), linhas, 0);
-                                verProfessores.setValueAt(novoCadastro.getMatricula(), linhas, 1);
-                                verProfessores.setValueAt(novoCadastro.getEndereco(), linhas, 2);
-                                verProfessores.setValueAt(novoCadastro.getTelefone(), linhas, 3);
-                            }
-                            //Verifica se é a primeira passagem do loop
-                        } else if (i == 0) {
-                            try {
-                                //Enquanto houver linhas suficientes na tabela..
-                                verProfessores.setValueAt(novoCadastro.getNome(), linhas, 0);
-                                verProfessores.setValueAt(novoCadastro.getMatricula(), linhas, 1);
-                                verProfessores.setValueAt(novoCadastro.getEndereco(), linhas, 2);
-                                verProfessores.setValueAt(novoCadastro.getTelefone(), linhas, 3);
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
-                                JTable t = new JTable(verProfessores.getModel());
-                                DefaultTableModel modelo = (DefaultTableModel) t.getModel();
-                                modelo.addRow(new Object[]{null, null});
-                                //Preenche a linha vazia que foi criada
-                                verProfessores.setValueAt(novoCadastro.getNome(), linhas, 0);
-                                verProfessores.setValueAt(novoCadastro.getMatricula(), linhas, 1);
-                                verProfessores.setValueAt(novoCadastro.getEndereco(), linhas, 2);
-                                verProfessores.setValueAt(novoCadastro.getTelefone(), linhas, 3);
-                            }
-                        } else if (matriculaAnterior == novoCadastro.getMatricula()) {
-                            //decrementa em linhas se matricula for igual o da varredura anterior.
-                            linhas--;
-                        }
+                                    if (i == 100) {
+                                        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                                    }
+                                    if (i == 30) {
+                                        progressoTabela.setToolTipText("Quase terminando");
+                                    }
 
-                        linhas++;
-                        //Remove as linhas desnecessarias da tabela
-                        while (verProfessores.getRowCount() > linhas) {
+                                    progressoTabela.setValue(i);
+                                    progressoTabela.setString(i + "%");
+                                    Thread.sleep(verProfessores.getRowCount());
+                                } catch (InterruptedException ex) {
+                                    ex.printStackTrace();
+                                }
+                            }
+                            return 0;
+                        }
+                    };
+                    if (linhas != verProfessores.getRowCount() || verProfessores.getRowCount() == 0) {
+                        w.execute();
+                    }
+                    //Enquanto o cadastro for diferente do loop anterior..
+                    if (i > 0 && matriculaAnterior != professor.getMatricula()) {
+                        try {
+                            //Enquanto houver linhas suficientes na tabela, vai preenchendo..
+                            verProfessores.setValueAt(professor.getNome(), linhas, 0);
+                            verProfessores.setValueAt(professor.getMatricula(), linhas, 1);
+                            verProfessores.setValueAt(professor.getEndereco(), linhas, 2);
+                            verProfessores.setValueAt(professor.getTelefone(), linhas, 3);
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                             JTable t = new JTable(verProfessores.getModel());
                             DefaultTableModel modelo = (DefaultTableModel) t.getModel();
-                            modelo.removeRow(verProfessores.getRowCount() - linhas);
+                            modelo.addRow(new Object[]{null, null});
+                            //Preenche a linha vazia que foi criada
+                            verProfessores.setValueAt(professor.getNome(), linhas, 0);
+                            verProfessores.setValueAt(professor.getMatricula(), linhas, 1);
+                            verProfessores.setValueAt(professor.getEndereco(), linhas, 2);
+                            verProfessores.setValueAt(professor.getTelefone(), linhas, 3);
                         }
-                        matriculaAnterior = novoCadastro.getMatricula();
-                        //Remove todas as linhas da tabela  
-                    } else if (escolhaEscola.getSelectedItem()
-                            .equals("Escolha uma Escola")) {
-                        progressoTabela.setValue(0);
-                        progressoTabela.setString("0%");
+                        //Verifica se é a primeira passagem do loop
+                    } else if (i == 0) {
+                        try {
+                            //Enquanto houver linhas suficientes na tabela..
+                            verProfessores.setValueAt(professor.getNome(), linhas, 0);
+                            verProfessores.setValueAt(professor.getMatricula(), linhas, 1);
+                            verProfessores.setValueAt(professor.getEndereco(), linhas, 2);
+                            verProfessores.setValueAt(professor.getTelefone(), linhas, 3);
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                            JTable t = new JTable(verProfessores.getModel());
+                            DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                            modelo.addRow(new Object[]{null, null});
+                            //Preenche a linha vazia que foi criada
+                            verProfessores.setValueAt(professor.getNome(), linhas, 0);
+                            verProfessores.setValueAt(professor.getMatricula(), linhas, 1);
+                            verProfessores.setValueAt(professor.getEndereco(), linhas, 2);
+                            verProfessores.setValueAt(professor.getTelefone(), linhas, 3);
+                        }
+                    } else if (matriculaAnterior == professor.getMatricula()) {
+                        //decrementa em linhas se matricula for igual o da varredura anterior.
+                        linhas--;
+                    }
+
+                    linhas++;
+                    //Remove as linhas desnecessarias da tabela
+                    while (verProfessores.getRowCount() > linhas) {
                         JTable t = new JTable(verProfessores.getModel());
                         DefaultTableModel modelo = (DefaultTableModel) t.getModel();
-                        modelo.removeRow(verProfessores.getRowCount() - 1);
-                        //modelo.removeRow(6);
+                        modelo.removeRow(verProfessores.getRowCount() - linhas);
                     }
+                    matriculaAnterior = professor.getMatricula();
+                    //Remove todas as linhas da tabela
+                } else if (escolhaEscola.getSelectedItem()
+                        .equals("Escolha uma Escola")) {
+                    progressoTabela.setValue(0);
+                    progressoTabela.setString("0%");
+                    JTable t = new JTable(verProfessores.getModel());
+                    DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                    modelo.removeRow(verProfessores.getRowCount() - 1);
+                    //modelo.removeRow(6);
                 }
             }
-        }
-        );
+        });
 
     }//GEN-LAST:event_escolhaEscolaActionPerformed
 
@@ -772,22 +1027,6 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_dataDeAdimissaoFocusLost
 
-    private void telefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFocusGained
-        if (telefone.getText().equals("(xx) xxxx-xxxx")) {
-            telefone.setText("");
-        }
-        if (telefone.getBackground().equals(Color.red)) {
-            telefone.setBackground(Color.white);
-            telefone.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_telefoneFocusGained
-
-    private void telefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFocusLost
-        if (telefone.getText().equals("")) {
-            telefone.setText("(xx) xxxx-xxxx");
-        }
-    }//GEN-LAST:event_telefoneFocusLost
-
     private void salarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_salarioFocusGained
         if (salario.getText().equals("Salario")) {
             salario.setText("");
@@ -804,6 +1043,99 @@ public class Main extends javax.swing.JFrame {
             salario.setText("Salario");
         }
     }//GEN-LAST:event_salarioFocusLost
+
+    private void telefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFocusLost
+        if (telefone.getText().equals("")) {
+            telefone.setText("Telefone");
+        }
+    }//GEN-LAST:event_telefoneFocusLost
+
+    private void telefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFocusGained
+        if (telefone.getText().equals("Telefone")) {
+            telefone.setText("");
+        }
+        if (telefone.getBackground().equals(Color.red)) {
+            telefone.setBackground(Color.white);
+            telefone.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_telefoneFocusGained
+
+    private void btnCadastrarSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarSetorActionPerformed
+       try{
+           Setor setor = new Setor(JOptionPane.showInputDialog("Insira o nome do setor:"));
+           if(!setor.getNome().equals("")){
+           setorSeletor.addItem(setor.getNome());
+           setorDB.add(setor);
+           salvarDados(setorDB, "registroSetor.txt");
+           }else{
+               JOptionPane.showMessageDialog(null, "Invalido! Escreva o nome do setor", "ERRO!", JOptionPane.WARNING_MESSAGE);
+           }
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Invalido, por favor tente novamente", "ERRO!", JOptionPane.WARNING_MESSAGE);
+       }
+        
+    }//GEN-LAST:event_btnCadastrarSetorActionPerformed
+
+    private void btnSalvarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCursoActionPerformed
+        Curso curso = new Curso(cursosDB.size(), nomeCurso.getText(), escolasCurso.getSelectedItem().toString());
+        for (int i = 0; i < cursosDB.size(); i++) {
+            Curso novo = (Curso) cursosDB.get(i);
+            if (nomeCurso.getText().equals(novo.getNome())) {
+                JOptionPane.showMessageDialog(null, nomeCurso.getText() + " ja existe na base de dados!", "Curso ja existe!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }else if(nomeCurso.getText().equals("")){
+                return;
+            }
+        }
+        cursosDB.add(curso);
+        cursosSeletor.addItem(curso.getNome());
+        salvarDados(cursosDB, "registroCurso.txt");
+    }//GEN-LAST:event_btnSalvarCursoActionPerformed
+
+    private void btnSalvarDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDisciplinasActionPerformed
+        if(disciplinaDB.isEmpty()){
+        Disciplinas disciplina = new Disciplinas(disciplinaDB.size(), nomeDisciplina.getText(), cursosSeletor.getSelectedItem().toString());
+        disciplinaDB.add(disciplina);
+        DisciplinaSeletor.addItem(disciplina.getNome());
+         salvarDados(disciplinaDB, "registroDisciplina.txt");
+        }else{
+        for (int i = 0; i < disciplinaDB.size(); i++) {
+            Disciplinas novo = (Disciplinas) disciplinaDB.get(i);
+            if (nomeDisciplina.getText().equals(novo.getNome())) {
+                JOptionPane.showMessageDialog(null, nomeDisciplina.getText() + " ja existe na base de dados!", "Disciplina ja existe!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }else if(nomeDisciplina.getText().equals("")){
+                return;
+            }
+        }
+        Disciplinas disciplina = new Disciplinas(disciplinaDB.size(), nomeDisciplina.getText(), cursosSeletor.getSelectedItem().toString());
+        disciplinaDB.add(disciplina);
+        DisciplinaSeletor.addItem(disciplina.getNome());
+        salvarDados(disciplinaDB, "registroDisciplina.txt");
+        }
+         
+    }//GEN-LAST:event_btnSalvarDisciplinasActionPerformed
+
+    private void btnSalvarTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarTurmasActionPerformed
+        if(turmasDB.isEmpty()){
+        Turmas turma = new Turmas(turmasDB.size(), nomeTurma.getText(), DisciplinaSeletor.getSelectedItem().toString(), ProfessorSeletor.getSelectedItem().toString());
+        turmasDB.add(turma);
+        salvarDados(turmasDB, "registroTurma.txt");
+        }else{
+        for (int i = 0; i < turmasDB.size(); i++) {
+            Turmas novo = (Turmas) turmasDB.get(i);
+            if (nomeTurma.getText().equals(novo.getNome())) {
+                JOptionPane.showMessageDialog(null, nomeTurma.getText() + " ja existe na base de dados!", "Turma ja existe!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }else if(nomeTurma.getText().equals("")){
+                return;
+            }
+        }
+        Turmas turma = new Turmas(turmasDB.size(), nomeTurma.getText(), DisciplinaSeletor.getSelectedItem().toString(), ProfessorSeletor.getSelectedItem().toString());
+        turmasDB.add(turma);
+        salvarDados(turmasDB, "registroTurma.txt");
+        }
+    }//GEN-LAST:event_btnSalvarTurmasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -842,54 +1174,115 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-                Gson gson = new Gson();
-                java.lang.reflect.Type tipo = new TypeToken<ArrayList<CadastrosDB>>() {
-                }.getType();
-                ArrayList<CadastrosDB> listaDePessoas = new ArrayList<>();
-                for (String s : ReadFile("registro.txt")) {
-                    cadastroDB = gson.fromJson(s, tipo);
-                    //cadastroDB.forEach(p -> add("Nome: " + p.getNome() + " Matricula: " + p.getMatricula()));
+        java.awt.EventQueue.invokeLater(() -> {
+            new Main().setVisible(true);
+            Gson gson = new Gson();
+            //Recupera professores
+            java.lang.reflect.Type tipoProf = new TypeToken<ArrayList<Professor>>() {
+            }.getType();
+            ReadFile("registroProfessor.txt").forEach((s) -> {
+                professorDB = gson.fromJson(s, tipoProf);
+                for(int i=0; i<professorDB.size(); i++){
+                    Professor professor = (Professor) professorDB.get(i);
+                    ProfessorSeletor.addItem(professor.getNome());
                 }
-                java.lang.reflect.Type tipoEscolas = new TypeToken<ArrayList<Escolas>>() {
-                }.getType();
-                ArrayList<Escolas> listaDeEscolas = new ArrayList<>();
-                for (String e : ReadFile("registroEscolas.txt")) {
-                    escolasDB = gson.fromJson(e, tipoEscolas);
-                    if (!escolasDB.isEmpty()) {
-                        String aux = "";
-                        for (int i = 0; i < escolasDB.size(); i++) {
-                            Escolas novo = (Escolas) escolasDB.get(i);
-                            if (aux.equals(novo.getNome())) {
-                            } else {
-                                escolhaEscola.addItem(novo.getNome());
-                                escolas.addItem(novo.getNome());
-                            }
-                            aux = novo.getNome();
-                        }
+            });
+            //Recupera Curso
+            java.lang.reflect.Type tipoCurso = new TypeToken<ArrayList<Curso>>() {
+            }.getType();
+            ReadFile("registroCurso.txt").forEach((s) -> {
+                cursosDB = gson.fromJson(s, tipoCurso);
+                for(int i=0; i<cursosDB.size(); i++){
+                    Curso curso = (Curso) cursosDB.get(i);
+                    cursosSeletor.addItem(curso.getNome());
+                }
+            });
+            //Recupera disciplinas
+            java.lang.reflect.Type tipoDisciplina = new TypeToken<ArrayList<Disciplinas>>() {
+            }.getType();
+            ReadFile("registroDisciplina.txt").forEach((s) -> {
+                disciplinaDB = gson.fromJson(s, tipoDisciplina);
+                for(int i=0; i<disciplinaDB.size(); i++){
+                    Disciplinas disciplina = (Disciplinas) disciplinaDB.get(i);
+                    DisciplinaSeletor.addItem(disciplina.getNome());
+                }
+            });
+            //Recupera turmas
+            java.lang.reflect.Type tipoTurma = new TypeToken<ArrayList<Turmas>>() {
+            }.getType();
+            ReadFile("registroTurma.txt").forEach((s) -> {
+                turmasDB = gson.fromJson(s, tipoTurma);
+            });
+            //Recupera setor
+            java.lang.reflect.Type tipoSetor = new TypeToken<ArrayList<Setor>>() {
+            }.getType();
+            ReadFile("registroSetor.txt").forEach((s) -> {
+                setorDB = gson.fromJson(s, tipoSetor);
+                for(int i=0; i<setorDB.size(); i++){
+                    Setor setor = (Setor) setorDB.get(i);
+                    setorSeletor.addItem(setor.getNome());
+                }
+            });
+            //Recupera Adm
+            java.lang.reflect.Type tipoAdm = new TypeToken<ArrayList<Administrativo>>() {
+            }.getType();
+            ReadFile("registroAdm.txt").forEach((s) -> {
+                administrativoDB = gson.fromJson(s, tipoAdm);
+            });
+            //Recupera Escolas
+            java.lang.reflect.Type tipoEscolas = new TypeToken<ArrayList<Escolas>>() {
+            }.getType();
+            ReadFile("registroEscolas.txt").stream().map((e) -> {
+                escolasDB = gson.fromJson(e, tipoEscolas);
+                return e;
+            }).filter((_item) -> (!escolasDB.isEmpty())).map((_item) -> "").forEachOrdered((aux) -> {
+                for (int i = 0; i < escolasDB.size(); i++) {
+                    Escolas novo = (Escolas) escolasDB.get(i);
+                    if (aux.equals(novo.getNome())) {
+                    } else {
+                        escolhaEscola.addItem(novo.getNome());
+                        escolas.addItem(novo.getNome());
+                        escolasCurso.addItem(novo.getNome());
                     }
+                    aux = novo.getNome();
                 }
-
-            }
+            });
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static javax.swing.JComboBox<String> DisciplinaSeletor;
+    private static javax.swing.JComboBox<String> ProfessorSeletor;
+    private javax.swing.JButton btnCadastrarSetor;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnSalvarCurso;
+    private javax.swing.JButton btnSalvarDisciplinas;
     private javax.swing.JButton btnSalvarEscola;
+    private javax.swing.JButton btnSalvarTurmas;
+    private static javax.swing.JComboBox<String> cursosSeletor;
     private javax.swing.JTextField dataDeAdimissao;
     private javax.swing.JTextField endereco;
     private static javax.swing.JComboBox<String> escolas;
+    private static javax.swing.JComboBox<String> escolasCurso;
     private javax.swing.JComboBox<String> escolha;
     private static javax.swing.JComboBox<String> escolhaEscola;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -899,21 +1292,34 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField matricula;
     private javax.swing.JTextField nome;
+    private javax.swing.JTextField nomeCurso;
+    private javax.swing.JTextField nomeDisciplina;
     private javax.swing.JTextField nomeEscola;
+    private javax.swing.JTextField nomeTurma;
     private javax.swing.JProgressBar progressoTabela;
-    private javax.swing.JLabel qtn;
     private javax.swing.JTextField salario;
-    private javax.swing.JComboBox<String> setor;
+    private static javax.swing.JComboBox<String> setorSeletor;
     private javax.swing.JPanel tabCadastroEscolas;
     private javax.swing.JPanel tabCadastroProfFun;
+    private javax.swing.JPanel tabCurso;
     private javax.swing.JTextField telefone;
+    private javax.swing.JLabel txtCurso;
+    private javax.swing.JLabel txtDisciplinas;
+    private javax.swing.JLabel txtDisciplinas1;
     private javax.swing.JLabel txtEscolha;
     private javax.swing.JTable verProfessores;
     // End of variables declaration//GEN-END:variables
-    CadastrosDB novoCadastro, anterior;
+    Professor professor;
+    Administrativo administrativo;
+    Professor anterior;
     private String exibeCadastro = "";
-    public static ArrayList cadastroDB = new ArrayList();
+    public static ArrayList professorDB = new ArrayList();
+    public static ArrayList administrativoDB = new ArrayList();
     public static ArrayList escolasDB = new ArrayList();
+    public static ArrayList cursosDB = new ArrayList();
+    public static ArrayList disciplinaDB = new ArrayList();
+    public static ArrayList turmasDB = new ArrayList();
+    public static ArrayList setorDB = new ArrayList();
     private int dataAdimicao;
     private int matriculaFunc;
     private float salarioFunc;
