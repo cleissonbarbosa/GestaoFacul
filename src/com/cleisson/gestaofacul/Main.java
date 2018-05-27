@@ -73,6 +73,10 @@ public class Main extends javax.swing.JFrame {
         this.btnCadastrarSetor.setEnabled(false);
         cursosSeletorAluno = new javax.swing.JComboBox<>();
         this.cursosSeletorAluno.setEnabled(false);
+        txtSetor = new javax.swing.JLabel();
+        this.txtSetor.setEnabled(false);
+        txtSeletorCurso = new javax.swing.JLabel();
+        this.txtSeletorCurso.setEnabled(false);
         tabCadastroEscolas = new javax.swing.JPanel();
         nomeEscola = new javax.swing.JTextField();
         btnSalvarEscola = new javax.swing.JButton();
@@ -246,7 +250,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Cadastro de professores e funcionarios");
+        jLabel3.setText("Cadastro de pessoas");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroImagem.png"))); // NOI18N
 
@@ -261,18 +265,20 @@ public class Main extends javax.swing.JFrame {
 
         cursosSeletorAluno.setFont(escolas.getFont());
 
+        txtSetor.setText("Escolha o Setor:");
+
+        txtSeletorCurso.setText("Escolha o Curso:");
+
         javax.swing.GroupLayout tabCadastroProfFunLayout = new javax.swing.GroupLayout(tabCadastroProfFun);
         tabCadastroProfFun.setLayout(tabCadastroProfFunLayout);
         tabCadastroProfFunLayout.setHorizontalGroup(
             tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(nome))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabCadastroProfFunLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nome, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
                                 .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -282,52 +288,51 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(telefone)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabCadastroProfFunLayout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabCadastroProfFunLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(txtEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 424, Short.MAX_VALUE))
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(setorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnSalvar)
                                 .addGap(191, 191, 191)
                                 .addComponent(btnCadastrarSetor)
-                                .addGap(51, 51, 51))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabCadastroProfFunLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cursosSeletorAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(51, 51, 51))
+                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(setorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cursosSeletorAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                .addComponent(txtSeletorCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                        .addGap(239, 239, 239)
+                        .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 86, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         tabCadastroProfFunLayout.setVerticalGroup(
             tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(35, 35, 35)
+                .addGap(47, 47, 47)
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -339,18 +344,22 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(dataDeAdimissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEscolha)
-                .addGap(2, 2, 2)
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEscolha)
+                    .addComponent(txtSetor))
+                .addGap(6, 6, 6)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(setorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSeletorCurso)
+                .addGap(5, 5, 5)
                 .addComponent(cursosSeletorAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastrarSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         nome.getAccessibleContext().setAccessibleName("");
@@ -721,15 +730,20 @@ public class Main extends javax.swing.JFrame {
                 setorSeletor.setEnabled(false);
                 btnCadastrarSetor.setEnabled(false);
                 cursosSeletorAluno.setEnabled(false);
+                txtSeletorCurso.setEnabled(false);
+                txtSetor.setEnabled(false);
             } else if (escolha.getSelectedItem().equals("Funcionarios")) {
                 //inverte caso seja selecionado outra opção
                 escolas.setEnabled(false);
                 txtEscolha.setEnabled(false);
+                txtSeletorCurso.setEnabled(false);
                 setorSeletor.setEnabled(true);
                 btnCadastrarSetor.setEnabled(true);
                 cursosSeletorAluno.setEnabled(false);
             } else if (escolha.getSelectedItem().equals("Alunos")) {
                 escolas.setEnabled(false);
+                txtSeletorCurso.setEnabled(true);
+                txtSetor.setEnabled(false);
                 txtEscolha.setEnabled(false);
                 setorSeletor.setEnabled(false);
                 btnCadastrarSetor.setEnabled(false);
@@ -746,19 +760,19 @@ public class Main extends javax.swing.JFrame {
             if (JOptionPane.showConfirmDialog(null, "Tem Certeza que deseja Salvar?", "Salvar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 //Convertendo as entradas do usuario(String) em numeros
                 if (!this.escolha.getSelectedItem().equals("Alunos")) {
-                String dataEmUmFormato = dataDeAdimissao.getText();
-                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                Date data = null;
-                try {
-                    
+                    String dataEmUmFormato = dataDeAdimissao.getText();
+                    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                    Date data = null;
+                    try {
+
                         data = formato.parse(dataEmUmFormato);
-                    
-                } catch (ParseException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                formato.applyPattern("ddMMyyyy");
-                String dataFormatada = formato.format(data);
-                dataAdimicao = Integer.parseInt(dataFormatada);
+
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    formato.applyPattern("ddMMyyyy");
+                    String dataFormatada = formato.format(data);
+                    dataAdimicao = Integer.parseInt(dataFormatada);
                 }
                 matriculaFunc = Integer.parseInt(this.matricula.getText()) + 1;
                 salarioFunc = Float.parseFloat(this.salario.getText());
@@ -779,7 +793,8 @@ public class Main extends javax.swing.JFrame {
                     //Logica para quando o usuario seleciona outro item   
                     administrativo = new Administrativo(this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
                     administrativo.inserirAdministrativo(dataAdimicao, salarioFunc, this.setorSeletor.getSelectedItem().toString());
-                    exibeCadastro = administrativo.getNome() + " | " + administrativo.getMatricula() + "\n";
+                    exibeCadastro = administrativo.getNome() + " | " + administrativo.getMatricula() + " | "
+                            + this.setorSeletor.getSelectedItem().toString() + "\n";
                     //Adicionando o novo objeto no Arrey List
                     administrativoDB.add(administrativo);
                     salvarDados(administrativoDB, "registroAdm.txt");
@@ -787,7 +802,7 @@ public class Main extends javax.swing.JFrame {
                     String curso = cursosSeletorAluno.getSelectedItem().toString();
                     aluno = new Aluno(this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
                     aluno.inserirAluno(curso);
-                    exibeCadastro = aluno.getNome() + " | " + aluno.getMatricula() + " | " + aluno.getCurso();
+                    exibeCadastro = aluno.getNome() + " | " + aluno.getMatricula() + " | " + aluno.getCurso() + "\n";
                     //Adicionando o novo objeto no Arrey List
                     alunoDB.add(aluno);
                     salvarDados(alunoDB, "registroAluno.txt");
@@ -808,6 +823,7 @@ public class Main extends javax.swing.JFrame {
             erro.encontrar(telefone);
             erro.encontrar(escolas);
             erro.encontrar(setorSeletor);
+            erro.encontrar(cursosSeletorAluno);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -1326,6 +1342,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel txtDisciplinas;
     private javax.swing.JLabel txtDisciplinas1;
     private javax.swing.JLabel txtEscolha;
+    private javax.swing.JLabel txtSeletorCurso;
+    private javax.swing.JLabel txtSetor;
     private javax.swing.JTable verProfessores;
     // End of variables declaration//GEN-END:variables
     Professor professor;
