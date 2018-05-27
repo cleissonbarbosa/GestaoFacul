@@ -1,7 +1,5 @@
 package com.cleisson.gestaofacul;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author cleisson

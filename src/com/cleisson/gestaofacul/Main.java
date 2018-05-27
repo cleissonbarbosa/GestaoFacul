@@ -23,7 +23,6 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
-import sun.net.www.content.image.gif;
 
 /**
  *
@@ -111,6 +110,13 @@ public class Main extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        MenuGerarRelatorio = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        relatorioProfessores = new javax.swing.JMenuItem();
+        relatorioFuncionarios = new javax.swing.JMenuItem();
+        relatorioAlunos = new javax.swing.JMenuItem();
+        MenuItemSair = new javax.swing.JMenuItem();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,7 +138,6 @@ public class Main extends javax.swing.JFrame {
         setBackground(java.awt.SystemColor.controlLtHighlight);
         setIconImages(null);
         setLocation(new java.awt.Point(150, 150));
-        setMaximumSize(new java.awt.Dimension(700, 500));
         setMinimumSize(new java.awt.Dimension(700, 500));
         setResizable(false);
         setSize(new java.awt.Dimension(690, 500));
@@ -690,6 +695,53 @@ public class Main extends javax.swing.JFrame {
 
         jLabel1.setText("Desenvolvido por: Cleisson B.");
 
+        MenuGerarRelatorio.setText("Opções");
+
+        jMenu1.setText("Gerar Relatorios");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        relatorioProfessores.setText("Professores");
+        relatorioProfessores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relatorioProfessoresActionPerformed(evt);
+            }
+        });
+        jMenu1.add(relatorioProfessores);
+
+        relatorioFuncionarios.setText("Funcionarios");
+        relatorioFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relatorioFuncionariosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(relatorioFuncionarios);
+
+        relatorioAlunos.setText("Alunos");
+        relatorioAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relatorioAlunosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(relatorioAlunos);
+
+        MenuGerarRelatorio.add(jMenu1);
+
+        MenuItemSair.setText("Sair");
+        MenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemSairActionPerformed(evt);
+            }
+        });
+        MenuGerarRelatorio.add(MenuItemSair);
+
+        jMenuBar1.add(MenuGerarRelatorio);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -726,20 +778,24 @@ public class Main extends javax.swing.JFrame {
             if (escolha.getSelectedItem().equals("Professores")) {
                 //Habilita o escolas e desabilita o setor
                 escolas.setEnabled(true);
+                dataDeAdimissao.setEnabled(true);
                 txtEscolha.setEnabled(true);
                 setorSeletor.setEnabled(false);
                 btnCadastrarSetor.setEnabled(false);
                 cursosSeletorAluno.setEnabled(false);
                 txtSeletorCurso.setEnabled(false);
                 txtSetor.setEnabled(false);
+                salario.setEnabled(true);
             } else if (escolha.getSelectedItem().equals("Funcionarios")) {
                 //inverte caso seja selecionado outra opção
                 escolas.setEnabled(false);
+                dataDeAdimissao.setEnabled(true);
                 txtEscolha.setEnabled(false);
                 txtSeletorCurso.setEnabled(false);
                 setorSeletor.setEnabled(true);
                 btnCadastrarSetor.setEnabled(true);
                 cursosSeletorAluno.setEnabled(false);
+                salario.setEnabled(true);
             } else if (escolha.getSelectedItem().equals("Alunos")) {
                 escolas.setEnabled(false);
                 txtSeletorCurso.setEnabled(true);
@@ -749,6 +805,7 @@ public class Main extends javax.swing.JFrame {
                 btnCadastrarSetor.setEnabled(false);
                 dataDeAdimissao.setEnabled(false);
                 cursosSeletorAluno.setEnabled(true);
+                salario.setEnabled(false);
             }
         });
     }//GEN-LAST:event_escolhaActionPerformed
@@ -775,7 +832,9 @@ public class Main extends javax.swing.JFrame {
                     dataAdimicao = Integer.parseInt(dataFormatada);
                 }
                 matriculaFunc = Integer.parseInt(this.matricula.getText()) + 1;
-                salarioFunc = Float.parseFloat(this.salario.getText());
+                if (!this.escolha.getSelectedItem().equals("Alunos")) {
+                    salarioFunc = Float.parseFloat(this.salario.getText());
+                }
                 telefoneFunc = Integer.parseInt(this.telefone.getText());
 
                 //Logica para quando o usuario seleciona o item professor    
@@ -796,8 +855,8 @@ public class Main extends javax.swing.JFrame {
                     exibeCadastro = administrativo.getNome() + " | " + administrativo.getMatricula() + " | "
                             + this.setorSeletor.getSelectedItem().toString() + "\n";
                     //Adicionando o novo objeto no Arrey List
-                    administrativoDB.add(administrativo);
-                    salvarDados(administrativoDB, "registroAdm.txt");
+                    funcionarioDB.add(administrativo);
+                    salvarDados(funcionarioDB, "registroAdm.txt");
                 } else if (this.escolha.getSelectedItem().equals("Alunos")) {
                     String curso = cursosSeletorAluno.getSelectedItem().toString();
                     aluno = new Aluno(this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
@@ -815,15 +874,20 @@ public class Main extends javax.swing.JFrame {
             //Menssagem de Erro caso usuario insira uma entrada invalida
             JOptionPane.showMessageDialog(null, "                                 >>   ATENÇÂO!  <<\nVerifique se você preencheu algum campo incorretamente!\n\n"
                     + "> NÃO é permitido inserir LETRAS no lugar de numeros vice-versa.\n"
-                    + "> É NECESSARIO preencher TODOS os campos!\n\n Os campos incorretos estaram em vermelho!", "Erro! Não foi possível salvar!!", JOptionPane.ERROR_MESSAGE);
-            btnSalvar.setName("Salvo");
+                    + "> É NECESSARIO preencher TODOS os campos!\n\n *Os campos incorretos estaram em vermelho!", "Erro! Não foi possível salvar!!", JOptionPane.ERROR_MESSAGE);
+            btnSalvar.setName("ERRO");
             VerificaErro erro = new VerificaErro();
-            erro.encontrar(matricula);
-            erro.encontrar(salario);
-            erro.encontrar(telefone);
-            erro.encontrar(escolas);
-            erro.encontrar(setorSeletor);
-            erro.encontrar(cursosSeletorAluno);
+            if (!this.escolha.getSelectedItem().equals("Alunos")) {
+                erro.encontrar(matricula);
+                erro.encontrar(salario);
+                erro.encontrar(telefone);
+                erro.encontrar(escolas);
+                erro.encontrar(setorSeletor);
+            } else {
+                erro.encontrar(matricula);
+                erro.encontrar(telefone);
+                erro.encontrar(cursosSeletorAluno);
+            }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -851,7 +915,7 @@ public class Main extends javax.swing.JFrame {
                     escolasDB.add(novaEscola);
                     escolhaEscola.addItem(novaEscola.getNome());
                     escolas.addItem(novaEscola.getNome());
-                    cursosSeletor.addItem(novaEscola.getNome());
+                    escolasCurso.addItem(novaEscola.getNome());
                     salvarDados(escolasDB, "registroEscolas.txt");
                 }
 
@@ -859,7 +923,7 @@ public class Main extends javax.swing.JFrame {
                 escolasDB.add(novaEscola);
                 escolhaEscola.addItem(novaEscola.getNome());
                 escolas.addItem(novaEscola.getNome());
-                cursosSeletor.addItem(novaEscola.getNome());
+                escolasCurso.addItem(novaEscola.getNome());
                 salvarDados(escolasDB, "registroEscolas.txt");
             }
         });
@@ -1114,6 +1178,7 @@ public class Main extends javax.swing.JFrame {
         }
         cursosDB.add(curso);
         cursosSeletor.addItem(curso.getNome());
+        cursosSeletorAluno.addItem(curso.getNome());
         salvarDados(cursosDB, "registroCurso.txt");
     }//GEN-LAST:event_btnSalvarCursoActionPerformed
 
@@ -1161,6 +1226,26 @@ public class Main extends javax.swing.JFrame {
             salvarDados(turmasDB, "registroTurma.txt");
         }
     }//GEN-LAST:event_btnSalvarTurmasActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+       
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void relatorioProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioProfessoresActionPerformed
+         relatorio.gerarPDF(professorDB, "Professor");
+    }//GEN-LAST:event_relatorioProfessoresActionPerformed
+
+    private void relatorioFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioFuncionariosActionPerformed
+       relatorio.gerarPDF(funcionarioDB, "Funcionario");
+    }//GEN-LAST:event_relatorioFuncionariosActionPerformed
+
+    private void relatorioAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioAlunosActionPerformed
+        relatorio.gerarPDF(alunoDB, "Aluno");
+    }//GEN-LAST:event_relatorioAlunosActionPerformed
+
+    private void MenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_MenuItemSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1217,9 +1302,9 @@ public class Main extends javax.swing.JFrame {
             }.getType();
             ReadFile("registroAluno.txt").forEach((s) -> {
                 alunoDB = gson.fromJson(s, tipoAluno);
-                for (int i = 0; i < alunoDB.size(); i++) {
-
-                }
+                /*for (int i = 0; i < alunoDB.size(); i++) {
+                
+                }*/
             });
             //Recupera Curso
             java.lang.reflect.Type tipoCurso = new TypeToken<ArrayList<Curso>>() {
@@ -1263,7 +1348,7 @@ public class Main extends javax.swing.JFrame {
             java.lang.reflect.Type tipoAdm = new TypeToken<ArrayList<Administrativo>>() {
             }.getType();
             ReadFile("registroAdm.txt").forEach((s) -> {
-                administrativoDB = gson.fromJson(s, tipoAdm);
+                funcionarioDB = gson.fromJson(s, tipoAdm);
             });
             //Recupera Escolas
             java.lang.reflect.Type tipoEscolas = new TypeToken<ArrayList<Escolas>>() {
@@ -1288,6 +1373,8 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JComboBox<String> DisciplinaSeletor;
+    private javax.swing.JMenu MenuGerarRelatorio;
+    private javax.swing.JMenuItem MenuItemSair;
     private static javax.swing.JComboBox<String> ProfessorSeletor;
     private javax.swing.JButton btnCadastrarSetor;
     private javax.swing.JButton btnSalvar;
@@ -1316,6 +1403,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1330,6 +1419,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField nomeEscola;
     private javax.swing.JTextField nomeTurma;
     private javax.swing.JProgressBar progressoTabela;
+    private javax.swing.JMenuItem relatorioAlunos;
+    private javax.swing.JMenuItem relatorioFuncionarios;
+    private javax.swing.JMenuItem relatorioProfessores;
     private javax.swing.JTextField salario;
     private static javax.swing.JComboBox<String> setorSeletor;
     private javax.swing.JPanel tabCadastroEscolas;
@@ -1346,13 +1438,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel txtSetor;
     private javax.swing.JTable verProfessores;
     // End of variables declaration//GEN-END:variables
+    GerarRelatorio relatorio = new GerarRelatorio();
     Professor professor;
     Administrativo administrativo;
     Aluno aluno;
     Professor anterior;
     private String exibeCadastro = "";
     public static ArrayList professorDB = new ArrayList();
-    public static ArrayList administrativoDB = new ArrayList();
+    public static ArrayList funcionarioDB = new ArrayList();
     public static ArrayList alunoDB = new ArrayList();
     public static ArrayList escolasDB = new ArrayList();
     public static ArrayList cursosDB = new ArrayList();
