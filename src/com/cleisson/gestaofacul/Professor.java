@@ -1,28 +1,21 @@
 package com.cleisson.gestaofacul;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author cleisson
  */
-public class Professor {
+public class Professor extends Funcionarios{
 
-    private int dataDeAdimissao;
-    private String endereco;
-    private int matricula;
-    private String nome;
-    private float salario;
-    private int telefone;
+    
     private String escola;
 
-    public Professor(int dataDeAdimissao, String endereco, int matricula, String nome, float salario, int telefone, String escola) {
-        this.dataDeAdimissao = dataDeAdimissao;
-        this.endereco = endereco;
-        this.matricula = matricula;
-        this.nome = nome;
-        this.salario = salario;
-        this.telefone = telefone;
+    public Professor(String endereco, int matricula, String nome, int telefone) {
+        super(endereco, matricula, nome, telefone);
+    }
+
+    public void inserirProfessor( int dataDeAdimissao, float salario,  String escola) {
+        super.dataDeAdimissao = dataDeAdimissao;
+        super.salario = salario;
         this.escola = escola;
     }
 
@@ -42,44 +35,8 @@ public class Professor {
         this.dataDeAdimissao = dataDeAdimissao;
     }
 
+    @Override
     public String getEndereco() {
         return endereco;
     }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public int getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public float getSalario() {
-        return salario;
-    }
-
-    public void setSalario(float salario) {
-        this.salario = salario;
-    }
-
-    public int getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
-    }
-
 }

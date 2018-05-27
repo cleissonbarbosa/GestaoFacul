@@ -70,6 +70,9 @@ public class Main extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtEscolha = new javax.swing.JLabel();
         btnCadastrarSetor = new javax.swing.JButton();
+        this.btnCadastrarSetor.setEnabled(false);
+        cursosSeletorAluno = new javax.swing.JComboBox<>();
+        this.cursosSeletorAluno.setEnabled(false);
         tabCadastroEscolas = new javax.swing.JPanel();
         nomeEscola = new javax.swing.JTextField();
         btnSalvarEscola = new javax.swing.JButton();
@@ -87,13 +90,13 @@ public class Main extends javax.swing.JFrame {
         escolasCurso = new javax.swing.JComboBox<>();
         btnSalvarCurso = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        tabDisciplinas = new javax.swing.JPanel();
         txtDisciplinas = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         nomeDisciplina = new javax.swing.JTextField();
         cursosSeletor = new javax.swing.JComboBox<>();
         btnSalvarDisciplinas = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        tabTurmas = new javax.swing.JPanel();
         txtDisciplinas1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         nomeTurma = new javax.swing.JTextField();
@@ -102,8 +105,6 @@ public class Main extends javax.swing.JFrame {
         ProfessorSeletor = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
@@ -224,7 +225,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         escolha.setFont(escolas.getFont());
-        escolha.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professores", "Funcionarios" }));
+        escolha.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professores", "Funcionarios", "Alunos" }));
         escolha.setBorder(null);
         escolha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,56 +259,61 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        cursosSeletorAluno.setFont(escolas.getFont());
+
         javax.swing.GroupLayout tabCadastroProfFunLayout = new javax.swing.GroupLayout(tabCadastroProfFun);
         tabCadastroProfFun.setLayout(tabCadastroProfFunLayout);
         tabCadastroProfFunLayout.setHorizontalGroup(
             tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                    .addComponent(dataDeAdimissao, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                        .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(matricula))
-                                    .addComponent(nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                            .addGap(105, 105, 105)
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(nome))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabCadastroProfFunLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                        .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
-                                        .addComponent(btnSalvar)
-                                        .addGap(88, 88, 88)))
-                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(setorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnCadastrarSetor))))
-                        .addGap(49, 49, 49)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(matricula))
+                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                .addComponent(dataDeAdimissao, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(telefone)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabCadastroProfFunLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabCadastroProfFunLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                .addComponent(txtEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 424, Short.MAX_VALUE))
+                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                                .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(setorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnSalvar)
+                                .addGap(191, 191, 191)
+                                .addComponent(btnCadastrarSetor)
+                                .addGap(51, 51, 51))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabCadastroProfFunLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(cursosSeletorAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         tabCadastroProfFunLayout.setVerticalGroup(
             tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,16 +344,18 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(setorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnCadastrarSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addComponent(cursosSeletorAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCadastrarSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvar))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         nome.getAccessibleContext().setAccessibleName("");
 
-        jTabbedPane1.addTab("Cadastro de Professores/Funcionarios", tabCadastroProfFun);
+        jTabbedPane1.addTab("Cadastro de Pessoas", tabCadastroProfFun);
 
         nomeEscola.setText("Nome Da Escola");
 
@@ -518,12 +526,12 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(escolasCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(btnSalvarCurso)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cadstro de Curso", tabCurso);
 
-        jPanel1.setBackground(java.awt.SystemColor.controlLtHighlight);
+        tabDisciplinas.setBackground(java.awt.SystemColor.controlLtHighlight);
 
         txtDisciplinas.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
         txtDisciplinas.setForeground(new java.awt.Color(102, 102, 102));
@@ -544,35 +552,35 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout tabDisciplinasLayout = new javax.swing.GroupLayout(tabDisciplinas);
+        tabDisciplinas.setLayout(tabDisciplinasLayout);
+        tabDisciplinasLayout.setHorizontalGroup(
+            tabDisciplinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabDisciplinasLayout.createSequentialGroup()
+                .addGroup(tabDisciplinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabDisciplinasLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(tabDisciplinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomeDisciplina)
                             .addComponent(cursosSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(tabDisciplinasLayout.createSequentialGroup()
+                        .addGroup(tabDisciplinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabDisciplinasLayout.createSequentialGroup()
                                 .addGap(306, 306, 306)
                                 .addComponent(btnSalvarDisciplinas))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(tabDisciplinasLayout.createSequentialGroup()
                                 .addGap(205, 205, 205)
                                 .addComponent(txtDisciplinas)))
                         .addGap(0, 227, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(tabDisciplinasLayout.createSequentialGroup()
                 .addGap(307, 307, 307)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        tabDisciplinasLayout.setVerticalGroup(
+            tabDisciplinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabDisciplinasLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -583,12 +591,12 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(cursosSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(btnSalvarDisciplinas)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cadastro Disciplinas", jPanel1);
+        jTabbedPane1.addTab("Cadastro Disciplinas", tabDisciplinas);
 
-        jPanel2.setBackground(java.awt.SystemColor.controlLtHighlight);
+        tabTurmas.setBackground(java.awt.SystemColor.controlLtHighlight);
 
         txtDisciplinas1.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
         txtDisciplinas1.setForeground(new java.awt.Color(102, 102, 102));
@@ -615,41 +623,41 @@ public class Main extends javax.swing.JFrame {
 
         jLabel13.setText("Escolha um professor:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout tabTurmasLayout = new javax.swing.GroupLayout(tabTurmas);
+        tabTurmas.setLayout(tabTurmasLayout);
+        tabTurmasLayout.setHorizontalGroup(
+            tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabTurmasLayout.createSequentialGroup()
+                .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabTurmasLayout.createSequentialGroup()
+                        .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addGap(307, 307, 307)
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addGap(237, 237, 237)
                                 .addComponent(txtDisciplinas1))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addGap(307, 307, 307)
                                 .addComponent(btnSalvarTurmas))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel7)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(tabTurmasLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomeTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
                             .addComponent(DisciplinaSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ProfessorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 590, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        tabTurmasLayout.setVerticalGroup(
+            tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabTurmasLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -666,32 +674,10 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(ProfessorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addComponent(btnSalvarTurmas)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cadastro de Turmas", jPanel2);
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel14.setText("Em Desenvolvimento");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(187, 187, 187)
-                .addComponent(jLabel14)
-                .addContainerGap(199, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(187, Short.MAX_VALUE)
-                .addComponent(jLabel14)
-                .addGap(167, 167, 167))
-        );
-
-        jTabbedPane1.addTab("Cadastro de Alunos", jPanel3);
+        jTabbedPane1.addTab("Cadastro de Turmas", tabTurmas);
 
         jLabel1.setText("Desenvolvido por: Cleisson B.");
 
@@ -714,8 +700,8 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -733,11 +719,22 @@ public class Main extends javax.swing.JFrame {
                 escolas.setEnabled(true);
                 txtEscolha.setEnabled(true);
                 setorSeletor.setEnabled(false);
-            } else {
+                btnCadastrarSetor.setEnabled(false);
+                cursosSeletorAluno.setEnabled(false);
+            } else if (escolha.getSelectedItem().equals("Funcionarios")) {
                 //inverte caso seja selecionado outra opção
                 escolas.setEnabled(false);
                 txtEscolha.setEnabled(false);
                 setorSeletor.setEnabled(true);
+                btnCadastrarSetor.setEnabled(true);
+                cursosSeletorAluno.setEnabled(false);
+            } else if (escolha.getSelectedItem().equals("Alunos")) {
+                escolas.setEnabled(false);
+                txtEscolha.setEnabled(false);
+                setorSeletor.setEnabled(false);
+                btnCadastrarSetor.setEnabled(false);
+                dataDeAdimissao.setEnabled(false);
+                cursosSeletorAluno.setEnabled(true);
             }
         });
     }//GEN-LAST:event_escolhaActionPerformed
@@ -748,42 +745,52 @@ public class Main extends javax.swing.JFrame {
             //Exibe Painel de confirmação
             if (JOptionPane.showConfirmDialog(null, "Tem Certeza que deseja Salvar?", "Salvar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 //Convertendo as entradas do usuario(String) em numeros
+                if (!this.escolha.getSelectedItem().equals("Alunos")) {
                 String dataEmUmFormato = dataDeAdimissao.getText();
                 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
                 Date data = null;
                 try {
-                    data = formato.parse(dataEmUmFormato);
+                    
+                        data = formato.parse(dataEmUmFormato);
+                    
                 } catch (ParseException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 formato.applyPattern("ddMMyyyy");
                 String dataFormatada = formato.format(data);
                 dataAdimicao = Integer.parseInt(dataFormatada);
+                }
                 matriculaFunc = Integer.parseInt(this.matricula.getText()) + 1;
                 salarioFunc = Float.parseFloat(this.salario.getText());
                 telefoneFunc = Integer.parseInt(this.telefone.getText());
+
                 //Logica para quando o usuario seleciona o item professor    
                 if (this.escolha.getSelectedItem().equals("Professores")) {
                     String escola = this.escolas.getSelectedItem().toString();
                     //Cria novo objeto com as entradas do usuario
-                    professor = new Professor(dataAdimicao, this.endereco.getText(), matriculaFunc,
-                            nome.getText(),
-                            salarioFunc,
-                            telefoneFunc,
-                            escola);
+                    professor = new Professor(this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
+                    professor.inserirProfessor(dataAdimicao, salarioFunc, escola);
                     exibeCadastro = professor.getNome() + " | " + professor.getMatricula() + "\n";
                     //Adicionando o novo objeto no Arrey List
                     professorDB.add(professor);
                     ProfessorSeletor.addItem(professor.getNome());
                     salvarDados(professorDB, "registroProfessor.txt");
-                } else {
+                } else if (this.escolha.getSelectedItem().equals("Funcionarios")) {
                     //Logica para quando o usuario seleciona outro item   
-                    administrativo = new Administrativo(dataAdimicao, this.endereco.getText(), matriculaFunc,
-                            this.nome.getText(), salarioFunc, telefoneFunc, this.setorSeletor.getSelectedItem().toString());
+                    administrativo = new Administrativo(this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
+                    administrativo.inserirAdministrativo(dataAdimicao, salarioFunc, this.setorSeletor.getSelectedItem().toString());
                     exibeCadastro = administrativo.getNome() + " | " + administrativo.getMatricula() + "\n";
                     //Adicionando o novo objeto no Arrey List
                     administrativoDB.add(administrativo);
                     salvarDados(administrativoDB, "registroAdm.txt");
+                } else if (this.escolha.getSelectedItem().equals("Alunos")) {
+                    String curso = cursosSeletorAluno.getSelectedItem().toString();
+                    aluno = new Aluno(this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
+                    aluno.inserirAluno(curso);
+                    exibeCadastro = aluno.getNome() + " | " + aluno.getMatricula() + " | " + aluno.getCurso();
+                    //Adicionando o novo objeto no Arrey List
+                    alunoDB.add(aluno);
+                    salvarDados(alunoDB, "registroAluno.txt");
                 }
             }
 
@@ -828,6 +835,7 @@ public class Main extends javax.swing.JFrame {
                     escolasDB.add(novaEscola);
                     escolhaEscola.addItem(novaEscola.getNome());
                     escolas.addItem(novaEscola.getNome());
+                    cursosSeletor.addItem(novaEscola.getNome());
                     salvarDados(escolasDB, "registroEscolas.txt");
                 }
 
@@ -835,6 +843,7 @@ public class Main extends javax.swing.JFrame {
                 escolasDB.add(novaEscola);
                 escolhaEscola.addItem(novaEscola.getNome());
                 escolas.addItem(novaEscola.getNome());
+                cursosSeletor.addItem(novaEscola.getNome());
                 salvarDados(escolasDB, "registroEscolas.txt");
             }
         });
@@ -1061,19 +1070,19 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_telefoneFocusGained
 
     private void btnCadastrarSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarSetorActionPerformed
-       try{
-           Setor setor = new Setor(JOptionPane.showInputDialog("Insira o nome do setor:"));
-           if(!setor.getNome().equals("")){
-           setorSeletor.addItem(setor.getNome());
-           setorDB.add(setor);
-           salvarDados(setorDB, "registroSetor.txt");
-           }else{
-               JOptionPane.showMessageDialog(null, "Invalido! Escreva o nome do setor", "ERRO!", JOptionPane.WARNING_MESSAGE);
-           }
-       }catch(Exception e){
-           JOptionPane.showMessageDialog(null, "Invalido, por favor tente novamente", "ERRO!", JOptionPane.WARNING_MESSAGE);
-       }
-        
+        try {
+            Setor setor = new Setor(JOptionPane.showInputDialog("Insira o nome do setor:"));
+            if (!setor.getNome().equals("")) {
+                setorSeletor.addItem(setor.getNome());
+                setorDB.add(setor);
+                salvarDados(setorDB, "registroSetor.txt");
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalido! Escreva o nome do setor", "ERRO!", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Invalido, por favor tente novamente", "ERRO!", JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnCadastrarSetorActionPerformed
 
     private void btnSalvarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCursoActionPerformed
@@ -1083,7 +1092,7 @@ public class Main extends javax.swing.JFrame {
             if (nomeCurso.getText().equals(novo.getNome())) {
                 JOptionPane.showMessageDialog(null, nomeCurso.getText() + " ja existe na base de dados!", "Curso ja existe!", JOptionPane.WARNING_MESSAGE);
                 return;
-            }else if(nomeCurso.getText().equals("")){
+            } else if (nomeCurso.getText().equals("")) {
                 return;
             }
         }
@@ -1093,47 +1102,47 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarCursoActionPerformed
 
     private void btnSalvarDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDisciplinasActionPerformed
-        if(disciplinaDB.isEmpty()){
-        Disciplinas disciplina = new Disciplinas(disciplinaDB.size(), nomeDisciplina.getText(), cursosSeletor.getSelectedItem().toString());
-        disciplinaDB.add(disciplina);
-        DisciplinaSeletor.addItem(disciplina.getNome());
-         salvarDados(disciplinaDB, "registroDisciplina.txt");
-        }else{
-        for (int i = 0; i < disciplinaDB.size(); i++) {
-            Disciplinas novo = (Disciplinas) disciplinaDB.get(i);
-            if (nomeDisciplina.getText().equals(novo.getNome())) {
-                JOptionPane.showMessageDialog(null, nomeDisciplina.getText() + " ja existe na base de dados!", "Disciplina ja existe!", JOptionPane.WARNING_MESSAGE);
-                return;
-            }else if(nomeDisciplina.getText().equals("")){
-                return;
+        if (disciplinaDB.isEmpty()) {
+            Disciplinas disciplina = new Disciplinas(disciplinaDB.size(), nomeDisciplina.getText(), cursosSeletor.getSelectedItem().toString());
+            disciplinaDB.add(disciplina);
+            DisciplinaSeletor.addItem(disciplina.getNome());
+            salvarDados(disciplinaDB, "registroDisciplina.txt");
+        } else {
+            for (int i = 0; i < disciplinaDB.size(); i++) {
+                Disciplinas novo = (Disciplinas) disciplinaDB.get(i);
+                if (nomeDisciplina.getText().equals(novo.getNome())) {
+                    JOptionPane.showMessageDialog(null, nomeDisciplina.getText() + " ja existe na base de dados!", "Disciplina ja existe!", JOptionPane.WARNING_MESSAGE);
+                    return;
+                } else if (nomeDisciplina.getText().equals("")) {
+                    return;
+                }
             }
+            Disciplinas disciplina = new Disciplinas(disciplinaDB.size(), nomeDisciplina.getText(), cursosSeletor.getSelectedItem().toString());
+            disciplinaDB.add(disciplina);
+            DisciplinaSeletor.addItem(disciplina.getNome());
+            salvarDados(disciplinaDB, "registroDisciplina.txt");
         }
-        Disciplinas disciplina = new Disciplinas(disciplinaDB.size(), nomeDisciplina.getText(), cursosSeletor.getSelectedItem().toString());
-        disciplinaDB.add(disciplina);
-        DisciplinaSeletor.addItem(disciplina.getNome());
-        salvarDados(disciplinaDB, "registroDisciplina.txt");
-        }
-         
+
     }//GEN-LAST:event_btnSalvarDisciplinasActionPerformed
 
     private void btnSalvarTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarTurmasActionPerformed
-        if(turmasDB.isEmpty()){
-        Turmas turma = new Turmas(turmasDB.size(), nomeTurma.getText(), DisciplinaSeletor.getSelectedItem().toString(), ProfessorSeletor.getSelectedItem().toString());
-        turmasDB.add(turma);
-        salvarDados(turmasDB, "registroTurma.txt");
-        }else{
-        for (int i = 0; i < turmasDB.size(); i++) {
-            Turmas novo = (Turmas) turmasDB.get(i);
-            if (nomeTurma.getText().equals(novo.getNome())) {
-                JOptionPane.showMessageDialog(null, nomeTurma.getText() + " ja existe na base de dados!", "Turma ja existe!", JOptionPane.WARNING_MESSAGE);
-                return;
-            }else if(nomeTurma.getText().equals("")){
-                return;
+        if (turmasDB.isEmpty()) {
+            Turmas turma = new Turmas(turmasDB.size(), nomeTurma.getText(), DisciplinaSeletor.getSelectedItem().toString(), ProfessorSeletor.getSelectedItem().toString());
+            turmasDB.add(turma);
+            salvarDados(turmasDB, "registroTurma.txt");
+        } else {
+            for (int i = 0; i < turmasDB.size(); i++) {
+                Turmas novo = (Turmas) turmasDB.get(i);
+                if (nomeTurma.getText().equals(novo.getNome())) {
+                    JOptionPane.showMessageDialog(null, nomeTurma.getText() + " ja existe na base de dados!", "Turma ja existe!", JOptionPane.WARNING_MESSAGE);
+                    return;
+                } else if (nomeTurma.getText().equals("")) {
+                    return;
+                }
             }
-        }
-        Turmas turma = new Turmas(turmasDB.size(), nomeTurma.getText(), DisciplinaSeletor.getSelectedItem().toString(), ProfessorSeletor.getSelectedItem().toString());
-        turmasDB.add(turma);
-        salvarDados(turmasDB, "registroTurma.txt");
+            Turmas turma = new Turmas(turmasDB.size(), nomeTurma.getText(), DisciplinaSeletor.getSelectedItem().toString(), ProfessorSeletor.getSelectedItem().toString());
+            turmasDB.add(turma);
+            salvarDados(turmasDB, "registroTurma.txt");
         }
     }//GEN-LAST:event_btnSalvarTurmasActionPerformed
 
@@ -1182,9 +1191,18 @@ public class Main extends javax.swing.JFrame {
             }.getType();
             ReadFile("registroProfessor.txt").forEach((s) -> {
                 professorDB = gson.fromJson(s, tipoProf);
-                for(int i=0; i<professorDB.size(); i++){
+                for (int i = 0; i < professorDB.size(); i++) {
                     Professor professor = (Professor) professorDB.get(i);
                     ProfessorSeletor.addItem(professor.getNome());
+                }
+            });
+            //Recupera Alunos
+            java.lang.reflect.Type tipoAluno = new TypeToken<ArrayList<Aluno>>() {
+            }.getType();
+            ReadFile("registroAluno.txt").forEach((s) -> {
+                alunoDB = gson.fromJson(s, tipoAluno);
+                for (int i = 0; i < alunoDB.size(); i++) {
+
                 }
             });
             //Recupera Curso
@@ -1192,9 +1210,11 @@ public class Main extends javax.swing.JFrame {
             }.getType();
             ReadFile("registroCurso.txt").forEach((s) -> {
                 cursosDB = gson.fromJson(s, tipoCurso);
-                for(int i=0; i<cursosDB.size(); i++){
+                for (int i = 0; i < cursosDB.size(); i++) {
                     Curso curso = (Curso) cursosDB.get(i);
                     cursosSeletor.addItem(curso.getNome());
+                    cursosSeletorAluno.addItem(curso.getNome());
+
                 }
             });
             //Recupera disciplinas
@@ -1202,7 +1222,7 @@ public class Main extends javax.swing.JFrame {
             }.getType();
             ReadFile("registroDisciplina.txt").forEach((s) -> {
                 disciplinaDB = gson.fromJson(s, tipoDisciplina);
-                for(int i=0; i<disciplinaDB.size(); i++){
+                for (int i = 0; i < disciplinaDB.size(); i++) {
                     Disciplinas disciplina = (Disciplinas) disciplinaDB.get(i);
                     DisciplinaSeletor.addItem(disciplina.getNome());
                 }
@@ -1218,7 +1238,7 @@ public class Main extends javax.swing.JFrame {
             }.getType();
             ReadFile("registroSetor.txt").forEach((s) -> {
                 setorDB = gson.fromJson(s, tipoSetor);
-                for(int i=0; i<setorDB.size(); i++){
+                for (int i = 0; i < setorDB.size(); i++) {
                     Setor setor = (Setor) setorDB.get(i);
                     setorSeletor.addItem(setor.getNome());
                 }
@@ -1260,6 +1280,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvarEscola;
     private javax.swing.JButton btnSalvarTurmas;
     private static javax.swing.JComboBox<String> cursosSeletor;
+    private static javax.swing.JComboBox<String> cursosSeletorAluno;
     private javax.swing.JTextField dataDeAdimissao;
     private javax.swing.JTextField endereco;
     private static javax.swing.JComboBox<String> escolas;
@@ -1271,7 +1292,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1280,9 +1300,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1302,6 +1319,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel tabCadastroEscolas;
     private javax.swing.JPanel tabCadastroProfFun;
     private javax.swing.JPanel tabCurso;
+    private javax.swing.JPanel tabDisciplinas;
+    private javax.swing.JPanel tabTurmas;
     private javax.swing.JTextField telefone;
     private javax.swing.JLabel txtCurso;
     private javax.swing.JLabel txtDisciplinas;
@@ -1311,10 +1330,12 @@ public class Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     Professor professor;
     Administrativo administrativo;
+    Aluno aluno;
     Professor anterior;
     private String exibeCadastro = "";
     public static ArrayList professorDB = new ArrayList();
     public static ArrayList administrativoDB = new ArrayList();
+    public static ArrayList alunoDB = new ArrayList();
     public static ArrayList escolasDB = new ArrayList();
     public static ArrayList cursosDB = new ArrayList();
     public static ArrayList disciplinaDB = new ArrayList();

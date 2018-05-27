@@ -6,23 +6,17 @@ import java.util.ArrayList;
  *
  * @author cleisson
  */
-public class Administrativo {
+public class Administrativo extends Funcionarios{
 
-    private int dataDeAdimissao;
-    private String endereco;
-    private int matricula;
-    private String nome;
-    private float salario;
-    private int telefone;
     private String setor;
 
-    public Administrativo(int dataDeAdimissao, String endereco, int matricula, String nome, float salario, int telefone, String setor) {
-        this.dataDeAdimissao = dataDeAdimissao;
-        this.endereco = endereco;
-        this.matricula = matricula;
-        this.nome = nome;
-        this.salario = salario;
-        this.telefone = telefone;
+    public Administrativo(String endereco, int matricula, String nome, int telefone) {
+        super(endereco, matricula, nome, telefone);
+    }
+
+    public void inserirAdministrativo(int dataDeAdimissao, float salario, String setor) {
+        super.dataDeAdimissao = dataDeAdimissao;
+        super.salario = salario;
         this.setor = setor;
     }
 
@@ -40,46 +34,6 @@ public class Administrativo {
 
     public void setDataDeAdimissao(int dataDeAdimissao) {
         this.dataDeAdimissao = dataDeAdimissao;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public int getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public float getSalario() {
-        return salario;
-    }
-
-    public void setSalario(float salario) {
-        this.salario = salario;
-    }
-
-    public int getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
     }
 
 }

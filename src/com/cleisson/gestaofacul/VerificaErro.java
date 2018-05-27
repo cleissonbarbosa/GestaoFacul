@@ -22,7 +22,7 @@ public class VerificaErro {
     public boolean encontrar(javax.swing.JTextField campo) {
         try {
             int aux = Integer.parseInt(campo.getText());
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             campo.setBackground(Color.red);
             campo.setForeground(Color.white);
             campo.setFocusable(true);
