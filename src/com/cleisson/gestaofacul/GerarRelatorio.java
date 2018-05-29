@@ -46,19 +46,22 @@ public class GerarRelatorio {
                         Professor professor = (Professor) lista.get(i);
                         table.addCell(professor.getNome());
                         table.addCell(Integer.toString(professor.getMatricula()));
-                    }   break;
+                    }
+                    break;
                 case "Aluno":
                     for (int i = 0; i < lista.size(); i++) {
                         Aluno aluno = (Aluno) lista.get(i);
                         table.addCell(aluno.getNome());
                         table.addCell(Integer.toString(aluno.getMatricula()));
-                    }   break;
+                    }
+                    break;
                 case "Funcionario":
                     for (int i = 0; i < lista.size(); i++) {
                         Administrativo adm = (Administrativo) lista.get(i);
                         table.addCell(adm.getNome());
                         table.addCell(Integer.toString(adm.getMatricula()));
-                    }   break;
+                    }
+                    break;
             }
             tableHeight = table.getTotalHeight();
         }
@@ -93,7 +96,7 @@ public class GerarRelatorio {
             document.add(new Paragraph("\n\n"));
             document.add(new PdfPTable(tabela.table));
             JOptionPane.showMessageDialog(null, "PDF foi criado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-            java.awt.Desktop.getDesktop().open( new File( "Relatorio-Completo__Gestão-Faculdade__" + classe + ".pdf" ) );
+            java.awt.Desktop.getDesktop().open(new File("Relatorio-Completo__Gestão-Faculdade__" + classe + ".pdf"));
         } catch (DocumentException | IOException de) {
             System.err.println(de.getMessage());
         }

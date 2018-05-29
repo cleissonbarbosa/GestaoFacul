@@ -12,6 +12,10 @@ import com.google.gson.reflect.TypeToken;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.HeadlessException;
+import java.io.File;
+import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -116,6 +120,16 @@ public class Main extends javax.swing.JFrame {
         relatorioProfessores = new javax.swing.JMenuItem();
         relatorioFuncionarios = new javax.swing.JMenuItem();
         relatorioAlunos = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        MenuItemDelTudo = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        MenuItemProfessor = new javax.swing.JMenuItem();
+        MenuItemFunc = new javax.swing.JMenuItem();
+        MenuItemAluno = new javax.swing.JMenuItem();
+        MenuItemEscola = new javax.swing.JMenuItem();
+        MenuItemCurso = new javax.swing.JMenuItem();
+        MenuItemDisc = new javax.swing.JMenuItem();
+        MenuItemTurma = new javax.swing.JMenuItem();
         MenuItemSair = new javax.swing.JMenuItem();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -136,6 +150,7 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gestão - Projeto da disciplina P.O.O");
         setBackground(java.awt.SystemColor.controlLtHighlight);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImages(null);
         setLocation(new java.awt.Point(150, 150));
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -235,7 +250,6 @@ public class Main extends javax.swing.JFrame {
 
         escolha.setFont(escolas.getFont());
         escolha.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professores", "Funcionarios", "Alunos" }));
-        escolha.setBorder(null);
         escolha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 escolhaActionPerformed(evt);
@@ -697,6 +711,7 @@ public class Main extends javax.swing.JFrame {
 
         MenuGerarRelatorio.setText("Opções");
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/gerarPDFImagem.png"))); // NOI18N
         jMenu1.setText("Gerar Relatorios");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -704,6 +719,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        relatorioProfessores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/professorImagem.png"))); // NOI18N
         relatorioProfessores.setText("Professores");
         relatorioProfessores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -712,6 +728,7 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu1.add(relatorioProfessores);
 
+        relatorioFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/funcionarioImagem.png"))); // NOI18N
         relatorioFuncionarios.setText("Funcionarios");
         relatorioFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -720,6 +737,7 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu1.add(relatorioFuncionarios);
 
+        relatorioAlunos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/alunoImagen.png"))); // NOI18N
         relatorioAlunos.setText("Alunos");
         relatorioAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -730,6 +748,89 @@ public class Main extends javax.swing.JFrame {
 
         MenuGerarRelatorio.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/deletarImagem.png"))); // NOI18N
+        jMenu2.setText("Deletar Registros");
+
+        MenuItemDelTudo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/deletarTudoImagem.png"))); // NOI18N
+        MenuItemDelTudo.setText("Todos");
+        MenuItemDelTudo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemDelTudoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuItemDelTudo);
+
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/deletarPorCategoriaImagem.png"))); // NOI18N
+        jMenu3.setText("Por Categorias");
+
+        MenuItemProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/professorImagem.png"))); // NOI18N
+        MenuItemProfessor.setText("Professores");
+        MenuItemProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemProfessorActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuItemProfessor);
+
+        MenuItemFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/funcionarioImagem.png"))); // NOI18N
+        MenuItemFunc.setText("Funcionarios");
+        MenuItemFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemFuncActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuItemFunc);
+
+        MenuItemAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/alunoImagen.png"))); // NOI18N
+        MenuItemAluno.setText("Alunos");
+        MenuItemAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemAlunoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuItemAluno);
+
+        MenuItemEscola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/escolasImagem.png"))); // NOI18N
+        MenuItemEscola.setText("Escolas");
+        MenuItemEscola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemEscolaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuItemEscola);
+
+        MenuItemCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/cursosImagem.png"))); // NOI18N
+        MenuItemCurso.setText("Cursos");
+        MenuItemCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemCursoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuItemCurso);
+
+        MenuItemDisc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/disciplinasImagemIcone.png"))); // NOI18N
+        MenuItemDisc.setText("Disciplinas");
+        MenuItemDisc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemDiscActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuItemDisc);
+
+        MenuItemTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turmasImagensIcone.png"))); // NOI18N
+        MenuItemTurma.setText("Turmas");
+        MenuItemTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemTurmaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuItemTurma);
+
+        jMenu2.add(jMenu3);
+
+        MenuGerarRelatorio.add(jMenu2);
+
+        MenuItemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/sairImagem.png"))); // NOI18N
         MenuItemSair.setText("Sair");
         MenuItemSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -770,6 +871,7 @@ public class Main extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void escolhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolhaActionPerformed
@@ -1228,15 +1330,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarTurmasActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-       
+
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void relatorioProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioProfessoresActionPerformed
-         relatorio.gerarPDF(professorDB, "Professor");
+        relatorio.gerarPDF(professorDB, "Professor");
     }//GEN-LAST:event_relatorioProfessoresActionPerformed
 
     private void relatorioFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioFuncionariosActionPerformed
-       relatorio.gerarPDF(funcionarioDB, "Funcionario");
+        relatorio.gerarPDF(funcionarioDB, "Funcionario");
     }//GEN-LAST:event_relatorioFuncionariosActionPerformed
 
     private void relatorioAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioAlunosActionPerformed
@@ -1247,11 +1349,128 @@ public class Main extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_MenuItemSairActionPerformed
 
+    private void MenuItemDelTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemDelTudoActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR TODOS os registros?", "Deletar tudo!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION)
+            if (deletar.todosRegistros())
+            JOptionPane.showMessageDialog(null, "Deletado com sucesso");
+    }//GEN-LAST:event_MenuItemDelTudoActionPerformed
+
+    private void MenuItemProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemProfessorActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
+          
+            deletar.DeletFile(professorDB, 
+                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os professores", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
+                  "registroProfessor.txt");
+          professorDB = deletar.listaAtualizada;
+          salvarDados(professorDB, "registroProfessor.txt");
+          reiniciarApp();
+       
+        }
+    }//GEN-LAST:event_MenuItemProfessorActionPerformed
+
+    private void MenuItemFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemFuncActionPerformed
+         if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
+          
+            deletar.DeletFile(funcionarioDB, 
+                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Funcionarios", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
+                  "registroAdm.txt");
+          funcionarioDB = deletar.listaAtualizada;
+          salvarDados(funcionarioDB, "registroAdm.txt");
+          reiniciarApp();
+       
+        }
+    }//GEN-LAST:event_MenuItemFuncActionPerformed
+
+    private void MenuItemAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAlunoActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
+          
+            deletar.DeletFile(alunoDB, 
+                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Alunos", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
+                  "registroAluno.txt");
+          alunoDB = deletar.listaAtualizada;
+          salvarDados(alunoDB, "registroAluno.txt");
+          reiniciarApp();
+       
+        }
+    }//GEN-LAST:event_MenuItemAlunoActionPerformed
+
+    private void MenuItemEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemEscolaActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
+          
+            deletar.DeletFile(escolasDB, 
+                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Escolas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
+                  "registroEscolas.txt");
+          escolasDB = deletar.listaAtualizada;
+          salvarDados(escolasDB, "registroEscolas.txt");
+          reiniciarApp();
+       
+        }
+    }//GEN-LAST:event_MenuItemEscolaActionPerformed
+
+    private void MenuItemCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemCursoActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
+          
+            deletar.DeletFile(cursosDB, 
+                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Cursos", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
+                  "registroEscolas.txt");
+          cursosDB = deletar.listaAtualizada;
+          salvarDados(cursosDB, "registroEscolas.txt");
+          reiniciarApp();
+       
+        }
+    }//GEN-LAST:event_MenuItemCursoActionPerformed
+
+    private void MenuItemDiscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemDiscActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
+          
+            deletar.DeletFile(disciplinaDB, 
+                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Disciplinas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
+                  "registroDisciplina.txt");
+          disciplinaDB = deletar.listaAtualizada;
+          salvarDados(disciplinaDB, "registroDisciplina.txt");
+          reiniciarApp();
+       
+        }
+    }//GEN-LAST:event_MenuItemDiscActionPerformed
+
+    private void MenuItemTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemTurmaActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
+          
+            deletar.DeletFile(turmasDB, 
+                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Turmas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
+                  "registroTurma.txt");
+          turmasDB = deletar.listaAtualizada;
+          salvarDados(turmasDB, "registroTurma.txt");
+          reiniciarApp();
+       
+        }
+    }//GEN-LAST:event_MenuItemTurmaActionPerformed
+
+    private void reiniciarApp() {
+        StringBuilder cmd = new StringBuilder();
+        cmd.append(System.getProperty("java.home") + File.separator + "bin" + File.separator + "java ");
+        for (String jvmArg : ManagementFactory.getRuntimeMXBean().getInputArguments()) {
+            cmd.append(jvmArg + " ");
+        }
+        cmd.append("-cp ").append(ManagementFactory.getRuntimeMXBean().getClassPath()).append(" ");
+        cmd.append(Main.class.getName()).append(" ");
+        for (String arg : ar) {
+            cmd.append(arg).append(" ");
+        }
+        try {
+            Runtime.getRuntime().exec(cmd.toString());
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.exit(0);
+
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -1282,7 +1501,7 @@ public class Main extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+         ar = args;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new Main().setVisible(true);
@@ -1374,7 +1593,15 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JComboBox<String> DisciplinaSeletor;
     private javax.swing.JMenu MenuGerarRelatorio;
+    private javax.swing.JMenuItem MenuItemAluno;
+    private javax.swing.JMenuItem MenuItemCurso;
+    private javax.swing.JMenuItem MenuItemDelTudo;
+    private javax.swing.JMenuItem MenuItemDisc;
+    private javax.swing.JMenuItem MenuItemEscola;
+    private javax.swing.JMenuItem MenuItemFunc;
+    private javax.swing.JMenuItem MenuItemProfessor;
     private javax.swing.JMenuItem MenuItemSair;
+    private javax.swing.JMenuItem MenuItemTurma;
     private static javax.swing.JComboBox<String> ProfessorSeletor;
     private javax.swing.JButton btnCadastrarSetor;
     private javax.swing.JButton btnSalvar;
@@ -1404,6 +1631,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1439,6 +1668,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable verProfessores;
     // End of variables declaration//GEN-END:variables
     GerarRelatorio relatorio = new GerarRelatorio();
+    DeletarRegistros deletar = new DeletarRegistros();
+    private static String[] ar;
     Professor professor;
     Administrativo administrativo;
     Aluno aluno;

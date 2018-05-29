@@ -39,6 +39,9 @@
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu1">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagens/gerarPDFImagem.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gerar Relatorios"/>
               </Properties>
               <Events>
@@ -47,6 +50,9 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="relatorioProfessores">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Imagens/professorImagem.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Professores"/>
                   </Properties>
                   <Events>
@@ -55,6 +61,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="relatorioFuncionarios">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Imagens/funcionarioImagem.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Funcionarios"/>
                   </Properties>
                   <Events>
@@ -63,6 +72,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="relatorioAlunos">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Imagens/alunoImagen.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Alunos"/>
                   </Properties>
                   <Events>
@@ -71,8 +83,119 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="jMenu2">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagens/deletarImagem.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Deletar Registros"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="MenuItemDelTudo">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Imagens/deletarTudoImagem.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Todos"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemDelTudoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="jMenu3">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Imagens/deletarPorCategoriaImagem.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Por Categorias"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="MenuItemProfessor">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Imagens/professorImagem.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Professores"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemProfessorActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="MenuItemFunc">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Imagens/funcionarioImagem.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Funcionarios"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemFuncActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="MenuItemAluno">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Imagens/alunoImagen.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Alunos"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemAlunoActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="MenuItemEscola">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Imagens/escolasImagem.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Escolas"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemEscolaActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="MenuItemCurso">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Imagens/cursosImagem.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Cursos"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemCursoActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="MenuItemDisc">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Imagens/disciplinasImagemIcone.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Disciplinas"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemDiscActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="MenuItemTurma">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Imagens/turmasImagensIcone.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Turmas"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemTurmaActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="MenuItemSair">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagens/sairImagem.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Sair"/>
               </Properties>
               <Events>
@@ -89,6 +212,9 @@
     <Property name="title" type="java.lang.String" value="Sistema de Gest&#xe3;o - Projeto da disciplina P.O.O"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" id="Realce leve do Controle" palette="2" red="ff" type="palette"/>
+    </Property>
+    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+      <Color id="Cursor Padr&#xe3;o"/>
     </Property>
     <Property name="iconImages" type="java.util.List" editor="org.netbeans.modules.form.ComponentChooserEditor">
       <ComponentRef name="null"/>
@@ -107,7 +233,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -402,9 +528,6 @@
                     <StringItem index="1" value="Funcionarios"/>
                     <StringItem index="2" value="Alunos"/>
                   </StringArray>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
                 </Property>
               </Properties>
               <Events>
