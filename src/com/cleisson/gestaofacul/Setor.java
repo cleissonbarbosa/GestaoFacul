@@ -10,7 +10,8 @@ package com.cleisson.gestaofacul;
  * @author cleisson
  */
 public class Setor {
-     private String nomeEscolas;
+
+    private String nomeEscolas;
 
     public Setor(String Nome) {
         this.nomeEscolas = Nome;
@@ -23,5 +24,5 @@ public class Setor {
     public void setNome(String Nome) {
         this.nomeEscolas = Nome;
     }
-    
+
 }

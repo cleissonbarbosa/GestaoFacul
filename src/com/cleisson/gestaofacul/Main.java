@@ -11,22 +11,23 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.HeadlessException;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
-import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
+import oracle.jrockit.jfr.JFR;
 
 /**
  *
@@ -50,11 +51,14 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollBar1 = new javax.swing.JScrollBar();
-        jLabel6 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        frameEditorPessoas = new javax.swing.JFrame();
+        painelEditar = new javax.swing.JInternalFrame();
+        painelEditar.setEnabled(false);
+        btnEditar = new javax.swing.JButton();
+        btnCalcelarEditar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TabelaEditar = new javax.swing.JTable();
+        painelTabsPrincipal = new javax.swing.JTabbedPane();
         tabCadastroProfFun = new javax.swing.JPanel();
         nome = new javax.swing.JTextField();
         matricula = new javax.swing.JTextField();
@@ -64,63 +68,63 @@ public class Main extends javax.swing.JFrame {
         telefone = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         escolha = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        txtQuemVoceQuerCadastrar = new javax.swing.JLabel();
         escolas = new javax.swing.JComboBox<>();
 
         setorSeletor = new javax.swing.JComboBox<>();
         this.setorSeletor.setEnabled(false);
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtEscolha = new javax.swing.JLabel();
+        txtCadastroDePessoas = new javax.swing.JLabel();
+        imgCadastroDePessoas = new javax.swing.JLabel();
+        txtEscolhaEscola = new javax.swing.JLabel();
         btnCadastrarSetor = new javax.swing.JButton();
         this.btnCadastrarSetor.setEnabled(false);
         cursosSeletorAluno = new javax.swing.JComboBox<>();
         this.cursosSeletorAluno.setEnabled(false);
-        txtSetor = new javax.swing.JLabel();
-        this.txtSetor.setEnabled(false);
-        txtSeletorCurso = new javax.swing.JLabel();
-        this.txtSeletorCurso.setEnabled(false);
+        txtEscolhaSetor = new javax.swing.JLabel();
+        this.txtEscolhaSetor.setEnabled(false);
+        txtEscolhaCurso = new javax.swing.JLabel();
+        this.txtEscolhaCurso.setEnabled(false);
         tabCadastroEscolas = new javax.swing.JPanel();
         nomeEscola = new javax.swing.JTextField();
         btnSalvarEscola = new javax.swing.JButton();
         escolhaEscola = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        verProfessores = new javax.swing.JTable();
+        tabelaVerProfessores = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
+        imgEscola = new javax.swing.JLabel();
         progressoTabela = new javax.swing.JProgressBar();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        txtCadastrarEscola = new javax.swing.JLabel();
+        txtListarProfessores = new javax.swing.JLabel();
         tabCurso = new javax.swing.JPanel();
         txtCurso = new javax.swing.JLabel();
         nomeCurso = new javax.swing.JTextField();
         escolasCurso = new javax.swing.JComboBox<>();
         btnSalvarCurso = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        imgCursos = new javax.swing.JLabel();
         tabDisciplinas = new javax.swing.JPanel();
         txtDisciplinas = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        imgDisciplinas = new javax.swing.JLabel();
         nomeDisciplina = new javax.swing.JTextField();
         cursosSeletor = new javax.swing.JComboBox<>();
         btnSalvarDisciplinas = new javax.swing.JButton();
         tabTurmas = new javax.swing.JPanel();
-        txtDisciplinas1 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        txtTurmas = new javax.swing.JLabel();
+        imgTurmas = new javax.swing.JLabel();
         nomeTurma = new javax.swing.JTextField();
         DisciplinaSeletor = new javax.swing.JComboBox<>();
         btnSalvarTurmas = new javax.swing.JButton();
         ProfessorSeletor = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        txtEscolhaDisciplina = new javax.swing.JLabel();
+        txtEscolhaProfessor = new javax.swing.JLabel();
+        txtDesenvolvedor = new javax.swing.JLabel();
+        jSeparador = new javax.swing.JSeparator();
+        menuBarPrincipal = new javax.swing.JMenuBar();
         MenuGerarRelatorio = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        menuGerarRelatorio = new javax.swing.JMenu();
         relatorioProfessores = new javax.swing.JMenuItem();
         relatorioFuncionarios = new javax.swing.JMenuItem();
         relatorioAlunos = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuDeletarRegistros = new javax.swing.JMenu();
         MenuItemDelTudo = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         MenuItemProfessor = new javax.swing.JMenuItem();
@@ -131,21 +135,99 @@ public class Main extends javax.swing.JFrame {
         MenuItemDisc = new javax.swing.JMenuItem();
         MenuItemTurma = new javax.swing.JMenuItem();
         MenuItemSair = new javax.swing.JMenuItem();
+        menuVerEditar = new javax.swing.JMenu();
+        editarProfessor = new javax.swing.JMenuItem();
+        editarAluno = new javax.swing.JMenuItem();
+        editarFuncionario = new javax.swing.JMenuItem();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        frameEditorPessoas.setMinimumSize(new java.awt.Dimension(700, 500));
+        frameEditorPessoas.setPreferredSize(new java.awt.Dimension(743, 533));
+        frameEditorPessoas.setResizable(false);
+        frameEditorPessoas.setSize(new java.awt.Dimension(690, 500));
+        frameEditorPessoas.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                frameEditorPessoasWindowClosed(evt);
+            }
+        });
+
+        painelEditar.setVisible(true);
+
+        btnEditar.setText("Salvar Edição");
+        btnEditar.setName(""); // NOI18N
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnCalcelarEditar.setText("Cancelar");
+        btnCalcelarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcelarEditarActionPerformed(evt);
+            }
+        });
+
+        TabelaEditar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nome", "Matricula", "Endereço", "Telefone"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
 
-        jLabel6.setText("jLabel6");
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(TabelaEditar);
+
+        javax.swing.GroupLayout painelEditarLayout = new javax.swing.GroupLayout(painelEditar.getContentPane());
+        painelEditar.getContentPane().setLayout(painelEditarLayout);
+        painelEditarLayout.setHorizontalGroup(
+            painelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelEditarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEditarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCalcelarEditar))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        painelEditarLayout.setVerticalGroup(
+            painelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEditarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addGroup(painelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditar)
+                    .addComponent(btnCalcelarEditar))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout frameEditorPessoasLayout = new javax.swing.GroupLayout(frameEditorPessoas.getContentPane());
+        frameEditorPessoas.getContentPane().setLayout(frameEditorPessoasLayout);
+        frameEditorPessoasLayout.setHorizontalGroup(
+            frameEditorPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frameEditorPessoasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelEditar)
+                .addContainerGap())
+        );
+        frameEditorPessoasLayout.setVerticalGroup(
+            frameEditorPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frameEditorPessoasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelEditar)
+                .addGap(21, 21, 21))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gestão - Projeto da disciplina P.O.O");
@@ -157,8 +239,8 @@ public class Main extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(690, 500));
 
-        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
-        jTabbedPane1.setForeground(new java.awt.Color(255, 0, 0));
+        painelTabsPrincipal.setBackground(new java.awt.Color(204, 204, 204));
+        painelTabsPrincipal.setForeground(new java.awt.Color(255, 0, 0));
 
         tabCadastroProfFun.setBackground(java.awt.SystemColor.controlLtHighlight);
 
@@ -256,7 +338,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Quem você quer cadastrar?");
+        txtQuemVoceQuerCadastrar.setText("Quem você quer cadastrar?");
 
         escolas.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
 
@@ -267,13 +349,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Cadastro de pessoas");
+        txtCadastroDePessoas.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        txtCadastroDePessoas.setForeground(new java.awt.Color(102, 102, 102));
+        txtCadastroDePessoas.setText("Cadastro de pessoas");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroImagem.png"))); // NOI18N
+        imgCadastroDePessoas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroImagem.png"))); // NOI18N
 
-        txtEscolha.setText("Escolha a escola:");
+        txtEscolhaEscola.setText("Escolha a escola:");
 
         btnCadastrarSetor.setText("Cadastrar setor");
         btnCadastrarSetor.addActionListener(new java.awt.event.ActionListener() {
@@ -284,9 +366,9 @@ public class Main extends javax.swing.JFrame {
 
         cursosSeletorAluno.setFont(escolas.getFont());
 
-        txtSetor.setText("Escolha o Setor:");
+        txtEscolhaSetor.setText("Escolha o Setor:");
 
-        txtSeletorCurso.setText("Escolha o Curso:");
+        txtEscolhaCurso.setText("Escolha o Curso:");
 
         javax.swing.GroupLayout tabCadastroProfFunLayout = new javax.swing.GroupLayout(tabCadastroProfFun);
         tabCadastroProfFun.setLayout(tabCadastroProfFunLayout);
@@ -317,26 +399,26 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
                                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtEscolhaEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtEscolhaSetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(setorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(cursosSeletorAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(txtSeletorCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEscolhaCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
                         .addGap(239, 239, 239)
                         .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(txtQuemVoceQuerCadastrar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(imgCadastroDePessoas)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtCadastroDePessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 86, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -345,11 +427,11 @@ public class Main extends javax.swing.JFrame {
             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(txtCadastroDePessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imgCadastroDePessoas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(txtQuemVoceQuerCadastrar)
                     .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,14 +446,14 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEscolha)
-                    .addComponent(txtSetor))
+                    .addComponent(txtEscolhaEscola)
+                    .addComponent(txtEscolhaSetor))
                 .addGap(6, 6, 6)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(setorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSeletorCurso)
+                .addComponent(txtEscolhaCurso)
                 .addGap(5, 5, 5)
                 .addComponent(cursosSeletorAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -383,7 +465,7 @@ public class Main extends javax.swing.JFrame {
 
         nome.getAccessibleContext().setAccessibleName("");
 
-        jTabbedPane1.addTab("Cadastro de Pessoas", tabCadastroProfFun);
+        painelTabsPrincipal.addTab("Cadastro de Pessoas", tabCadastroProfFun);
 
         nomeEscola.setText("Nome Da Escola");
 
@@ -402,7 +484,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        verProfessores.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaVerProfessores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -421,20 +503,20 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(verProfessores);
+        jScrollPane1.setViewportView(tabelaVerProfessores);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/EscolaImagem.png"))); // NOI18N
+        imgEscola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/EscolaImagem.png"))); // NOI18N
 
         progressoTabela.setBackground(new java.awt.Color(204, 204, 204));
         progressoTabela.setForeground(new java.awt.Color(102, 102, 102));
         progressoTabela.setStringPainted(true);
 
-        jLabel8.setFont(new java.awt.Font("SimSun", 0, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Cadastrar Escolas");
+        txtCadastrarEscola.setFont(new java.awt.Font("SimSun", 0, 24)); // NOI18N
+        txtCadastrarEscola.setForeground(new java.awt.Color(102, 102, 102));
+        txtCadastrarEscola.setText("Cadastrar Escolas");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
-        jLabel9.setText("Lista de Professores relacionados a escolas");
+        txtListarProfessores.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
+        txtListarProfessores.setText("Lista de Professores relacionados a escolas");
 
         javax.swing.GroupLayout tabCadastroEscolasLayout = new javax.swing.GroupLayout(tabCadastroEscolas);
         tabCadastroEscolas.setLayout(tabCadastroEscolasLayout);
@@ -442,11 +524,11 @@ public class Main extends javax.swing.JFrame {
             tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroEscolasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(imgEscola)
                 .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
                         .addGap(112, 112, 112)
-                        .addComponent(jLabel8))
+                        .addComponent(txtCadastrarEscola))
                     .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nomeEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,7 +544,7 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(escolhaEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
+                            .addComponent(txtListarProfessores))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -473,17 +555,17 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jLabel8)
+                        .addComponent(txtCadastrarEscola)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nomeEscola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSalvarEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(3, 3, 3))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(imgEscola, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(jLabel9)
+                .addComponent(txtListarProfessores)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(escolhaEscola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
@@ -493,7 +575,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cadastro de Escolas", tabCadastroEscolas);
+        painelTabsPrincipal.addTab("Cadastro de Escolas", tabCadastroEscolas);
 
         tabCurso.setBackground(java.awt.SystemColor.window);
 
@@ -513,8 +595,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CursoImagem.png"))); // NOI18N
-        jLabel10.setMinimumSize(new java.awt.Dimension(341, 300));
+        imgCursos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CursoImagem.png"))); // NOI18N
+        imgCursos.setMinimumSize(new java.awt.Dimension(341, 300));
 
         javax.swing.GroupLayout tabCursoLayout = new javax.swing.GroupLayout(tabCurso);
         tabCurso.setLayout(tabCursoLayout);
@@ -537,7 +619,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(txtCurso))
                             .addGroup(tabCursoLayout.createSequentialGroup()
                                 .addGap(318, 318, 318)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(imgCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 244, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -545,7 +627,7 @@ public class Main extends javax.swing.JFrame {
             tabCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabCursoLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imgCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCurso)
                 .addGap(52, 52, 52)
@@ -557,7 +639,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(92, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cadstro de Curso", tabCurso);
+        painelTabsPrincipal.addTab("Cadstro de Curso", tabCurso);
 
         tabDisciplinas.setBackground(java.awt.SystemColor.controlLtHighlight);
 
@@ -565,8 +647,8 @@ public class Main extends javax.swing.JFrame {
         txtDisciplinas.setForeground(new java.awt.Color(102, 102, 102));
         txtDisciplinas.setText("Cadastro de Disciplinas");
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/disciplinasImagem.png"))); // NOI18N
-        jLabel11.setMinimumSize(new java.awt.Dimension(341, 300));
+        imgDisciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/disciplinasImagem.png"))); // NOI18N
+        imgDisciplinas.setMinimumSize(new java.awt.Dimension(341, 300));
 
         nomeDisciplina.setText("Nome da disciplina");
 
@@ -603,14 +685,14 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(tabDisciplinasLayout.createSequentialGroup()
                 .addGap(307, 307, 307)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imgDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tabDisciplinasLayout.setVerticalGroup(
             tabDisciplinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabDisciplinasLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imgDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDisciplinas)
                 .addGap(52, 52, 52)
@@ -622,16 +704,16 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(112, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cadastro Disciplinas", tabDisciplinas);
+        painelTabsPrincipal.addTab("Cadastro Disciplinas", tabDisciplinas);
 
         tabTurmas.setBackground(java.awt.SystemColor.controlLtHighlight);
 
-        txtDisciplinas1.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
-        txtDisciplinas1.setForeground(new java.awt.Color(102, 102, 102));
-        txtDisciplinas1.setText("Cadastro de Turmas");
+        txtTurmas.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
+        txtTurmas.setForeground(new java.awt.Color(102, 102, 102));
+        txtTurmas.setText("Cadastro de Turmas");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turmasImagem.png"))); // NOI18N
-        jLabel12.setMinimumSize(new java.awt.Dimension(341, 300));
+        imgTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turmasImagem.png"))); // NOI18N
+        imgTurmas.setMinimumSize(new java.awt.Dimension(341, 300));
 
         nomeTurma.setText("Nome da Turma");
 
@@ -647,9 +729,9 @@ public class Main extends javax.swing.JFrame {
 
         ProfessorSeletor.setFont(escolas.getFont());
 
-        jLabel7.setText("Escolha uma disciplina:");
+        txtEscolhaDisciplina.setText("Escolha uma disciplina:");
 
-        jLabel13.setText("Escolha um professor:");
+        txtEscolhaProfessor.setText("Escolha um professor:");
 
         javax.swing.GroupLayout tabTurmasLayout = new javax.swing.GroupLayout(tabTurmas);
         tabTurmas.setLayout(tabTurmasLayout);
@@ -661,16 +743,16 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addGap(307, 307, 307)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(imgTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addGap(237, 237, 237)
-                                .addComponent(txtDisciplinas1))
+                                .addComponent(txtTurmas))
                             .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addGap(307, 307, 307)
                                 .addComponent(btnSalvarTurmas))
                             .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel7)))
+                                .addComponent(txtEscolhaDisciplina)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(tabTurmasLayout.createSequentialGroup()
                         .addContainerGap()
@@ -679,7 +761,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(DisciplinaSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ProfessorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(tabTurmasLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
+                                .addComponent(txtEscolhaProfessor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 590, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
@@ -687,17 +769,17 @@ public class Main extends javax.swing.JFrame {
             tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabTurmasLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imgTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDisciplinas1)
+                .addComponent(txtTurmas)
                 .addGap(36, 36, 36)
                 .addComponent(nomeTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
-                .addComponent(jLabel7)
+                .addComponent(txtEscolhaDisciplina)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DisciplinaSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13)
+                .addComponent(txtEscolhaProfessor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ProfessorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
@@ -705,20 +787,22 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cadastro de Turmas", tabTurmas);
+        painelTabsPrincipal.addTab("Cadastro de Turmas", tabTurmas);
 
-        jLabel1.setText("Desenvolvido por: Cleisson B.");
+        txtDesenvolvedor.setText("Desenvolvido por: Cleisson B.");
 
+        MenuGerarRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/opcoesImagem.png"))); // NOI18N
         MenuGerarRelatorio.setText("Opções");
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/gerarPDFImagem.png"))); // NOI18N
-        jMenu1.setText("Gerar Relatorios");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        menuGerarRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/gerarPDFImagem.png"))); // NOI18N
+        menuGerarRelatorio.setText("Gerar Relatorios");
+        menuGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                menuGerarRelatorioActionPerformed(evt);
             }
         });
 
+        relatorioProfessores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         relatorioProfessores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/professorImagem.png"))); // NOI18N
         relatorioProfessores.setText("Professores");
         relatorioProfessores.addActionListener(new java.awt.event.ActionListener() {
@@ -726,8 +810,9 @@ public class Main extends javax.swing.JFrame {
                 relatorioProfessoresActionPerformed(evt);
             }
         });
-        jMenu1.add(relatorioProfessores);
+        menuGerarRelatorio.add(relatorioProfessores);
 
+        relatorioFuncionarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         relatorioFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/funcionarioImagem.png"))); // NOI18N
         relatorioFuncionarios.setText("Funcionarios");
         relatorioFuncionarios.addActionListener(new java.awt.event.ActionListener() {
@@ -735,8 +820,9 @@ public class Main extends javax.swing.JFrame {
                 relatorioFuncionariosActionPerformed(evt);
             }
         });
-        jMenu1.add(relatorioFuncionarios);
+        menuGerarRelatorio.add(relatorioFuncionarios);
 
+        relatorioAlunos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         relatorioAlunos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/alunoImagen.png"))); // NOI18N
         relatorioAlunos.setText("Alunos");
         relatorioAlunos.addActionListener(new java.awt.event.ActionListener() {
@@ -744,13 +830,14 @@ public class Main extends javax.swing.JFrame {
                 relatorioAlunosActionPerformed(evt);
             }
         });
-        jMenu1.add(relatorioAlunos);
+        menuGerarRelatorio.add(relatorioAlunos);
 
-        MenuGerarRelatorio.add(jMenu1);
+        MenuGerarRelatorio.add(menuGerarRelatorio);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/deletarImagem.png"))); // NOI18N
-        jMenu2.setText("Deletar Registros");
+        menuDeletarRegistros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/deletarImagem.png"))); // NOI18N
+        menuDeletarRegistros.setText("Deletar Registros");
 
+        MenuItemDelTudo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         MenuItemDelTudo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/deletarTudoImagem.png"))); // NOI18N
         MenuItemDelTudo.setText("Todos");
         MenuItemDelTudo.addActionListener(new java.awt.event.ActionListener() {
@@ -758,7 +845,7 @@ public class Main extends javax.swing.JFrame {
                 MenuItemDelTudoActionPerformed(evt);
             }
         });
-        jMenu2.add(MenuItemDelTudo);
+        menuDeletarRegistros.add(MenuItemDelTudo);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/deletarPorCategoriaImagem.png"))); // NOI18N
         jMenu3.setText("Por Categorias");
@@ -826,10 +913,11 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu3.add(MenuItemTurma);
 
-        jMenu2.add(jMenu3);
+        menuDeletarRegistros.add(jMenu3);
 
-        MenuGerarRelatorio.add(jMenu2);
+        MenuGerarRelatorio.add(menuDeletarRegistros);
 
+        MenuItemSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
         MenuItemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/sairImagem.png"))); // NOI18N
         MenuItemSair.setText("Sair");
         MenuItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -839,9 +927,49 @@ public class Main extends javax.swing.JFrame {
         });
         MenuGerarRelatorio.add(MenuItemSair);
 
-        jMenuBar1.add(MenuGerarRelatorio);
+        menuBarPrincipal.add(MenuGerarRelatorio);
 
-        setJMenuBar(jMenuBar1);
+        menuVerEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/editarImagem.png"))); // NOI18N
+        menuVerEditar.setText("Ver/Editar");
+        menuVerEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVerEditarActionPerformed(evt);
+            }
+        });
+
+        editarProfessor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        editarProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/professorImagem.png"))); // NOI18N
+        editarProfessor.setText("Professor");
+        editarProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarProfessorActionPerformed(evt);
+            }
+        });
+        menuVerEditar.add(editarProfessor);
+
+        editarAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        editarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/alunoImagen.png"))); // NOI18N
+        editarAluno.setText("Aluno");
+        editarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarAlunoActionPerformed(evt);
+            }
+        });
+        menuVerEditar.add(editarAluno);
+
+        editarFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        editarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/funcionarioImagem.png"))); // NOI18N
+        editarFuncionario.setText("Funcionario");
+        editarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarFuncionarioActionPerformed(evt);
+            }
+        });
+        menuVerEditar.add(editarFuncionario);
+
+        menuBarPrincipal.add(menuVerEditar);
+
+        setJMenuBar(menuBarPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -849,24 +977,24 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(txtDesenvolvedor)
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jSeparador)
+                    .addComponent(painelTabsPrincipal, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelTabsPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(txtDesenvolvedor)
                 .addContainerGap())
         );
 
@@ -881,28 +1009,28 @@ public class Main extends javax.swing.JFrame {
                 //Habilita o escolas e desabilita o setor
                 escolas.setEnabled(true);
                 dataDeAdimissao.setEnabled(true);
-                txtEscolha.setEnabled(true);
+                txtEscolhaEscola.setEnabled(true);
                 setorSeletor.setEnabled(false);
                 btnCadastrarSetor.setEnabled(false);
                 cursosSeletorAluno.setEnabled(false);
-                txtSeletorCurso.setEnabled(false);
-                txtSetor.setEnabled(false);
+                txtEscolhaCurso.setEnabled(false);
+                txtEscolhaSetor.setEnabled(false);
                 salario.setEnabled(true);
             } else if (escolha.getSelectedItem().equals("Funcionarios")) {
                 //inverte caso seja selecionado outra opção
                 escolas.setEnabled(false);
                 dataDeAdimissao.setEnabled(true);
-                txtEscolha.setEnabled(false);
-                txtSeletorCurso.setEnabled(false);
+                txtEscolhaEscola.setEnabled(false);
+                txtEscolhaCurso.setEnabled(false);
                 setorSeletor.setEnabled(true);
                 btnCadastrarSetor.setEnabled(true);
                 cursosSeletorAluno.setEnabled(false);
                 salario.setEnabled(true);
             } else if (escolha.getSelectedItem().equals("Alunos")) {
                 escolas.setEnabled(false);
-                txtSeletorCurso.setEnabled(true);
-                txtSetor.setEnabled(false);
-                txtEscolha.setEnabled(false);
+                txtEscolhaCurso.setEnabled(true);
+                txtEscolhaSetor.setEnabled(false);
+                txtEscolhaEscola.setEnabled(false);
                 setorSeletor.setEnabled(false);
                 btnCadastrarSetor.setEnabled(false);
                 dataDeAdimissao.setEnabled(false);
@@ -1069,7 +1197,7 @@ public class Main extends javax.swing.JFrame {
 
                                     progressoTabela.setValue(i);
                                     progressoTabela.setString(i + "%");
-                                    Thread.sleep(verProfessores.getRowCount());
+                                    Thread.sleep(tabelaVerProfessores.getRowCount());
                                 } catch (InterruptedException ex) {
                                     ex.printStackTrace();
                                 }
@@ -1077,46 +1205,46 @@ public class Main extends javax.swing.JFrame {
                             return 0;
                         }
                     };
-                    if (linhas != verProfessores.getRowCount() || verProfessores.getRowCount() == 0) {
+                    if (linhas != tabelaVerProfessores.getRowCount() || tabelaVerProfessores.getRowCount() == 0) {
                         w.execute();
                     }
                     //Enquanto o cadastro for diferente do loop anterior..
                     if (i > 0 && matriculaAnterior != professor.getMatricula()) {
                         try {
                             //Enquanto houver linhas suficientes na tabela, vai preenchendo..
-                            verProfessores.setValueAt(professor.getNome(), linhas, 0);
-                            verProfessores.setValueAt(professor.getMatricula(), linhas, 1);
-                            verProfessores.setValueAt(professor.getEndereco(), linhas, 2);
-                            verProfessores.setValueAt(professor.getTelefone(), linhas, 3);
+                            tabelaVerProfessores.setValueAt(professor.getNome(), linhas, 0);
+                            tabelaVerProfessores.setValueAt(professor.getMatricula(), linhas, 1);
+                            tabelaVerProfessores.setValueAt(professor.getEndereco(), linhas, 2);
+                            tabelaVerProfessores.setValueAt(professor.getTelefone(), linhas, 3);
                         } catch (ArrayIndexOutOfBoundsException e) {
                             //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
-                            JTable t = new JTable(verProfessores.getModel());
+                            JTable t = new JTable(tabelaVerProfessores.getModel());
                             DefaultTableModel modelo = (DefaultTableModel) t.getModel();
                             modelo.addRow(new Object[]{null, null});
                             //Preenche a linha vazia que foi criada
-                            verProfessores.setValueAt(professor.getNome(), linhas, 0);
-                            verProfessores.setValueAt(professor.getMatricula(), linhas, 1);
-                            verProfessores.setValueAt(professor.getEndereco(), linhas, 2);
-                            verProfessores.setValueAt(professor.getTelefone(), linhas, 3);
+                            tabelaVerProfessores.setValueAt(professor.getNome(), linhas, 0);
+                            tabelaVerProfessores.setValueAt(professor.getMatricula(), linhas, 1);
+                            tabelaVerProfessores.setValueAt(professor.getEndereco(), linhas, 2);
+                            tabelaVerProfessores.setValueAt(professor.getTelefone(), linhas, 3);
                         }
                         //Verifica se é a primeira passagem do loop
                     } else if (i == 0) {
                         try {
                             //Enquanto houver linhas suficientes na tabela..
-                            verProfessores.setValueAt(professor.getNome(), linhas, 0);
-                            verProfessores.setValueAt(professor.getMatricula(), linhas, 1);
-                            verProfessores.setValueAt(professor.getEndereco(), linhas, 2);
-                            verProfessores.setValueAt(professor.getTelefone(), linhas, 3);
+                            tabelaVerProfessores.setValueAt(professor.getNome(), linhas, 0);
+                            tabelaVerProfessores.setValueAt(professor.getMatricula(), linhas, 1);
+                            tabelaVerProfessores.setValueAt(professor.getEndereco(), linhas, 2);
+                            tabelaVerProfessores.setValueAt(professor.getTelefone(), linhas, 3);
                         } catch (ArrayIndexOutOfBoundsException e) {
                             //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
-                            JTable t = new JTable(verProfessores.getModel());
+                            JTable t = new JTable(tabelaVerProfessores.getModel());
                             DefaultTableModel modelo = (DefaultTableModel) t.getModel();
                             modelo.addRow(new Object[]{null, null});
                             //Preenche a linha vazia que foi criada
-                            verProfessores.setValueAt(professor.getNome(), linhas, 0);
-                            verProfessores.setValueAt(professor.getMatricula(), linhas, 1);
-                            verProfessores.setValueAt(professor.getEndereco(), linhas, 2);
-                            verProfessores.setValueAt(professor.getTelefone(), linhas, 3);
+                            tabelaVerProfessores.setValueAt(professor.getNome(), linhas, 0);
+                            tabelaVerProfessores.setValueAt(professor.getMatricula(), linhas, 1);
+                            tabelaVerProfessores.setValueAt(professor.getEndereco(), linhas, 2);
+                            tabelaVerProfessores.setValueAt(professor.getTelefone(), linhas, 3);
                         }
                     } else if (matriculaAnterior == professor.getMatricula()) {
                         //decrementa em linhas se matricula for igual o da varredura anterior.
@@ -1125,10 +1253,10 @@ public class Main extends javax.swing.JFrame {
 
                     linhas++;
                     //Remove as linhas desnecessarias da tabela
-                    while (verProfessores.getRowCount() > linhas) {
-                        JTable t = new JTable(verProfessores.getModel());
+                    while (tabelaVerProfessores.getRowCount() > linhas) {
+                        JTable t = new JTable(tabelaVerProfessores.getModel());
                         DefaultTableModel modelo = (DefaultTableModel) t.getModel();
-                        modelo.removeRow(verProfessores.getRowCount() - linhas);
+                        modelo.removeRow(tabelaVerProfessores.getRowCount() - linhas);
                     }
                     matriculaAnterior = professor.getMatricula();
                     //Remove todas as linhas da tabela
@@ -1136,9 +1264,9 @@ public class Main extends javax.swing.JFrame {
                         .equals("Escolha uma Escola")) {
                     progressoTabela.setValue(0);
                     progressoTabela.setString("0%");
-                    JTable t = new JTable(verProfessores.getModel());
+                    JTable t = new JTable(tabelaVerProfessores.getModel());
                     DefaultTableModel modelo = (DefaultTableModel) t.getModel();
-                    modelo.removeRow(verProfessores.getRowCount() - 1);
+                    modelo.removeRow(tabelaVerProfessores.getRowCount() - 1);
                     //modelo.removeRow(6);
                 }
             }
@@ -1329,9 +1457,9 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalvarTurmasActionPerformed
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void menuGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGerarRelatorioActionPerformed
 
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_menuGerarRelatorioActionPerformed
 
     private void relatorioProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioProfessoresActionPerformed
         relatorio.gerarPDF(professorDB, "Professor");
@@ -1446,7 +1574,283 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MenuItemTurmaActionPerformed
 
+    private void editarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarProfessorActionPerformed
+        frameEditorPessoas.setVisible(true);
+        painelEditar.setEnabled(true);
+        painelEditar.setVisible(true);
+        btnEditar.setName("professor");
+        JTable t1 = new JTable(TabelaEditar.getModel());
+        DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
+        modelo1.setNumRows(0);
+        SwingUtilities.invokeLater(() -> {
+            int matriculaAnterior = 0;
+            int linhas = 0;
+            for (int i = 0; i < professorDB.size(); i++) {
+                //atribui ao objeto um cadastro alocano na arrey
+                professor = (Professor) professorDB.get(i);
+                //Enquanto o cadastro for diferente do loop anterior..
+                if (i > 0 && matriculaAnterior != professor.getMatricula()) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela, vai preenchendo..
+                        TabelaEditar.setValueAt(professor.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(professor.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(professor.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(professor.getTelefone(), linhas, 3);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(professor.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(professor.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(professor.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(professor.getTelefone(), linhas, 3);
+                    }
+                    //Verifica se é a primeira passagem do loop
+                } else if (i == 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela..
+                        TabelaEditar.setValueAt(professor.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(professor.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(professor.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(professor.getTelefone(), linhas, 3);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(professor.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(professor.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(professor.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(professor.getTelefone(), linhas, 3);
+                    }
+                } else if (matriculaAnterior == professor.getMatricula()) {
+                    //decrementa em linhas se matricula for igual o da varredura anterior.
+                    linhas--;
+                }
+
+                linhas++;
+                //Remove as linhas desnecessarias da tabela
+                while (TabelaEditar.getRowCount() > linhas) {
+                    JTable t = new JTable(TabelaEditar.getModel());
+                    DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                    modelo.removeRow(TabelaEditar.getRowCount() - linhas);
+                }
+                matriculaAnterior = professor.getMatricula();
+                //Remove todas as linhas da tabela
+            }
+        });
+
+    }//GEN-LAST:event_editarProfessorActionPerformed
+
+    private void menuVerEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuVerEditarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (btnEditar.getName().equals("professor")) {
+            
+            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                professor = (Professor) professorDB.get(i);
+                professor.setNome((String) TabelaEditar.getValueAt(i, 0));
+                professor.setMatricula((int) TabelaEditar.getValueAt(i, 1));
+                professor.setEndereco((String) TabelaEditar.getValueAt(i, 2));
+                professor.setTelefone((int) TabelaEditar.getValueAt(i, 3));
+                professorDB.remove(i);
+                professorDB.add(i, professor);
+            }
+            salvarDados(professorDB, "registroProfessor.txt");
+            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (btnEditar.getName().equals("aluno")) {
+            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                aluno = (Aluno) alunoDB.get(i);
+                aluno.setNome((String) TabelaEditar.getValueAt(i, 0));
+                aluno.setMatricula((int) TabelaEditar.getValueAt(i, 1));
+                aluno.setEndereco((String) TabelaEditar.getValueAt(i, 2));
+                aluno.setTelefone((int) TabelaEditar.getValueAt(i, 3));
+                alunoDB.remove(i);
+                alunoDB.add(i, aluno);
+            }
+            salvarDados(alunoDB, "registroAluno.txt");
+            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (btnEditar.getName().equals("funcionario")) {
+            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                funcionario = (Funcionarios) funcionarioDB.get(i);
+                funcionario.setNome((String) TabelaEditar.getValueAt(i, 0));
+                funcionario.setMatricula((int) TabelaEditar.getValueAt(i, 1));
+                funcionario.setEndereco((String) TabelaEditar.getValueAt(i, 2));
+                funcionario.setTelefone((int) TabelaEditar.getValueAt(i, 3));
+                funcionarioDB.remove(i);
+                funcionarioDB.add(i, funcionario);
+            }
+            salvarDados(funcionarioDB, "registroAdm.txt");
+            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void editarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAlunoActionPerformed
+        frameEditorPessoas.setVisible(true);
+        painelEditar.setEnabled(true);
+        painelEditar.setVisible(true);
+        btnEditar.setName("aluno");
+        JTable t1 = new JTable(TabelaEditar.getModel());
+        DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
+        modelo1.setNumRows(0);
+        SwingUtilities.invokeLater(() -> {
+            int matriculaAnterior = 0;
+            int linhas = 0;
+
+            for (int i = 0; i < alunoDB.size(); i++) {
+                //atribui ao objeto um cadastro alocano na arrey
+                aluno = (Aluno) alunoDB.get(i);
+                //Enquanto o cadastro for diferente do loop anterior..
+                if (i > 0 && matriculaAnterior != aluno.getMatricula()) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela, vai preenchendo..
+                        TabelaEditar.setValueAt(aluno.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(aluno.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(aluno.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(aluno.getTelefone(), linhas, 3);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(aluno.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(aluno.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(aluno.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(aluno.getTelefone(), linhas, 3);
+                    }
+                    //Verifica se é a primeira passagem do loop
+                } else if (i == 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela..
+                        TabelaEditar.setValueAt(aluno.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(aluno.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(aluno.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(aluno.getTelefone(), linhas, 3);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(aluno.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(aluno.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(aluno.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(aluno.getTelefone(), linhas, 3);
+                    }
+                } else if (matriculaAnterior == aluno.getMatricula()) {
+                    //decrementa em linhas se matricula for igual o da varredura anterior.
+                    linhas--;
+                }
+                if (alunoDB.isEmpty()) {
+                    while (TabelaEditar.getRowCount() > linhas) {
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.removeRow(TabelaEditar.getRowCount() - linhas);
+                    }
+                }
+
+                linhas++;
+                //Remove as linhas desnecessarias da tabela
+                while (TabelaEditar.getRowCount() > linhas) {
+                    JTable t = new JTable(TabelaEditar.getModel());
+                    DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                    modelo.removeRow(TabelaEditar.getRowCount() - linhas);
+                }
+                matriculaAnterior = aluno.getMatricula();
+                //Remove todas as linhas da tabela
+
+            }
+        });
+    }//GEN-LAST:event_editarAlunoActionPerformed
+
+    private void editarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarFuncionarioActionPerformed
+        frameEditorPessoas.setVisible(true);
+        painelEditar.setEnabled(true);
+        painelEditar.setVisible(true);
+        btnEditar.setName("funcionario");
+        JTable t1 = new JTable(TabelaEditar.getModel());
+        DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
+        modelo1.setNumRows(0);
+        SwingUtilities.invokeLater(() -> {
+            int matriculaAnterior = 0;
+            int linhas = 0;
+            
+            for (int i = 0; i < funcionarioDB.size(); i++) {
+                //atribui ao objeto um cadastro alocano na arrey
+                funcionario = (Funcionarios) funcionarioDB.get(i);
+                //Enquanto o cadastro for diferente do loop anterior..
+                if (i > 0 && matriculaAnterior != funcionario.getMatricula()) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela, vai preenchendo..
+                        TabelaEditar.setValueAt(funcionario.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(funcionario.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(funcionario.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(funcionario.getTelefone(), linhas, 3);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(funcionario.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(funcionario.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(funcionario.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(funcionario.getTelefone(), linhas, 3);
+                    }
+                    //Verifica se é a primeira passagem do loop
+                } else if (i == 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela..
+                        TabelaEditar.setValueAt(funcionario.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(funcionario.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(funcionario.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(funcionario.getTelefone(), linhas, 3);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(funcionario.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(funcionario.getMatricula(), linhas, 1);
+                        TabelaEditar.setValueAt(funcionario.getEndereco(), linhas, 2);
+                        TabelaEditar.setValueAt(funcionario.getTelefone(), linhas, 3);
+                    }
+                } else if (matriculaAnterior == funcionario.getMatricula()) {
+                    //decrementa em linhas se matricula for igual o da varredura anterior.
+                    linhas--;
+                }
+
+                linhas++;
+                //Remove as linhas desnecessarias da tabela
+                while (TabelaEditar.getRowCount() > linhas) {
+                    JTable t = new JTable(TabelaEditar.getModel());
+                    DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                    modelo.removeRow(TabelaEditar.getRowCount() - linhas);
+                }
+                matriculaAnterior = funcionario.getMatricula();
+                
+            }
+        });
+    }//GEN-LAST:event_editarFuncionarioActionPerformed
+
+    private void frameEditorPessoasWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_frameEditorPessoasWindowClosed
+    }//GEN-LAST:event_frameEditorPessoasWindowClosed
+
+    private void btnCalcelarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcelarEditarActionPerformed
+       //Colocando a janela em segundo plano
+        frameEditorPessoas.toBack();
+    }//GEN-LAST:event_btnCalcelarEditarActionPerformed
+
+    //METODO PARA REINICIALIZAR O PROGRAMA
     private void reiniciarApp() {
+        
         StringBuilder cmd = new StringBuilder();
         cmd.append(System.getProperty("java.home") + File.separator + "bin" + File.separator + "java ");
         for (String jvmArg : ManagementFactory.getRuntimeMXBean().getInputArguments()) {
@@ -1503,6 +1907,7 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
          ar = args;
         /* Create and display the form */
+        //RECUPERANDO TODOS OS DADOS SALVOS
         java.awt.EventQueue.invokeLater(() -> {
             new Main().setVisible(true);
             Gson gson = new Gson();
@@ -1589,7 +1994,7 @@ public class Main extends javax.swing.JFrame {
             });
         });
     }
-
+//Variaveis da interface grafica
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JComboBox<String> DisciplinaSeletor;
     private javax.swing.JMenu MenuGerarRelatorio;
@@ -1603,7 +2008,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuItemSair;
     private javax.swing.JMenuItem MenuItemTurma;
     private static javax.swing.JComboBox<String> ProfessorSeletor;
+    private javax.swing.JTable TabelaEditar;
     private javax.swing.JButton btnCadastrarSetor;
+    private javax.swing.JButton btnCalcelarEditar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvarCurso;
     private javax.swing.JButton btnSalvarDisciplinas;
@@ -1612,41 +2020,37 @@ public class Main extends javax.swing.JFrame {
     private static javax.swing.JComboBox<String> cursosSeletor;
     private static javax.swing.JComboBox<String> cursosSeletorAluno;
     private javax.swing.JTextField dataDeAdimissao;
+    private javax.swing.JMenuItem editarAluno;
+    private javax.swing.JMenuItem editarFuncionario;
+    private javax.swing.JMenuItem editarProfessor;
     private javax.swing.JTextField endereco;
     private static javax.swing.JComboBox<String> escolas;
     private static javax.swing.JComboBox<String> escolasCurso;
     private javax.swing.JComboBox<String> escolha;
     private static javax.swing.JComboBox<String> escolhaEscola;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JFrame frameEditorPessoas;
+    private javax.swing.JLabel imgCadastroDePessoas;
+    private javax.swing.JLabel imgCursos;
+    private javax.swing.JLabel imgDisciplinas;
+    private javax.swing.JLabel imgEscola;
+    private javax.swing.JLabel imgTurmas;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparador;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField matricula;
+    private javax.swing.JMenuBar menuBarPrincipal;
+    private javax.swing.JMenu menuDeletarRegistros;
+    private javax.swing.JMenu menuGerarRelatorio;
+    private javax.swing.JMenu menuVerEditar;
     private javax.swing.JTextField nome;
     private javax.swing.JTextField nomeCurso;
     private javax.swing.JTextField nomeDisciplina;
     private javax.swing.JTextField nomeEscola;
     private javax.swing.JTextField nomeTurma;
+    private javax.swing.JInternalFrame painelEditar;
+    private javax.swing.JTabbedPane painelTabsPrincipal;
     private javax.swing.JProgressBar progressoTabela;
     private javax.swing.JMenuItem relatorioAlunos;
     private javax.swing.JMenuItem relatorioFuncionarios;
@@ -1658,23 +2062,34 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel tabCurso;
     private javax.swing.JPanel tabDisciplinas;
     private javax.swing.JPanel tabTurmas;
+    private javax.swing.JTable tabelaVerProfessores;
     private javax.swing.JTextField telefone;
+    private javax.swing.JLabel txtCadastrarEscola;
+    private javax.swing.JLabel txtCadastroDePessoas;
     private javax.swing.JLabel txtCurso;
+    private javax.swing.JLabel txtDesenvolvedor;
     private javax.swing.JLabel txtDisciplinas;
-    private javax.swing.JLabel txtDisciplinas1;
-    private javax.swing.JLabel txtEscolha;
-    private javax.swing.JLabel txtSeletorCurso;
-    private javax.swing.JLabel txtSetor;
-    private javax.swing.JTable verProfessores;
+    private javax.swing.JLabel txtEscolhaCurso;
+    private javax.swing.JLabel txtEscolhaDisciplina;
+    private javax.swing.JLabel txtEscolhaEscola;
+    private javax.swing.JLabel txtEscolhaProfessor;
+    private javax.swing.JLabel txtEscolhaSetor;
+    private javax.swing.JLabel txtListarProfessores;
+    private javax.swing.JLabel txtQuemVoceQuerCadastrar;
+    private javax.swing.JLabel txtTurmas;
     // End of variables declaration//GEN-END:variables
+    //Objetos
     GerarRelatorio relatorio = new GerarRelatorio();
     DeletarRegistros deletar = new DeletarRegistros();
-    private static String[] ar;
     Professor professor;
     Administrativo administrativo;
+    Funcionarios funcionario;
     Aluno aluno;
     Professor anterior;
+    //Strings
     private String exibeCadastro = "";
+    private static String[] ar;
+    //Arrays
     public static ArrayList professorDB = new ArrayList();
     public static ArrayList funcionarioDB = new ArrayList();
     public static ArrayList alunoDB = new ArrayList();
@@ -1683,6 +2098,7 @@ public class Main extends javax.swing.JFrame {
     public static ArrayList disciplinaDB = new ArrayList();
     public static ArrayList turmasDB = new ArrayList();
     public static ArrayList setorDB = new ArrayList();
+    //Variaveis do tipo primitivo
     private int dataAdimicao;
     private int matriculaFunc;
     private float salarioFunc;

@@ -18,8 +18,6 @@ import com.itextpdf.text.pdf.draw.LineSeparator;
 import com.itextpdf.text.Font;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
