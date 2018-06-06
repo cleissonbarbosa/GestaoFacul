@@ -139,6 +139,10 @@ public class Main extends javax.swing.JFrame {
         editarProfessor = new javax.swing.JMenuItem();
         editarAluno = new javax.swing.JMenuItem();
         editarFuncionario = new javax.swing.JMenuItem();
+        editarEscolas = new javax.swing.JMenuItem();
+        editarCursos = new javax.swing.JMenuItem();
+        editarDisciplinas = new javax.swing.JMenuItem();
+        editarTurmas = new javax.swing.JMenuItem();
 
         frameEditorPessoas.setMinimumSize(new java.awt.Dimension(700, 500));
         frameEditorPessoas.setPreferredSize(new java.awt.Dimension(743, 533));
@@ -967,6 +971,46 @@ public class Main extends javax.swing.JFrame {
         });
         menuVerEditar.add(editarFuncionario);
 
+        editarEscolas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        editarEscolas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/escolasImagem.png"))); // NOI18N
+        editarEscolas.setText("Escolas");
+        editarEscolas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarEscolasActionPerformed(evt);
+            }
+        });
+        menuVerEditar.add(editarEscolas);
+
+        editarCursos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        editarCursos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/cursosImagem.png"))); // NOI18N
+        editarCursos.setText("Cursos");
+        editarCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarCursosActionPerformed(evt);
+            }
+        });
+        menuVerEditar.add(editarCursos);
+
+        editarDisciplinas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        editarDisciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/disciplinasImagemIcone.png"))); // NOI18N
+        editarDisciplinas.setText("Disciplinas");
+        editarDisciplinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarDisciplinasActionPerformed(evt);
+            }
+        });
+        menuVerEditar.add(editarDisciplinas);
+
+        editarTurmas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        editarTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turmasImagensIcone.png"))); // NOI18N
+        editarTurmas.setText("Turmas");
+        editarTurmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarTurmasActionPerformed(evt);
+            }
+        });
+        menuVerEditar.add(editarTurmas);
+
         menuBarPrincipal.add(menuVerEditar);
 
         setJMenuBar(menuBarPrincipal);
@@ -1484,93 +1528,109 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemDelTudoActionPerformed
 
     private void MenuItemProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemProfessorActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
-          
-            deletar.DeletFile(professorDB, 
-                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os professores", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
-                  "registroProfessor.txt");
-          professorDB = deletar.listaAtualizada;
-          salvarDados(professorDB, "registroProfessor.txt");
-          reiniciarApp();
-       
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+
+            deletar.DeletFile(professorDB,
+                    JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os professores", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    "registroProfessor.txt");
+            if (deletar.isDeletado()) {
+                professorDB = deletar.listaAtualizada;
+                salvarDados(professorDB, "registroProfessor.txt");
+                JOptionPane.showMessageDialog(null, "A aplicação precisa ser reiniciada");
+                reiniciarApp();
+            }
         }
     }//GEN-LAST:event_MenuItemProfessorActionPerformed
 
     private void MenuItemFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemFuncActionPerformed
-         if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
-          
-            deletar.DeletFile(funcionarioDB, 
-                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Funcionarios", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
-                  "registroAdm.txt");
-          funcionarioDB = deletar.listaAtualizada;
-          salvarDados(funcionarioDB, "registroAdm.txt");
-          reiniciarApp();
-       
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+
+            deletar.DeletFile(funcionarioDB,
+                    JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Funcionarios", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    "registroAdm.txt");
+            if (deletar.isDeletado()) {
+                funcionarioDB = deletar.listaAtualizada;
+                salvarDados(funcionarioDB, "registroAdm.txt");
+                JOptionPane.showMessageDialog(null, "A aplicação precisa ser reiniciada");
+                reiniciarApp();
+            }
         }
     }//GEN-LAST:event_MenuItemFuncActionPerformed
 
     private void MenuItemAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAlunoActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
-          
-            deletar.DeletFile(alunoDB, 
-                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Alunos", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
-                  "registroAluno.txt");
-          alunoDB = deletar.listaAtualizada;
-          salvarDados(alunoDB, "registroAluno.txt");
-          reiniciarApp();
-       
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+
+            deletar.DeletFile(alunoDB,
+                    JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Alunos", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    "registroAluno.txt");
+            if (deletar.isDeletado()) {
+                alunoDB = deletar.listaAtualizada;
+                salvarDados(alunoDB, "registroAluno.txt");
+                JOptionPane.showMessageDialog(null, "A aplicação precisa ser reiniciada");
+                reiniciarApp();
+            }
         }
     }//GEN-LAST:event_MenuItemAlunoActionPerformed
 
     private void MenuItemEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemEscolaActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
-          
-            deletar.DeletFile(escolasDB, 
-                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Escolas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
-                  "registroEscolas.txt");
-          escolasDB = deletar.listaAtualizada;
-          salvarDados(escolasDB, "registroEscolas.txt");
-          reiniciarApp();
-       
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+
+            deletar.DeletFile(escolasDB,
+                    JOptionPane.showInputDialog(null, "Informe o nome da ESCOLA que você deseja Excluir\n Digite: Tudo para excluir todos os Escolas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    "registroEscolas.txt");
+            if (deletar.isDeletado()) {
+                escolasDB = deletar.listaAtualizada;
+                salvarDados(escolasDB, "registroEscolas.txt");
+                JOptionPane.showMessageDialog(null, "A aplicação precisa ser reiniciada");
+                reiniciarApp();
+            }
         }
     }//GEN-LAST:event_MenuItemEscolaActionPerformed
 
     private void MenuItemCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemCursoActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
-          
-            deletar.DeletFile(cursosDB, 
-                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Cursos", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
-                  "registroEscolas.txt");
-          cursosDB = deletar.listaAtualizada;
-          salvarDados(cursosDB, "registroEscolas.txt");
-          reiniciarApp();
-       
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+
+            deletar.DeletFile(cursosDB,
+                    JOptionPane.showInputDialog(null, "Informe o nome do CURSO que você deseja Excluir\n Digite: Tudo para excluir todos os Cursos", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    "registroEscolas.txt");
+            if (deletar.isDeletado()) {
+                cursosDB = deletar.listaAtualizada;
+                salvarDados(cursosDB, "registroEscolas.txt");
+                JOptionPane.showMessageDialog(null, "A aplicação precisa ser reiniciada");
+                reiniciarApp();
+            }
+
         }
     }//GEN-LAST:event_MenuItemCursoActionPerformed
 
     private void MenuItemDiscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemDiscActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
-          
-            deletar.DeletFile(disciplinaDB, 
-                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Disciplinas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
-                  "registroDisciplina.txt");
-          disciplinaDB = deletar.listaAtualizada;
-          salvarDados(disciplinaDB, "registroDisciplina.txt");
-          reiniciarApp();
-       
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+
+            deletar.DeletFile(disciplinaDB,
+                    JOptionPane.showInputDialog(null, "Informe o nome a DISCIPLINA do cadastro que você deseja Excluir\n Digite: \"Tudo\" para excluir todas os Disciplinas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    "registroDisciplina.txt");
+            if (deletar.isDeletado()) {
+                disciplinaDB = deletar.listaAtualizada;
+                salvarDados(disciplinaDB, "registroDisciplina.txt");
+                JOptionPane.showMessageDialog(null, "A aplicação precisa ser reiniciada");
+                reiniciarApp();
+            }
+
         }
     }//GEN-LAST:event_MenuItemDiscActionPerformed
 
     private void MenuItemTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemTurmaActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
-          
-            deletar.DeletFile(turmasDB, 
-                  JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Turmas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE), 
-                  "registroTurma.txt");
-          turmasDB = deletar.listaAtualizada;
-          salvarDados(turmasDB, "registroTurma.txt");
-          reiniciarApp();
-       
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+
+            deletar.DeletFile(turmasDB,
+                    JOptionPane.showInputDialog(null, "Informe o nome da TURMA que você deseja Excluir\n Digite: Tudo para excluir todos os Turmas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    "registroTurma.txt");
+            if (deletar.isDeletado()) {
+                turmasDB = deletar.listaAtualizada;
+                salvarDados(turmasDB, "registroTurma.txt");
+                JOptionPane.showMessageDialog(null, "A aplicação precisa ser reiniciada");
+                reiniciarApp();
+            }
         }
     }//GEN-LAST:event_MenuItemTurmaActionPerformed
 
@@ -1687,7 +1747,43 @@ public class Main extends javax.swing.JFrame {
             }
             salvarDados(funcionarioDB, "registroAdm.txt");
             JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-        }
+        } else if (btnEditar.getName().equals("escolas")) {
+            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                Escolas escola = (Escolas) escolasDB.get(i);
+                escola.setNome((String) TabelaEditar.getValueAt(i, 0));
+                escolasDB.remove(i);
+                escolasDB.add(i, escola);
+            }
+            salvarDados(escolasDB, "registroEscolas.txt");
+            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (btnEditar.getName().equals("cursos")) {
+            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                Curso curso = (Curso) cursosDB.get(i);
+                curso.setNome((String) TabelaEditar.getValueAt(i, 0));
+                cursosDB.remove(i);
+                cursosDB.add(i, curso);
+            }
+            salvarDados(cursosDB, "registroCurso.txt");
+            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (btnEditar.getName().equals("disciplinas")) {
+            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                Disciplinas disciplina = (Disciplinas) disciplinaDB.get(i);
+                disciplina.setNome((String) TabelaEditar.getValueAt(i, 0));
+                disciplinaDB.remove(i);
+                disciplinaDB.add(i, disciplina);
+            }
+            salvarDados(disciplinaDB, "registroDisciplina.txt");
+            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (btnEditar.getName().equals("turmas")) {
+            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                Turmas turma = (Turmas) turmasDB.get(i);
+                turma.setNome((String) TabelaEditar.getValueAt(i, 0));
+                turmasDB.remove(i);
+                turmasDB.add(i, turma);
+            }
+            salvarDados(turmasDB, "registroTurma.txt");
+            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+        } 
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void editarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAlunoActionPerformed
@@ -1847,6 +1943,230 @@ public class Main extends javax.swing.JFrame {
        //Colocando a janela em segundo plano
         frameEditorPessoas.toBack();
     }//GEN-LAST:event_btnCalcelarEditarActionPerformed
+
+    private void editarEscolasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarEscolasActionPerformed
+        frameEditorPessoas.setVisible(true);
+        painelEditar.setEnabled(true);
+        painelEditar.setVisible(true);
+        btnEditar.setName("escolas");
+        JTable t1 = new JTable(TabelaEditar.getModel());
+        DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
+        modelo1.setNumRows(0);
+        String vetor[] = {"Nome da Escola","","",""};
+        modelo1.setColumnIdentifiers(vetor);
+        SwingUtilities.invokeLater(() -> {
+            int matriculaAnterior = 0;
+            int linhas = 0;
+            
+            for (int i = 0; i < escolasDB.size(); i++) {
+                //atribui ao objeto um cadastro alocano na arrey
+                Escolas escola = (Escolas) escolasDB.get(i);
+                //Enquanto o cadastro for diferente do loop anterior..
+                if (i > 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela, vai preenchendo..
+                        TabelaEditar.setValueAt(escola.getNome(), linhas, 0);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(escola.getNome(), linhas, 0);
+                    }
+                    //Verifica se é a primeira passagem do loop
+                } else if (i == 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela..
+                        TabelaEditar.setValueAt(escola.getNome(), linhas, 0);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(escola.getNome(), linhas, 0);
+                    }
+                } 
+                linhas++;
+                //Remove as linhas desnecessarias da tabela
+                while (TabelaEditar.getRowCount() > linhas) {
+                    JTable t = new JTable(TabelaEditar.getModel());
+                    DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                    modelo.removeRow(TabelaEditar.getRowCount() - linhas);
+                }
+                
+            }
+        });
+    }//GEN-LAST:event_editarEscolasActionPerformed
+
+    private void editarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarCursosActionPerformed
+        frameEditorPessoas.setVisible(true);
+        painelEditar.setEnabled(true);
+        painelEditar.setVisible(true);
+        btnEditar.setName("cursos");
+        JTable t1 = new JTable(TabelaEditar.getModel());
+        DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
+        modelo1.setNumRows(0);
+        String vetor[] = {"Nome do curso","","",""};
+        modelo1.setColumnIdentifiers(vetor);
+        SwingUtilities.invokeLater(() -> {
+            int matriculaAnterior = 0;
+            int linhas = 0;
+            
+            for (int i = 0; i < cursosDB.size(); i++) {
+                //atribui ao objeto um cadastro alocano na arrey
+                Curso curso = (Curso) cursosDB.get(i);
+                //Enquanto o cadastro for diferente do loop anterior..
+                if (i > 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela, vai preenchendo..
+                        TabelaEditar.setValueAt(curso.getNome(), linhas, 0);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(curso.getNome(), linhas, 0);
+                    }
+                    //Verifica se é a primeira passagem do loop
+                } else if (i == 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela..
+                        TabelaEditar.setValueAt(curso.getNome(), linhas, 0);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(curso.getNome(), linhas, 0);
+                    }
+                } 
+                linhas++;
+                //Remove as linhas desnecessarias da tabela
+                while (TabelaEditar.getRowCount() > linhas) {
+                    JTable t = new JTable(TabelaEditar.getModel());
+                    DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                    modelo.removeRow(TabelaEditar.getRowCount() - linhas);
+                }
+                
+            }
+        });
+    }//GEN-LAST:event_editarCursosActionPerformed
+
+    private void editarDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarDisciplinasActionPerformed
+          frameEditorPessoas.setVisible(true);
+        painelEditar.setEnabled(true);
+        painelEditar.setVisible(true);
+        btnEditar.setName("disciplinas");
+        JTable t1 = new JTable(TabelaEditar.getModel());
+        DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
+        modelo1.setNumRows(0);
+        String vetor[] = {"Nome da disciplina","","",""};
+        modelo1.setColumnIdentifiers(vetor);
+        SwingUtilities.invokeLater(() -> {
+            int matriculaAnterior = 0;
+            int linhas = 0;
+            
+            for (int i = 0; i < disciplinaDB.size(); i++) {
+                //atribui ao objeto um cadastro alocano na arrey
+                Disciplinas disciplina = (Disciplinas) disciplinaDB.get(i);
+                //Enquanto o cadastro for diferente do loop anterior..
+                if (i > 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela, vai preenchendo..
+                        TabelaEditar.setValueAt(disciplina.getNome(), linhas, 0);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(disciplina.getNome(), linhas, 0);
+                    }
+                    //Verifica se é a primeira passagem do loop
+                } else if (i == 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela..
+                        TabelaEditar.setValueAt(disciplina.getNome(), linhas, 0);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(disciplina.getNome(), linhas, 0);
+                    }
+                } 
+                linhas++;
+                //Remove as linhas desnecessarias da tabela
+                while (TabelaEditar.getRowCount() > linhas) {
+                    JTable t = new JTable(TabelaEditar.getModel());
+                    DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                    modelo.removeRow(TabelaEditar.getRowCount() - linhas);
+                }
+                
+            }
+        });
+    }//GEN-LAST:event_editarDisciplinasActionPerformed
+
+    private void editarTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarTurmasActionPerformed
+        frameEditorPessoas.setVisible(true);
+        painelEditar.setEnabled(true);
+        painelEditar.setVisible(true);
+        btnEditar.setName("turmas");
+        JTable t1 = new JTable(TabelaEditar.getModel());
+        DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
+        modelo1.setNumRows(0);
+        String vetor[] = {"Nome da Turma","","",""};
+        modelo1.setColumnIdentifiers(vetor);
+        SwingUtilities.invokeLater(() -> {
+            int matriculaAnterior = 0;
+            int linhas = 0;
+            
+            for (int i = 0; i < turmasDB.size(); i++) {
+                //atribui ao objeto um cadastro alocano na arrey
+                Turmas turma = (Turmas) turmasDB.get(i);
+                //Enquanto o cadastro for diferente do loop anterior..
+                if (i > 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela, vai preenchendo..
+                        TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
+                    }
+                    //Verifica se é a primeira passagem do loop
+                } else if (i == 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela..
+                        TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(TabelaEditar.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
+                    }
+                } 
+                linhas++;
+                //Remove as linhas desnecessarias da tabela
+                while (TabelaEditar.getRowCount() > linhas) {
+                    JTable t = new JTable(TabelaEditar.getModel());
+                    DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                    modelo.removeRow(TabelaEditar.getRowCount() - linhas);
+                }
+                
+            }
+        });
+    }//GEN-LAST:event_editarTurmasActionPerformed
 
     //METODO PARA REINICIALIZAR O PROGRAMA
     private void reiniciarApp() {
@@ -2021,8 +2341,12 @@ public class Main extends javax.swing.JFrame {
     private static javax.swing.JComboBox<String> cursosSeletorAluno;
     private javax.swing.JTextField dataDeAdimissao;
     private javax.swing.JMenuItem editarAluno;
+    private javax.swing.JMenuItem editarCursos;
+    private javax.swing.JMenuItem editarDisciplinas;
+    private javax.swing.JMenuItem editarEscolas;
     private javax.swing.JMenuItem editarFuncionario;
     private javax.swing.JMenuItem editarProfessor;
+    private javax.swing.JMenuItem editarTurmas;
     private javax.swing.JTextField endereco;
     private static javax.swing.JComboBox<String> escolas;
     private static javax.swing.JComboBox<String> escolasCurso;

@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +23,6 @@ public class DeletarRegistros {
     private boolean deletado;
     public ArrayList listaAtualizada;
 
-    
     public void DeletFile(ArrayList lista, String deletar, String caminho) {
         Path arquivo = Paths.get(caminho);
 
@@ -30,10 +30,10 @@ public class DeletarRegistros {
 
         } else {
             try {
-                if (deletar.equals("Tudo")) {
+                if (deletar.equalsIgnoreCase("tudo")) {
                     Files.deleteIfExists(arquivo);
                 } else {
-                         listaAtualizada = remover(lista, deletar);
+                    listaAtualizada = remover(lista, deletar);
                 }
             } catch (IOException ex) {
                 Logger.getLogger(DeletarRegistros.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,11 +69,56 @@ public class DeletarRegistros {
 
     public ArrayList remover(ArrayList lista, String deletar) {
         for (int i = 0; i < lista.size(); i++) {
-            Pessoa pessoa = (Pessoa) lista.get(i);
+
             try {
-                if (pessoa.getMatricula() == Integer.parseInt(deletar)) {
-                    lista.remove(i);
-                    this.deletado = true;
+                if (lista.equals(Main.professorDB) || lista.equals(Main.alunoDB) || lista.equals(Main.funcionarioDB)) {
+                    Pessoa pessoa = (Pessoa) lista.get(i);
+                    if (pessoa.getMatricula() == Integer.parseInt(deletar)) {
+                        if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + pessoa.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            lista.remove(i);
+                            this.deletado = true;
+                        }
+                    }
+                } else if (lista.equals(Main.turmasDB)) {
+                    Turmas turmas = (Turmas) lista.get(i);
+                    if (turmas.getNome().contains(deletar)) {
+                        if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + turmas.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            lista.remove(i);
+                            this.deletado = true;
+                        }
+                    }
+                } else if (lista.equals(Main.cursosDB)) {
+                    Curso curso = (Curso) lista.get(i);
+                    if (curso.getNome().contains(deletar)) {
+                        if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + curso.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            lista.remove(i);
+                            this.deletado = true;
+                        }
+                    }
+                } else if (lista.equals(Main.disciplinaDB)) {
+                    Disciplinas disciplinas = (Disciplinas) lista.get(i);
+                    if (disciplinas.getNome().contains(deletar)) {
+                        if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + disciplinas.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            lista.remove(i);
+                            this.deletado = true;
+                        }
+                    }
+                } else if (lista.equals(Main.setorDB)) {
+                    Setor setor = (Setor) lista.get(i);
+                    if (setor.getNome().contains(deletar)) {
+                        if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + setor.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            lista.remove(i);
+                            this.deletado = true;
+                        }
+                    }
+                } else if (lista.equals(Main.escolasDB)) {
+                    Escolas escolas = (Escolas) lista.get(i);
+                    if (escolas.getNome().contains(deletar)) {
+                        if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + escolas.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            lista.remove(i);
+                            this.deletado = true;
+                        }
+                    }
                 }
             } catch (Exception e) {
                 this.deletado = false;
@@ -90,6 +135,5 @@ public class DeletarRegistros {
     public void setDeletado(boolean deletado) {
         this.deletado = deletado;
     }
-    
 
 }

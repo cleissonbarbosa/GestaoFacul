@@ -6,12 +6,15 @@
 package com.cleisson.gestaofacul;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.UserPrincipal;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +38,8 @@ public class SalvarNoPc {
             } finally {
                 try {
                     bw.close();
+                    File file = new File(caminho);
+                    file.setWritable(false);
                 } catch (IOException ex) {
                     Logger.getLogger(SalvarNoPc.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -43,6 +48,9 @@ public class SalvarNoPc {
             BufferedWriter bw = null;
             BufferedWriter bw2 = null;
             try {
+                
+                    File file = new File(caminho);
+                    file.setWritable(true);
                 bw2 = new BufferedWriter(new FileWriter(arquivo.toFile()));
                 bw = new BufferedWriter(new FileWriter(arquivo.toFile(), true));
                 //bw.newLine();
@@ -54,6 +62,8 @@ public class SalvarNoPc {
                 try {
                     bw2.close();
                     bw.close();
+                    File file = new File(caminho);
+                    file.setWritable(false);
                 } catch (IOException ex) {
                     Logger.getLogger(SalvarNoPc.class.getName()).log(Level.SEVERE, null, ex);
                 }
