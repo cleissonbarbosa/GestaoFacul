@@ -1339,7 +1339,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                     aluno = new Aluno(curso, this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
-                    exibeCadastro = aluno.getNome() + " | " + aluno.getMatricula() + " | " + aluno.getCurso() + "\n";
+                    exibeCadastro = aluno.getNome() + " | " + aluno.getMatricula() + " | " + aluno.getCurso().getNome() + "\n";
 
                     //Adicionando o novo objeto no Arrey List
                     alunoDB.add(aluno);
