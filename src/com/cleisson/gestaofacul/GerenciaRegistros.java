@@ -96,7 +96,9 @@ public class GerenciaRegistros {
                             lista.remove(i);
                             this.deletado = true;
                         }
-                    }
+                    }else{
+                            JOptionPane.showMessageDialog(null, "não encontramos este Professor no banco de dados!");
+                        }
                     //turmas
                 } else if (lista.equals(Main.turmasDB)) {
                     Turmas turmas = (Turmas) lista.get(i);
@@ -105,7 +107,9 @@ public class GerenciaRegistros {
                             lista.remove(i);
                             this.deletado = true;
                         }
-                    }
+                    }else{
+                            JOptionPane.showMessageDialog(null, "não encontramos esta Turma no banco de dados!");
+                        }
                     //cursos
                 } else if (lista.equals(Main.cursosDB)) {
                     Curso curso = (Curso) lista.get(i);
@@ -114,7 +118,9 @@ public class GerenciaRegistros {
                             lista.remove(i);
                             this.deletado = true;
                         }
-                    }
+                    }else{
+                            JOptionPane.showMessageDialog(null, "não encontramos este curso no banco de dados!");
+                        }
                     //disciplinas
                 } else if (lista.equals(Main.disciplinaDB)) {
                     Disciplinas disciplinas = (Disciplinas) lista.get(i);
@@ -123,7 +129,9 @@ public class GerenciaRegistros {
                             lista.remove(i);
                             this.deletado = true;
                         }
-                    }
+                    }else{
+                            JOptionPane.showMessageDialog(null, "não encontramos esta Disciplina no banco de dados!");
+                        }
                     //setor
                 } else if (lista.equals(Main.setorDB)) {
                     Setor setor = (Setor) lista.get(i);
@@ -132,7 +140,9 @@ public class GerenciaRegistros {
                             lista.remove(i);
                             this.deletado = true;
                         }
-                    }
+                    }else{
+                            JOptionPane.showMessageDialog(null, "não encontramos este Setor no banco de dados!");
+                        }
                     //escolas
                 } else if (lista.equals(Main.escolasDB)) {
                     Escolas escolas = (Escolas) lista.get(i);
@@ -141,7 +151,9 @@ public class GerenciaRegistros {
                             lista.remove(i);
                             this.deletado = true;
                         }
-                    }
+                    }else{
+                            JOptionPane.showMessageDialog(null, "não encontramos esta Escola no banco de dados!");
+                        }
                 }
             } catch (Exception e) {
                 this.deletado = false;
