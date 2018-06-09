@@ -160,7 +160,7 @@ public class GerarRelatorio {
             // adicionando ao documento
             Font font = new Font(Font.FontFamily.HELVETICA, 18, 3);
             document.addTitle("Relatorio Completo de " + classe + " - Projeto de P.O.O.");
-            document.add(new ListItem("Relatorio Completo  de" + classe + "-  Gestão Faculdade", font));
+            document.add(new ListItem("Relatorio Completo  de " + classe + " -  Gestão Faculdade", font));
             document.add(new LineSeparator(1, 100, BaseColor.RED, 1, -4));
             document.add(new Paragraph("\n\n"));
             document.add(new PdfPTable(tabela.table));
