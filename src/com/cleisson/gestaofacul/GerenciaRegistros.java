@@ -91,6 +91,7 @@ public class GerenciaRegistros {
                 //professores
                 if (lista.equals(Main.professorDB) || lista.equals(Main.alunoDB) || lista.equals(Main.funcionarioDB)) {
                     Pessoa pessoa = (Pessoa) lista.get(i);
+                    try{
                     if (pessoa.getMatricula() == Integer.parseInt(deletar)) {
                         if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + pessoa.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                             lista.remove(i);
@@ -99,10 +100,13 @@ public class GerenciaRegistros {
                     }else{
                             JOptionPane.showMessageDialog(null, "não encontramos este Professor no banco de dados!");
                         }
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(null, "É permitido apenas numeros!");
+                    }
                     //turmas
                 } else if (lista.equals(Main.turmasDB)) {
                     Turmas turmas = (Turmas) lista.get(i);
-                    if (turmas.getNome().contains(deletar)) {
+                    if (turmas.getNome().toLowerCase().contains(deletar.toLowerCase())) {
                         if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + turmas.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                             lista.remove(i);
                             this.deletado = true;
@@ -113,7 +117,7 @@ public class GerenciaRegistros {
                     //cursos
                 } else if (lista.equals(Main.cursosDB)) {
                     Curso curso = (Curso) lista.get(i);
-                    if (curso.getNome().contains(deletar)) {
+                    if (curso.getNome().toLowerCase().contains(deletar.toLowerCase())) {
                         if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + curso.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                             lista.remove(i);
                             this.deletado = true;
@@ -124,7 +128,7 @@ public class GerenciaRegistros {
                     //disciplinas
                 } else if (lista.equals(Main.disciplinaDB)) {
                     Disciplinas disciplinas = (Disciplinas) lista.get(i);
-                    if (disciplinas.getNome().contains(deletar)) {
+                    if (disciplinas.getNome().toLowerCase().contains(deletar.toLowerCase())) {
                         if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + disciplinas.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                             lista.remove(i);
                             this.deletado = true;
@@ -135,7 +139,7 @@ public class GerenciaRegistros {
                     //setor
                 } else if (lista.equals(Main.setorDB)) {
                     Setor setor = (Setor) lista.get(i);
-                    if (setor.getNome().contains(deletar)) {
+                    if (setor.getNome().toLowerCase().contains(deletar.toLowerCase())) {
                         if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + setor.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                             lista.remove(i);
                             this.deletado = true;
@@ -146,7 +150,7 @@ public class GerenciaRegistros {
                     //escolas
                 } else if (lista.equals(Main.escolasDB)) {
                     Escolas escolas = (Escolas) lista.get(i);
-                    if (escolas.getNome().contains(deletar)) {
+                    if (escolas.getNome().toLowerCase().contains(deletar.toLowerCase())) {
                         if (JOptionPane.showConfirmDialog(null, "Você quer excluir: " + escolas.getNome(), "ATENÇÃO!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                             lista.remove(i);
                             this.deletado = true;
