@@ -1,9 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GNU GENERAL PUBLIC LICENSE
+ *  Version 3, 29 June 2007
  */
 package com.cleisson.gestaofacul;
+
+import java.security.SecureRandom;
 
 /**
  *
@@ -11,22 +12,23 @@ package com.cleisson.gestaofacul;
  */
 public class Curso {
 
-    private int ID;
+    SecureRandom aleatorio = new SecureRandom();
+    private int id;
     private String nome;
-    private String escola;
+    private Escolas escola;
 
-    public Curso(int id, String nome, String escola) {
-        this.ID = id;
+    public Curso(String nome, Escolas escola) {
+        id = aleatorio.hashCode();
         this.nome = nome;
         this.escola = escola;
     }
 
-    public int getID() {
-        return this.ID;
+    public int getId() {
+        return this.id;
     }
 
-    public void setID(int id) {
-        this.ID = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -37,11 +39,11 @@ public class Curso {
         this.nome = nome;
     }
 
-    public String getEscola() {
+    public Escolas getEscola() {
         return this.escola;
     }
 
-    public void setEscola(String escola) {
+    public void setEscola(Escolas escola) {
         this.escola = escola;
     }
 

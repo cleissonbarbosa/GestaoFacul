@@ -5,8 +5,8 @@
  */
 package com.cleisson.gestaofacul;
 
-import static com.cleisson.gestaofacul.SalvarNoPc.ReadFile;
-import static com.cleisson.gestaofacul.SalvarNoPc.WriteFile;
+import static com.cleisson.gestaofacul.GerenciaArmazenamento.ReadFile;
+import static com.cleisson.gestaofacul.GerenciaArmazenamento.WriteFile;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.awt.Color;
@@ -20,14 +20,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
-import oracle.jrockit.jfr.JFR;
 
 /**
  *
@@ -58,6 +55,14 @@ public class Main extends javax.swing.JFrame {
         btnCalcelarEditar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         TabelaEditar = new javax.swing.JTable();
+        frameSelecionarAlunos = new javax.swing.JFrame();
+        frameSelecionarAlunos.setVisible(false);
+        painelSelecionarAlunos = new javax.swing.JInternalFrame();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelaSelecionarAlunos = new javax.swing.JTable();
+        btnSelecionarAluno = new javax.swing.JButton();
+        btnCalcelarSelecaoAluno = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         painelTabsPrincipal = new javax.swing.JTabbedPane();
         tabCadastroProfFun = new javax.swing.JPanel();
         nome = new javax.swing.JTextField();
@@ -116,6 +121,8 @@ public class Main extends javax.swing.JFrame {
         ProfessorSeletor = new javax.swing.JComboBox<>();
         txtEscolhaDisciplina = new javax.swing.JLabel();
         txtEscolhaProfessor = new javax.swing.JLabel();
+        txtAlunosParticipantesTurmas = new javax.swing.JLabel();
+        btnSelecionarAlunos = new javax.swing.JButton();
         txtDesenvolvedor = new javax.swing.JLabel();
         jSeparador = new javax.swing.JSeparator();
         menuBarPrincipal = new javax.swing.JMenuBar();
@@ -124,6 +131,10 @@ public class Main extends javax.swing.JFrame {
         relatorioProfessores = new javax.swing.JMenuItem();
         relatorioFuncionarios = new javax.swing.JMenuItem();
         relatorioAlunos = new javax.swing.JMenuItem();
+        relatorioescolas = new javax.swing.JMenuItem();
+        relatorioCursos = new javax.swing.JMenuItem();
+        relatorioDisciplinas = new javax.swing.JMenuItem();
+        relatorioTurmas = new javax.swing.JMenuItem();
         menuDeletarRegistros = new javax.swing.JMenu();
         MenuItemDelTudo = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -154,8 +165,11 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        painelEditar.setTitle("Ver e/ou Editar os Registros");
+        painelEditar.setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/editarImagem.png"))); // NOI18N
         painelEditar.setVisible(true);
 
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/aplicarImagem.png"))); // NOI18N
         btnEditar.setText("Salvar Edição");
         btnEditar.setName(""); // NOI18N
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +178,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        btnCalcelarEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/cancelarImagem.png"))); // NOI18N
         btnCalcelarEditar.setText("Cancelar");
         btnCalcelarEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +203,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(TabelaEditar);
+        if (TabelaEditar.getColumnModel().getColumnCount() > 0) {
+            TabelaEditar.getColumnModel().getColumn(0).setPreferredWidth(150);
+            TabelaEditar.getColumnModel().getColumn(2).setPreferredWidth(100);
+        }
 
         javax.swing.GroupLayout painelEditarLayout = new javax.swing.GroupLayout(painelEditar.getContentPane());
         painelEditar.getContentPane().setLayout(painelEditarLayout);
@@ -201,7 +220,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCalcelarEditar))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         painelEditarLayout.setVerticalGroup(
@@ -209,7 +228,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEditarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar)
                     .addComponent(btnCalcelarEditar))
@@ -231,6 +250,95 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(painelEditar)
                 .addGap(21, 21, 21))
+        );
+
+        frameSelecionarAlunos.setTitle("Selecionar Alunos");
+        frameSelecionarAlunos.setMaximumSize(frameEditorPessoas.getMaximumSize());
+        frameSelecionarAlunos.setMinimumSize(frameEditorPessoas.getMinimumSize());
+        frameSelecionarAlunos.setName("Selecionar Alunos"); // NOI18N
+        frameSelecionarAlunos.setResizable(false);
+        frameSelecionarAlunos.setSize(new java.awt.Dimension(690, 500));
+
+        painelSelecionarAlunos.setTitle("Selecione os alunos desta turma");
+        painelSelecionarAlunos.setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/alunoImagen.png"))); // NOI18N
+        painelSelecionarAlunos.setVisible(true);
+
+        tabelaSelecionarAlunos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome do aluno", "Matricula"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tabelaSelecionarAlunos);
+        if (tabelaSelecionarAlunos.getColumnModel().getColumnCount() > 0) {
+            tabelaSelecionarAlunos.getColumnModel().getColumn(0).setPreferredWidth(350);
+        }
+
+        btnSelecionarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/aplicarImagem.png"))); // NOI18N
+        btnSelecionarAluno.setText("Aplicar");
+        btnSelecionarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelecionarAlunoActionPerformed(evt);
+            }
+        });
+
+        btnCalcelarSelecaoAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/cancelarImagem.png"))); // NOI18N
+        btnCalcelarSelecaoAluno.setText("Cancelar");
+        btnCalcelarSelecaoAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcelarSelecaoAlunoActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setText("Selecione TODOS os alunos que fazem parte desta turma e clique em aplicar ->");
+
+        javax.swing.GroupLayout painelSelecionarAlunosLayout = new javax.swing.GroupLayout(painelSelecionarAlunos.getContentPane());
+        painelSelecionarAlunos.getContentPane().setLayout(painelSelecionarAlunosLayout);
+        painelSelecionarAlunosLayout.setHorizontalGroup(
+            painelSelecionarAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelSelecionarAlunosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(btnSelecionarAluno)
+                .addGap(27, 27, 27)
+                .addComponent(btnCalcelarSelecaoAluno)
+                .addGap(34, 34, 34))
+        );
+        painelSelecionarAlunosLayout.setVerticalGroup(
+            painelSelecionarAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSelecionarAlunosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(painelSelecionarAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSelecionarAluno)
+                    .addComponent(btnCalcelarSelecaoAluno)
+                    .addComponent(jLabel1))
+                .addGap(24, 24, 24))
+        );
+
+        javax.swing.GroupLayout frameSelecionarAlunosLayout = new javax.swing.GroupLayout(frameSelecionarAlunos.getContentPane());
+        frameSelecionarAlunos.getContentPane().setLayout(frameSelecionarAlunosLayout);
+        frameSelecionarAlunosLayout.setHorizontalGroup(
+            frameSelecionarAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(painelSelecionarAlunos)
+        );
+        frameSelecionarAlunosLayout.setVerticalGroup(
+            frameSelecionarAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(painelSelecionarAlunos)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -472,6 +580,11 @@ public class Main extends javax.swing.JFrame {
         painelTabsPrincipal.addTab("Cadastro de Pessoas", tabCadastroProfFun);
 
         nomeEscola.setText("Nome Da Escola");
+        nomeEscola.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomeEscolaFocusGained(evt);
+            }
+        });
 
         btnSalvarEscola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/save.png"))); // NOI18N
         btnSalvarEscola.setText("Salvar");
@@ -490,10 +603,7 @@ public class Main extends javax.swing.JFrame {
 
         tabelaVerProfessores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Matricula", "Endereço", "Telefone"
@@ -508,6 +618,9 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tabelaVerProfessores);
+        if (tabelaVerProfessores.getColumnModel().getColumnCount() > 0) {
+            tabelaVerProfessores.getColumnModel().getColumn(0).setPreferredWidth(150);
+        }
 
         imgEscola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/EscolaImagem.png"))); // NOI18N
 
@@ -737,6 +850,16 @@ public class Main extends javax.swing.JFrame {
 
         txtEscolhaProfessor.setText("Escolha um professor:");
 
+        txtAlunosParticipantesTurmas.setText("Selecione os alunos que fazem parte dessa turma:");
+
+        btnSelecionarAlunos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/selecionarImagem.png"))); // NOI18N
+        btnSelecionarAlunos.setText("Selecionar");
+        btnSelecionarAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelecionarAlunosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tabTurmasLayout = new javax.swing.GroupLayout(tabTurmas);
         tabTurmas.setLayout(tabTurmasLayout);
         tabTurmasLayout.setHorizontalGroup(
@@ -768,6 +891,12 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(txtEscolhaProfessor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 590, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
+            .addGroup(tabTurmasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtAlunosParticipantesTurmas)
+                .addGap(18, 18, 18)
+                .addComponent(btnSelecionarAlunos)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tabTurmasLayout.setVerticalGroup(
             tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -786,9 +915,13 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(txtEscolhaProfessor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ProfessorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAlunosParticipantesTurmas)
+                    .addComponent(btnSelecionarAlunos))
                 .addGap(23, 23, 23)
                 .addComponent(btnSalvarTurmas)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         painelTabsPrincipal.addTab("Cadastro de Turmas", tabTurmas);
@@ -835,6 +968,42 @@ public class Main extends javax.swing.JFrame {
             }
         });
         menuGerarRelatorio.add(relatorioAlunos);
+
+        relatorioescolas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/escolasImagem.png"))); // NOI18N
+        relatorioescolas.setText("Escolas");
+        relatorioescolas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relatorioescolasActionPerformed(evt);
+            }
+        });
+        menuGerarRelatorio.add(relatorioescolas);
+
+        relatorioCursos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/cursosImagem.png"))); // NOI18N
+        relatorioCursos.setText("Cursos");
+        relatorioCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relatorioCursosActionPerformed(evt);
+            }
+        });
+        menuGerarRelatorio.add(relatorioCursos);
+
+        relatorioDisciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/disciplinasImagemIcone.png"))); // NOI18N
+        relatorioDisciplinas.setText("Disciplinas");
+        relatorioDisciplinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relatorioDisciplinasActionPerformed(evt);
+            }
+        });
+        menuGerarRelatorio.add(relatorioDisciplinas);
+
+        relatorioTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turmasImagensIcone.png"))); // NOI18N
+        relatorioTurmas.setText("Turmas");
+        relatorioTurmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relatorioTurmasActionPerformed(evt);
+            }
+        });
+        menuGerarRelatorio.add(relatorioTurmas);
 
         MenuGerarRelatorio.add(menuGerarRelatorio);
 
@@ -1088,7 +1257,8 @@ public class Main extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
             //Exibe Painel de confirmação
-            if (JOptionPane.showConfirmDialog(null, "Tem Certeza que deseja Salvar?", "Salvar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(null, "Tem Certeza que deseja Salvar?",
+                    "Salvar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 //Convertendo as entradas do usuario(String) em numeros
                 if (!this.escolha.getSelectedItem().equals("Alunos")) {
                     String dataEmUmFormato = dataDeAdimissao.getText();
@@ -1113,29 +1283,55 @@ public class Main extends javax.swing.JFrame {
 
                 //Logica para quando o usuario seleciona o item professor    
                 if (this.escolha.getSelectedItem().equals("Professores")) {
-                    String escola = this.escolas.getSelectedItem().toString();
+                    Escolas escola = null;
+                    for (int i = 0; i < escolasDB.size(); i++) {
+                        escola = (Escolas) escolasDB.get(i);
+                        if (this.escolas.getSelectedItem().toString().equals(escola.getNome())) {
+                            break;
+                        }
+                    }
+
                     //Cria novo objeto com as entradas do usuario
-                    professor = new Professor(this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
-                    professor.inserirProfessor(dataAdimicao, salarioFunc, escola);
+                    professor = new Professor(escola, dataAdimicao, salarioFunc, this.endereco.getText(),
+                            matriculaFunc, nome.getText(), telefoneFunc);
+
                     exibeCadastro = professor.getNome() + " | " + professor.getMatricula() + "\n";
+
                     //Adicionando o novo objeto no Arrey List
                     professorDB.add(professor);
                     ProfessorSeletor.addItem(professor.getNome());
                     salvarDados(professorDB, "registroProfessor.txt");
+
                 } else if (this.escolha.getSelectedItem().equals("Funcionarios")) {
+                    Setor setor = null;
+                    for (int i = 0; i < setorDB.size(); i++) {
+                        setor = (Setor) setorDB.get(i);
+                        if (this.setorSeletor.getSelectedItem().toString().equals(setor.getNome())) {
+                            break;
+                        }
+                    }
                     //Logica para quando o usuario seleciona outro item   
-                    administrativo = new Administrativo(this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
-                    administrativo.inserirAdministrativo(dataAdimicao, salarioFunc, this.setorSeletor.getSelectedItem().toString());
+                    administrativo = new Administrativo(setor, dataAdimicao,
+                            salarioFunc, this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
+
                     exibeCadastro = administrativo.getNome() + " | " + administrativo.getMatricula() + " | "
                             + this.setorSeletor.getSelectedItem().toString() + "\n";
+
                     //Adicionando o novo objeto no Arrey List
                     funcionarioDB.add(administrativo);
                     salvarDados(funcionarioDB, "registroAdm.txt");
+
                 } else if (this.escolha.getSelectedItem().equals("Alunos")) {
-                    String curso = cursosSeletorAluno.getSelectedItem().toString();
-                    aluno = new Aluno(this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
-                    aluno.inserirAluno(curso);
+                    Curso curso = null;
+                    for (int i = 0; i < cursosDB.size(); i++) {
+                        curso = (Curso) cursosDB.get(i);
+                        if (cursosSeletorAluno.getSelectedItem().toString().equals(curso.getNome())) {
+                            break;
+                        }
+                    }
+                    aluno = new Aluno(curso, this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
                     exibeCadastro = aluno.getNome() + " | " + aluno.getMatricula() + " | " + aluno.getCurso() + "\n";
+
                     //Adicionando o novo objeto no Arrey List
                     alunoDB.add(aluno);
                     salvarDados(alunoDB, "registroAluno.txt");
@@ -1145,12 +1341,16 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, exibeCadastro + "Salvo", "Salvo!", JOptionPane.INFORMATION_MESSAGE);
             btnSalvar.setName("Salvo");
         } catch (Exception e) {
+
             //Menssagem de Erro caso usuario insira uma entrada invalida
-            JOptionPane.showMessageDialog(null, "                                 >>   ATENÇÂO!  <<\nVerifique se você preencheu algum campo incorretamente!\n\n"
+            JOptionPane.showMessageDialog(null, "                                 >>   ATENÇÂO!  <<\nVerifique "
+                    + "se você preencheu algum campo incorretamente!\n\n"
                     + "> NÃO é permitido inserir LETRAS no lugar de numeros vice-versa.\n"
-                    + "> É NECESSARIO preencher TODOS os campos!\n\n *Os campos incorretos estaram em vermelho!", "Erro! Não foi possível salvar!!", JOptionPane.ERROR_MESSAGE);
+                    + "> É NECESSARIO preencher TODOS os campos!\n\n *Os campos incorretos estaram "
+                    + "em vermelho!", "Erro! Não foi possível salvar!!", JOptionPane.ERROR_MESSAGE);
             btnSalvar.setName("ERRO");
             VerificaErro erro = new VerificaErro();
+
             if (!this.escolha.getSelectedItem().equals("Alunos")) {
                 erro.encontrar(matricula);
                 erro.encontrar(salario);
@@ -1181,9 +1381,18 @@ public class Main extends javax.swing.JFrame {
 
     private void btnSalvarEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEscolaActionPerformed
         SwingUtilities.invokeLater(() -> {
-            Escolas novaEscola = new Escolas(nomeEscola.getText());
-            if (!escolasDB.isEmpty()) {
-                if (escolaExiste()) {
+            if (!nomeEscola.getText().equals("")) {
+                Escolas novaEscola = new Escolas(nomeEscola.getText());
+                if (!escolasDB.isEmpty()) {
+                    if (escolaExiste()) {
+
+                    } else {
+                        escolasDB.add(novaEscola);
+                        escolhaEscola.addItem(novaEscola.getNome());
+                        escolas.addItem(novaEscola.getNome());
+                        escolasCurso.addItem(novaEscola.getNome());
+                        salvarDados(escolasDB, "registroEscolas.txt");
+                    }
 
                 } else {
                     escolasDB.add(novaEscola);
@@ -1192,14 +1401,11 @@ public class Main extends javax.swing.JFrame {
                     escolasCurso.addItem(novaEscola.getNome());
                     salvarDados(escolasDB, "registroEscolas.txt");
                 }
-
             } else {
-                escolasDB.add(novaEscola);
-                escolhaEscola.addItem(novaEscola.getNome());
-                escolas.addItem(novaEscola.getNome());
-                escolasCurso.addItem(novaEscola.getNome());
-                salvarDados(escolasDB, "registroEscolas.txt");
-            }
+                VerificaErro erro = new VerificaErro();
+                erro.encontrarCampoVazio(nomeEscola);
+            }   
+             
         });
     }//GEN-LAST:event_btnSalvarEscolaActionPerformed
     private boolean escolaExiste() {
@@ -1207,7 +1413,8 @@ public class Main extends javax.swing.JFrame {
         for (int i = 0; i < escolasDB.size(); i++) {
             Escolas novo = (Escolas) escolasDB.get(i);
             if (nomeEscola.getText().equals(novo.getNome())) {
-                JOptionPane.showMessageDialog(null, "Ja existe essa escola na base de dados!\nPor favor tente novamente.", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ja existe essa escola na base de dados!\nPor favor tente novamente.",
+                        "ERRO!", JOptionPane.ERROR_MESSAGE);
                 existe = true;
                 break;
             }
@@ -1223,7 +1430,7 @@ public class Main extends javax.swing.JFrame {
                 //atribui ao objeto um cadastro alocano na arrey
                 professor = (Professor) professorDB.get(i);
                 //Verifica se o item selecionado é igual ao cadastrado
-                if (professor.getEscolaOuSetor().equals(escolhaEscola.getSelectedItem().toString())) {
+                if (professor.getEscola().getNome().equals(escolhaEscola.getSelectedItem().toString())) {
                     final SwingWorker w = new SwingWorker() {
                         @Override
                         protected Object doInBackground() throws Exception {
@@ -1382,7 +1589,8 @@ public class Main extends javax.swing.JFrame {
             String dataFormatada = formato.format(data);
             dataDeAdimissao.setText(dataFormatada);
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Por favor insira apenas numeros.\nFORMATO DA DATA: DD/MM/AAAA", "ERRO!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Por favor insira apenas numeros.\nFORMATO DA DATA: DD/MM/AAAA",
+                    "ERRO!", JOptionPane.WARNING_MESSAGE);
             dataDeAdimissao.setBackground(Color.red);
             Logger.getLogger(Main.class
                     .getName()).log(Level.SEVERE, null, ex);
@@ -1431,20 +1639,31 @@ public class Main extends javax.swing.JFrame {
                 setorDB.add(setor);
                 salvarDados(setorDB, "registroSetor.txt");
             } else {
-                JOptionPane.showMessageDialog(null, "Invalido! Escreva o nome do setor", "ERRO!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalido! Escreva o nome do setor", "ERRO!",
+                        JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Invalido, por favor tente novamente", "ERRO!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Invalido, por favor tente novamente", "ERRO!",
+                    JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_btnCadastrarSetorActionPerformed
 
     private void btnSalvarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCursoActionPerformed
-        Curso curso = new Curso(cursosDB.size(), nomeCurso.getText(), escolasCurso.getSelectedItem().toString());
+        Escolas escola = null;
+        for (int i = 0; i < escolasDB.size(); i++) {
+            escola = (Escolas) escolasDB.get(i);
+            if (escolasCurso.getSelectedItem().toString().equals(escola.getNome())) {
+                break;
+            }
+        }
+        if(!nomeCurso.getText().equals("") && escola !=null){
+        Curso curso = new Curso(nomeCurso.getText(), escola);
         for (int i = 0; i < cursosDB.size(); i++) {
             Curso novo = (Curso) cursosDB.get(i);
             if (nomeCurso.getText().equals(novo.getNome())) {
-                JOptionPane.showMessageDialog(null, nomeCurso.getText() + " ja existe na base de dados!", "Curso ja existe!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, nomeCurso.getText() + " ja existe na base de dados!",
+                        "Curso ja existe!", JOptionPane.WARNING_MESSAGE);
                 return;
             } else if (nomeCurso.getText().equals("")) {
                 return;
@@ -1454,25 +1673,45 @@ public class Main extends javax.swing.JFrame {
         cursosSeletor.addItem(curso.getNome());
         cursosSeletorAluno.addItem(curso.getNome());
         salvarDados(cursosDB, "registroCurso.txt");
+        }else{
+            VerificaErro erro = new VerificaErro();
+            erro.encontrar(escolasCurso);
+            erro.encontrarCampoVazio(nomeCurso);
+        }
     }//GEN-LAST:event_btnSalvarCursoActionPerformed
 
     private void btnSalvarDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDisciplinasActionPerformed
+        Curso curso = null;
+        for (int i = 0; i < cursosDB.size(); i++) {
+            curso = (Curso) cursosDB.get(i);
+            if (cursosSeletor.getSelectedItem().toString().equals(curso.getNome())) {
+                break;
+            }
+        }
         if (disciplinaDB.isEmpty()) {
-            Disciplinas disciplina = new Disciplinas(disciplinaDB.size(), nomeDisciplina.getText(), cursosSeletor.getSelectedItem().toString());
+            if(nomeDisciplina.getText().equals("") && curso != null){
+            Disciplinas disciplina = new Disciplinas( nomeDisciplina.getText(), curso);
             disciplinaDB.add(disciplina);
             DisciplinaSeletor.addItem(disciplina.getNome());
             salvarDados(disciplinaDB, "registroDisciplina.txt");
+            }else{
+                VerificaErro erro = new VerificaErro();
+                erro.encontrar(cursosSeletor);
+                erro.encontrarCampoVazio(nomeDisciplina);
+            }
+            
         } else {
             for (int i = 0; i < disciplinaDB.size(); i++) {
                 Disciplinas novo = (Disciplinas) disciplinaDB.get(i);
                 if (nomeDisciplina.getText().equals(novo.getNome())) {
-                    JOptionPane.showMessageDialog(null, nomeDisciplina.getText() + " ja existe na base de dados!", "Disciplina ja existe!", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, nomeDisciplina.getText() + " ja existe na base de dados!",
+                            "Disciplina ja existe!", JOptionPane.WARNING_MESSAGE);
                     return;
                 } else if (nomeDisciplina.getText().equals("")) {
                     return;
                 }
             }
-            Disciplinas disciplina = new Disciplinas(disciplinaDB.size(), nomeDisciplina.getText(), cursosSeletor.getSelectedItem().toString());
+            Disciplinas disciplina = new Disciplinas( nomeDisciplina.getText(), curso);
             disciplinaDB.add(disciplina);
             DisciplinaSeletor.addItem(disciplina.getNome());
             salvarDados(disciplinaDB, "registroDisciplina.txt");
@@ -1481,24 +1720,75 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarDisciplinasActionPerformed
 
     private void btnSalvarTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarTurmasActionPerformed
+        Disciplinas disciplinas = null;
+        Professor prof = null;
+        for (int i = 0; i < disciplinaDB.size(); i++) {
+            disciplinas = (Disciplinas) disciplinaDB.get(i);
+            if (DisciplinaSeletor.getSelectedItem().equals(disciplinas.getNome())) {
+                break;
+            }
+        }
+        for (int i = 0; i < professorDB.size(); i++) {
+            prof = (Professor) professorDB.get(i);
+            if (ProfessorSeletor.getSelectedItem().equals(prof.getNome())) {
+                break;
+            }
+        }
         if (turmasDB.isEmpty()) {
-            Turmas turma = new Turmas(turmasDB.size(), nomeTurma.getText(), DisciplinaSeletor.getSelectedItem().toString(), ProfessorSeletor.getSelectedItem().toString());
-            turmasDB.add(turma);
+            if (!alunosSelecionados.isEmpty() && !nomeTurma.getText().equals("") && disciplinas != null && prof != null) {
+            Turmas turmas = new Turmas( nomeTurma.getText(), disciplinas, prof);
+            turmas.setAluno(alunosSelecionados);
+            turmasDB.add(turmas);
             salvarDados(turmasDB, "registroTurma.txt");
+            alunosSelecionados.removeAll(alunosSelecionados);
+            JOptionPane.showMessageDialog(null, "Precisamos reiniciar a aplicação! \nClique em OK e o APP ira Reinicializar.");
+            reiniciarApp();
+            }else{
+                JOptionPane.showMessageDialog(null, "Existem erros no formulario! \n iremos destacar"
+                        + " em VERMELHO o que precisa ser alterado.");
+                VerificaErro erro = new VerificaErro();
+                erro.encontrarCampoVazio(nomeTurma);
+                erro.encontrar(ProfessorSeletor);
+                erro.encontrar(DisciplinaSeletor);
+                if (alunosSelecionados.isEmpty()) {
+                    btnSelecionarAlunos.setBackground(Color.red);
+                    btnSelecionarAlunos.setForeground(Color.white);
+                }
+            }
         } else {
+            if (!alunosSelecionados.isEmpty() && !nomeTurma.getText().equals("") && disciplinas != null && prof != null) {
             for (int i = 0; i < turmasDB.size(); i++) {
                 Turmas novo = (Turmas) turmasDB.get(i);
                 if (nomeTurma.getText().equals(novo.getNome())) {
-                    JOptionPane.showMessageDialog(null, nomeTurma.getText() + " ja existe na base de dados!", "Turma ja existe!", JOptionPane.WARNING_MESSAGE);
-                    return;
-                } else if (nomeTurma.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, nomeTurma.getText() + " ja existe na base de dados!",
+                            "Turma ja existe!", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
             }
-            Turmas turma = new Turmas(turmasDB.size(), nomeTurma.getText(), DisciplinaSeletor.getSelectedItem().toString(), ProfessorSeletor.getSelectedItem().toString());
-            turmasDB.add(turma);
-            salvarDados(turmasDB, "registroTurma.txt");
+            
+            
+                Turmas turmas = new Turmas(nomeTurma.getText(), disciplinas, prof);
+                turmas.setAluno(alunosSelecionados);
+                turmasDB.add(turmas);
+                salvarDados(turmasDB, "registroTurma.txt");
+                alunosSelecionados.removeAll(alunosSelecionados);
+                JOptionPane.showMessageDialog(null, "Precisamos reiniciar a aplicação! \nClique em OK e o"
+                        + " APP ira Reinicializar.");
+                reiniciarApp();
+            } else {
+                JOptionPane.showMessageDialog(null, "Existem erros no formulario! \n iremos destacar"
+                        + " em VERMELHO o que precisa ser alterado.");
+                VerificaErro erro = new VerificaErro();
+                erro.encontrarCampoVazio(nomeTurma);
+                erro.encontrar(ProfessorSeletor);
+                erro.encontrar(DisciplinaSeletor);
+                if (alunosSelecionados.isEmpty()) {
+                    btnSelecionarAlunos.setBackground(Color.red);
+                    btnSelecionarAlunos.setForeground(Color.white);
+                }
+            }
         }
+        
     }//GEN-LAST:event_btnSalvarTurmasActionPerformed
 
     private void menuGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGerarRelatorioActionPerformed
@@ -1522,16 +1812,20 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemSairActionPerformed
 
     private void MenuItemDelTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemDelTudoActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR TODOS os registros?", "Deletar tudo!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION)
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR TODOS os registros?", "Deletar tudo!",
+                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION)
             if (deletar.todosRegistros())
             JOptionPane.showMessageDialog(null, "Deletado com sucesso");
     }//GEN-LAST:event_MenuItemDelTudoActionPerformed
 
     private void MenuItemProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemProfessorActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!",
+                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
 
             deletar.DeletFile(professorDB,
-                    JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os professores", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você "
+                            + "deseja Excluir\n Digite: Tudo para excluir todos os professores", "Quem você "
+                            + "deseja excluir?", JOptionPane.QUESTION_MESSAGE),
                     "registroProfessor.txt");
             if (deletar.isDeletado()) {
                 professorDB = deletar.listaAtualizada;
@@ -1543,10 +1837,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemProfessorActionPerformed
 
     private void MenuItemFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemFuncActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!",
+                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
 
             deletar.DeletFile(funcionarioDB,
-                    JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Funcionarios", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você "
+                            + "deseja Excluir\n Digite: Tudo para excluir todos os Funcionarios", "Quem você "
+                            + "deseja excluir?", JOptionPane.QUESTION_MESSAGE),
                     "registroAdm.txt");
             if (deletar.isDeletado()) {
                 funcionarioDB = deletar.listaAtualizada;
@@ -1558,10 +1855,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemFuncActionPerformed
 
     private void MenuItemAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAlunoActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!",
+                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
 
             deletar.DeletFile(alunoDB,
-                    JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você deseja Excluir\n Digite: Tudo para excluir todos os Alunos", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    JOptionPane.showInputDialog(null, "Informe o numero de matricula do cadastro que você "
+                            + "deseja Excluir\n Digite: Tudo para excluir todos os Alunos", "Quem você deseja"
+                            + " excluir?", JOptionPane.QUESTION_MESSAGE),
                     "registroAluno.txt");
             if (deletar.isDeletado()) {
                 alunoDB = deletar.listaAtualizada;
@@ -1573,10 +1873,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemAlunoActionPerformed
 
     private void MenuItemEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemEscolaActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!",
+                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
 
             deletar.DeletFile(escolasDB,
-                    JOptionPane.showInputDialog(null, "Informe o nome da ESCOLA que você deseja Excluir\n Digite: Tudo para excluir todos os Escolas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    JOptionPane.showInputDialog(null, "Informe o nome da ESCOLA que você deseja Excluir\n Digite:"
+                            + " Tudo para excluir todos os Escolas", "Quem você deseja excluir?",
+                            JOptionPane.QUESTION_MESSAGE),
                     "registroEscolas.txt");
             if (deletar.isDeletado()) {
                 escolasDB = deletar.listaAtualizada;
@@ -1588,10 +1891,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemEscolaActionPerformed
 
     private void MenuItemCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemCursoActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!",
+                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
 
             deletar.DeletFile(cursosDB,
-                    JOptionPane.showInputDialog(null, "Informe o nome do CURSO que você deseja Excluir\n Digite: Tudo para excluir todos os Cursos", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    JOptionPane.showInputDialog(null, "Informe o nome do CURSO que você deseja Excluir\n Digite:"
+                            + " Tudo para excluir todos os Cursos", "Quem você deseja excluir?",
+                            JOptionPane.QUESTION_MESSAGE),
                     "registroEscolas.txt");
             if (deletar.isDeletado()) {
                 cursosDB = deletar.listaAtualizada;
@@ -1604,10 +1910,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemCursoActionPerformed
 
     private void MenuItemDiscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemDiscActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!",
+                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
 
             deletar.DeletFile(disciplinaDB,
-                    JOptionPane.showInputDialog(null, "Informe o nome a DISCIPLINA do cadastro que você deseja Excluir\n Digite: \"Tudo\" para excluir todas os Disciplinas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    JOptionPane.showInputDialog(null, "Informe o nome a DISCIPLINA do cadastro que você deseja"
+                            + " Excluir\n Digite: \"Tudo\" para excluir todas os Disciplinas", "Quem você "
+                            + "deseja excluir?", JOptionPane.QUESTION_MESSAGE),
                     "registroDisciplina.txt");
             if (deletar.isDeletado()) {
                 disciplinaDB = deletar.listaAtualizada;
@@ -1620,10 +1929,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemDiscActionPerformed
 
     private void MenuItemTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemTurmaActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR os registros?", "Deletar!",
+                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
 
             deletar.DeletFile(turmasDB,
-                    JOptionPane.showInputDialog(null, "Informe o nome da TURMA que você deseja Excluir\n Digite: Tudo para excluir todos os Turmas", "Quem você deseja excluir?", JOptionPane.QUESTION_MESSAGE),
+                    JOptionPane.showInputDialog(null, "Informe o nome da TURMA que você deseja Excluir\n Digite:"
+                            + " Tudo para excluir todos os Turmas", "Quem você deseja excluir?",
+                            JOptionPane.QUESTION_MESSAGE),
                     "registroTurma.txt");
             if (deletar.isDeletado()) {
                 turmasDB = deletar.listaAtualizada;
@@ -1710,80 +2022,89 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_menuVerEditarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if (btnEditar.getName().equals("professor")) {
-            
-            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
-                professor = (Professor) professorDB.get(i);
-                professor.setNome((String) TabelaEditar.getValueAt(i, 0));
-                professor.setMatricula((int) TabelaEditar.getValueAt(i, 1));
-                professor.setEndereco((String) TabelaEditar.getValueAt(i, 2));
-                professor.setTelefone((int) TabelaEditar.getValueAt(i, 3));
-                professorDB.remove(i);
-                professorDB.add(i, professor);
-            }
-            salvarDados(professorDB, "registroProfessor.txt");
-            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-        } else if (btnEditar.getName().equals("aluno")) {
-            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
-                aluno = (Aluno) alunoDB.get(i);
-                aluno.setNome((String) TabelaEditar.getValueAt(i, 0));
-                aluno.setMatricula((int) TabelaEditar.getValueAt(i, 1));
-                aluno.setEndereco((String) TabelaEditar.getValueAt(i, 2));
-                aluno.setTelefone((int) TabelaEditar.getValueAt(i, 3));
-                alunoDB.remove(i);
-                alunoDB.add(i, aluno);
-            }
-            salvarDados(alunoDB, "registroAluno.txt");
-            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-        } else if (btnEditar.getName().equals("funcionario")) {
-            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
-                funcionario = (Funcionarios) funcionarioDB.get(i);
-                funcionario.setNome((String) TabelaEditar.getValueAt(i, 0));
-                funcionario.setMatricula((int) TabelaEditar.getValueAt(i, 1));
-                funcionario.setEndereco((String) TabelaEditar.getValueAt(i, 2));
-                funcionario.setTelefone((int) TabelaEditar.getValueAt(i, 3));
-                funcionarioDB.remove(i);
-                funcionarioDB.add(i, funcionario);
-            }
-            salvarDados(funcionarioDB, "registroAdm.txt");
-            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-        } else if (btnEditar.getName().equals("escolas")) {
-            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
-                Escolas escola = (Escolas) escolasDB.get(i);
-                escola.setNome((String) TabelaEditar.getValueAt(i, 0));
-                escolasDB.remove(i);
-                escolasDB.add(i, escola);
-            }
-            salvarDados(escolasDB, "registroEscolas.txt");
-            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-        } else if (btnEditar.getName().equals("cursos")) {
-            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
-                Curso curso = (Curso) cursosDB.get(i);
-                curso.setNome((String) TabelaEditar.getValueAt(i, 0));
-                cursosDB.remove(i);
-                cursosDB.add(i, curso);
-            }
-            salvarDados(cursosDB, "registroCurso.txt");
-            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-        } else if (btnEditar.getName().equals("disciplinas")) {
-            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
-                Disciplinas disciplina = (Disciplinas) disciplinaDB.get(i);
-                disciplina.setNome((String) TabelaEditar.getValueAt(i, 0));
-                disciplinaDB.remove(i);
-                disciplinaDB.add(i, disciplina);
-            }
-            salvarDados(disciplinaDB, "registroDisciplina.txt");
-            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-        } else if (btnEditar.getName().equals("turmas")) {
-            for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
-                Turmas turma = (Turmas) turmasDB.get(i);
-                turma.setNome((String) TabelaEditar.getValueAt(i, 0));
-                turmasDB.remove(i);
-                turmasDB.add(i, turma);
-            }
-            salvarDados(turmasDB, "registroTurma.txt");
-            JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-        } 
+        switch (btnEditar.getName()) {
+            case "professor":
+                for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                    professor = (Professor) professorDB.get(i);
+                    professor.setNome((String) TabelaEditar.getValueAt(i, 0));
+                    professor.setMatricula((int) TabelaEditar.getValueAt(i, 1));
+                    professor.setEndereco((String) TabelaEditar.getValueAt(i, 2));
+                    professor.setTelefone((int) TabelaEditar.getValueAt(i, 3));
+                    professorDB.remove(i);
+                    professorDB.add(i, professor);
+                }   salvarDados(professorDB, "registroProfessor.txt");
+                JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!",
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case "aluno":
+                for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                    aluno = (Aluno) alunoDB.get(i);
+                    aluno.setNome((String) TabelaEditar.getValueAt(i, 0));
+                    aluno.setMatricula((int) TabelaEditar.getValueAt(i, 1));
+                    aluno.setEndereco((String) TabelaEditar.getValueAt(i, 2));
+                    aluno.setTelefone((int) TabelaEditar.getValueAt(i, 3));
+                    alunoDB.remove(i);
+                    alunoDB.add(i, aluno);
+                }   salvarDados(alunoDB, "registroAluno.txt");
+                JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!",
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case "funcionario":
+                for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                    funcionario = (Funcionarios) funcionarioDB.get(i);
+                    funcionario.setNome((String) TabelaEditar.getValueAt(i, 0));
+                    funcionario.setMatricula((int) TabelaEditar.getValueAt(i, 1));
+                    funcionario.setEndereco((String) TabelaEditar.getValueAt(i, 2));
+                    funcionario.setTelefone((int) TabelaEditar.getValueAt(i, 3));
+                    funcionarioDB.remove(i);
+                    funcionarioDB.add(i, funcionario);
+                }   salvarDados(funcionarioDB, "registroAdm.txt");
+                JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!",
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case "escolas":
+                for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                    Escolas escola = (Escolas) escolasDB.get(i);
+                    escola.setNome((String) TabelaEditar.getValueAt(i, 0));
+                    escolasDB.remove(i);
+                    escolasDB.add(i, escola);
+                }   salvarDados(escolasDB, "registroEscolas.txt");
+                JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!",
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case "cursos":
+                for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                    Curso curso = (Curso) cursosDB.get(i);
+                    curso.setNome((String) TabelaEditar.getValueAt(i, 0));
+                    cursosDB.remove(i);
+                    cursosDB.add(i, curso);
+                }   salvarDados(cursosDB, "registroCurso.txt");
+                JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!",
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case "disciplinas":
+                for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                    Disciplinas disciplina = (Disciplinas) disciplinaDB.get(i);
+                    disciplina.setNome((String) TabelaEditar.getValueAt(i, 0));
+                    disciplinaDB.remove(i);
+                    disciplinaDB.add(i, disciplina);
+                }   salvarDados(disciplinaDB, "registroDisciplina.txt");
+                JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!",
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case "turmas":
+                for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
+                    Turmas turma = (Turmas) turmasDB.get(i);
+                    turma.setNome((String) TabelaEditar.getValueAt(i, 0));
+                    turmasDB.remove(i);
+                    turmasDB.add(i, turma);
+                }   salvarDados(turmasDB, "registroTurma.txt");
+                JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!",
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
+            default: 
+                break;
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void editarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAlunoActionPerformed
@@ -1876,7 +2197,7 @@ public class Main extends javax.swing.JFrame {
         SwingUtilities.invokeLater(() -> {
             int matriculaAnterior = 0;
             int linhas = 0;
-            
+
             for (int i = 0; i < funcionarioDB.size(); i++) {
                 //atribui ao objeto um cadastro alocano na arrey
                 funcionario = (Funcionarios) funcionarioDB.get(i);
@@ -1931,7 +2252,7 @@ public class Main extends javax.swing.JFrame {
                     modelo.removeRow(TabelaEditar.getRowCount() - linhas);
                 }
                 matriculaAnterior = funcionario.getMatricula();
-                
+
             }
         });
     }//GEN-LAST:event_editarFuncionarioActionPerformed
@@ -2168,6 +2489,116 @@ public class Main extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_editarTurmasActionPerformed
 
+    private void btnSelecionarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarAlunosActionPerformed
+        frameSelecionarAlunos.setVisible(true);
+        painelSelecionarAlunos.setEnabled(true);
+        painelSelecionarAlunos.setVisible(true);
+        JTable t1 = new JTable(tabelaSelecionarAlunos.getModel());
+        DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
+        modelo1.setNumRows(0);
+        SwingUtilities.invokeLater(() -> {
+            int matriculaAnterior = 0;
+            int linhas = 0;
+
+            for (int i = 0; i < alunoDB.size(); i++) {
+                //atribui ao objeto um cadastro alocano na arrey
+                aluno = (Aluno) alunoDB.get(i);
+                //Enquanto o cadastro for diferente do loop anterior..
+                if (i > 0 && matriculaAnterior != aluno.getMatricula()) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela, vai preenchendo..
+                        tabelaSelecionarAlunos.setValueAt(aluno.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(aluno.getMatricula(), linhas, 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(tabelaSelecionarAlunos.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        tabelaSelecionarAlunos.setValueAt(aluno.getNome(), linhas, 0);
+                        tabelaSelecionarAlunos.setValueAt(aluno.getMatricula(), linhas, 1);
+                    }
+                    //Verifica se é a primeira passagem do loop
+                } else if (i == 0) {
+                    try {
+                        //Enquanto houver linhas suficientes na tabela..
+                        tabelaSelecionarAlunos.setValueAt(aluno.getNome(), linhas, 0);
+                        tabelaSelecionarAlunos.setValueAt(aluno.getMatricula(), linhas, 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
+                        JTable t = new JTable(tabelaSelecionarAlunos.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.addRow(new Object[]{null, null});
+                        //Preenche a linha vazia que foi criada
+                        tabelaSelecionarAlunos.setValueAt(aluno.getNome(), linhas, 0);
+                        tabelaSelecionarAlunos.setValueAt(aluno.getMatricula(), linhas, 1);
+                    }
+                } else if (matriculaAnterior == aluno.getMatricula()) {
+                    //decrementa em linhas se matricula for igual o da varredura anterior.
+                    linhas--;
+                }
+                if (alunoDB.isEmpty()) {
+                    while (tabelaSelecionarAlunos.getRowCount() > linhas) {
+                        JTable t = new JTable(tabelaSelecionarAlunos.getModel());
+                        DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                        modelo.removeRow(tabelaSelecionarAlunos.getRowCount() - linhas);
+                    }
+                }
+
+                linhas++;
+                //Remove as linhas desnecessarias da tabela
+                while (tabelaSelecionarAlunos.getRowCount() > linhas) {
+                    JTable t = new JTable(tabelaSelecionarAlunos.getModel());
+                    DefaultTableModel modelo = (DefaultTableModel) t.getModel();
+                    modelo.removeRow(tabelaSelecionarAlunos.getRowCount() - linhas);
+                }
+                matriculaAnterior = aluno.getMatricula();
+                //Remove todas as linhas da tabela
+
+            }
+            txtAlunosParticipantesTurmas.setText("Selecione os alunos que fazem parte dessa turma:");
+        });
+    }//GEN-LAST:event_btnSelecionarAlunosActionPerformed
+
+    private void btnSelecionarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarAlunoActionPerformed
+        if(tabelaSelecionarAlunos.getSelectedRowCount() != 0){
+        int x[] = tabelaSelecionarAlunos.getSelectedRows();
+        for (int i = 0; i < tabelaSelecionarAlunos.getSelectedRowCount(); i++) {
+            System.out.println("iten selecionado" + x[i]);
+            System.out.println(tabelaSelecionarAlunos.getValueAt(x[i], 0));
+            alunosSelecionados.add(alunoDB.get(x[i]));
+        }
+        
+        txtAlunosParticipantesTurmas.setText("Os alunos foram selecionados !");
+        btnSelecionarAlunos.setEnabled(false);
+        frameSelecionarAlunos.setVisible(false);
+        }
+    }//GEN-LAST:event_btnSelecionarAlunoActionPerformed
+
+    private void relatorioTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioTurmasActionPerformed
+        relatorio.gerarPDF(turmasDB, "Turmas");
+    }//GEN-LAST:event_relatorioTurmasActionPerformed
+
+    private void btnCalcelarSelecaoAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcelarSelecaoAlunoActionPerformed
+        frameSelecionarAlunos.setVisible(false);
+    }//GEN-LAST:event_btnCalcelarSelecaoAlunoActionPerformed
+
+    private void relatorioescolasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioescolasActionPerformed
+        relatorio.gerarPDF(escolasDB, "Escolas");
+    }//GEN-LAST:event_relatorioescolasActionPerformed
+
+    private void relatorioCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioCursosActionPerformed
+        relatorio.gerarPDF(cursosDB, "Cursos");
+    }//GEN-LAST:event_relatorioCursosActionPerformed
+
+    private void relatorioDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioDisciplinasActionPerformed
+        relatorio.gerarPDF(disciplinaDB, "Disciplinas");
+    }//GEN-LAST:event_relatorioDisciplinasActionPerformed
+
+    private void nomeEscolaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeEscolaFocusGained
+        nomeEscola.setBackground(Color.white);
+    }//GEN-LAST:event_nomeEscolaFocusGained
+
     //METODO PARA REINICIALIZAR O PROGRAMA
     private void reiniciarApp() {
         
@@ -2331,12 +2762,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable TabelaEditar;
     private javax.swing.JButton btnCadastrarSetor;
     private javax.swing.JButton btnCalcelarEditar;
+    private javax.swing.JButton btnCalcelarSelecaoAluno;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvarCurso;
     private javax.swing.JButton btnSalvarDisciplinas;
     private javax.swing.JButton btnSalvarEscola;
     private javax.swing.JButton btnSalvarTurmas;
+    private javax.swing.JButton btnSelecionarAluno;
+    private javax.swing.JButton btnSelecionarAlunos;
     private static javax.swing.JComboBox<String> cursosSeletor;
     private static javax.swing.JComboBox<String> cursosSeletorAluno;
     private javax.swing.JTextField dataDeAdimissao;
@@ -2353,13 +2787,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> escolha;
     private static javax.swing.JComboBox<String> escolhaEscola;
     private javax.swing.JFrame frameEditorPessoas;
+    private javax.swing.JFrame frameSelecionarAlunos;
     private javax.swing.JLabel imgCadastroDePessoas;
     private javax.swing.JLabel imgCursos;
     private javax.swing.JLabel imgDisciplinas;
     private javax.swing.JLabel imgEscola;
     private javax.swing.JLabel imgTurmas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparador;
     private javax.swing.JSeparator jSeparator2;
@@ -2374,11 +2811,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField nomeEscola;
     private javax.swing.JTextField nomeTurma;
     private javax.swing.JInternalFrame painelEditar;
+    private javax.swing.JInternalFrame painelSelecionarAlunos;
     private javax.swing.JTabbedPane painelTabsPrincipal;
     private javax.swing.JProgressBar progressoTabela;
     private javax.swing.JMenuItem relatorioAlunos;
+    private javax.swing.JMenuItem relatorioCursos;
+    private javax.swing.JMenuItem relatorioDisciplinas;
     private javax.swing.JMenuItem relatorioFuncionarios;
     private javax.swing.JMenuItem relatorioProfessores;
+    private javax.swing.JMenuItem relatorioTurmas;
+    private javax.swing.JMenuItem relatorioescolas;
     private javax.swing.JTextField salario;
     private static javax.swing.JComboBox<String> setorSeletor;
     private javax.swing.JPanel tabCadastroEscolas;
@@ -2386,8 +2828,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel tabCurso;
     private javax.swing.JPanel tabDisciplinas;
     private javax.swing.JPanel tabTurmas;
+    private javax.swing.JTable tabelaSelecionarAlunos;
     private javax.swing.JTable tabelaVerProfessores;
     private javax.swing.JTextField telefone;
+    private javax.swing.JLabel txtAlunosParticipantesTurmas;
     private javax.swing.JLabel txtCadastrarEscola;
     private javax.swing.JLabel txtCadastroDePessoas;
     private javax.swing.JLabel txtCurso;
@@ -2404,16 +2848,19 @@ public class Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     //Objetos
     GerarRelatorio relatorio = new GerarRelatorio();
-    DeletarRegistros deletar = new DeletarRegistros();
+    GerenciaRegistros deletar = new GerenciaRegistros();
     Professor professor;
     Administrativo administrativo;
     Funcionarios funcionario;
     Aluno aluno;
     Professor anterior;
+    
+    Turmas turma = new Turmas();
     //Strings
     private String exibeCadastro = "";
     private static String[] ar;
     //Arrays
+    public static ArrayList alunosSelecionados = new ArrayList(); 
     public static ArrayList professorDB = new ArrayList();
     public static ArrayList funcionarioDB = new ArrayList();
     public static ArrayList alunoDB = new ArrayList();

@@ -1,37 +1,27 @@
+/*
+ * GNU GENERAL PUBLIC LICENSE
+ *  Version 3, 29 June 2007
+ */
 package com.cleisson.gestaofacul;
 
 /**
  *
- * @author cleisson
+ * @author Cleisson Barbosa
  */
 public class Administrativo extends Funcionarios{
 
-    private String setor;
+    private Setor setor;
 
-    public Administrativo(String endereco, int matricula, String nome, int telefone) {
-        super(endereco, matricula, nome, telefone);
+    public Administrativo( Setor setor, int dataDeAdimissao, float salario, String endereco, int matricula, String nome, int telefone) {
+        super(dataDeAdimissao, salario, endereco, matricula, nome, telefone);
+         this.setor = setor;
     }
 
-    public void inserirAdministrativo(int dataDeAdimissao, float salario, String setor) {
-        super.dataDeAdimissao = dataDeAdimissao;
-        super.salario = salario;
-        this.setor = setor;
-    }
-
-    public String getEscolaOuSetor() {
+    public Setor getSetor() {
         return setor;
     }
 
-    public void setEscolaOuSetor(String escolaOuSetor) {
-        this.setor = escolaOuSetor;
+    public void setSetor(Setor Setor) {
+        this.setor = Setor;
     }
-
-    public int getDataDeAdimissao() {
-        return dataDeAdimissao;
-    }
-
-    public void setDataDeAdimissao(int dataDeAdimissao) {
-        this.dataDeAdimissao = dataDeAdimissao;
-    }
-
 }

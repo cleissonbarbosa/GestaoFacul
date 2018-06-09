@@ -1,42 +1,28 @@
+/*
+ * GNU GENERAL PUBLIC LICENSE
+ *  Version 3, 29 June 2007
+ */
 package com.cleisson.gestaofacul;
 
 /**
  *
- * @author cleisson
+ * @author Cleisson Barbosa
  */
 public class Professor extends Funcionarios{
 
     
-    private String escola;
+    private Escolas escola;
 
-    public Professor(String endereco, int matricula, String nome, int telefone) {
-        super(endereco, matricula, nome, telefone);
-    }
-
-    public void inserirProfessor( int dataDeAdimissao, float salario,  String escola) {
-        super.dataDeAdimissao = dataDeAdimissao;
-        super.salario = salario;
+    public Professor(Escolas escola, int dataDeAdimissao, float salario, String endereco, int matricula, String nome, int telefone) {
+        super(dataDeAdimissao, salario, endereco, matricula, nome, telefone);
         this.escola = escola;
     }
 
-    public String getEscolaOuSetor() {
+    public Escolas getEscola() {
         return escola;
     }
 
-    public void setEscolaOuSetor(String escolaOuSetor) {
-        this.escola = escolaOuSetor;
-    }
-
-    public int getDataDeAdimissao() {
-        return dataDeAdimissao;
-    }
-
-    public void setDataDeAdimissao(int dataDeAdimissao) {
-        this.dataDeAdimissao = dataDeAdimissao;
-    }
-
-    @Override
-    public String getEndereco() {
-        return endereco;
+    public void setEscola(Escolas escola) {
+        this.escola = escola;
     }
 }

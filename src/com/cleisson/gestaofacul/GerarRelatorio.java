@@ -33,13 +33,13 @@ public class GerarRelatorio {
 
         public Tabela(ArrayList lista, String objeto) {
             Font font = new Font(Font.FontFamily.TIMES_ROMAN, 14, 3, BaseColor.BLUE);
-            table = new PdfPTable(2);
-            table.setTotalWidth(523);
-            table.setLockedWidth(true);
-            table.addCell(new ListItem("Nome  ", font));
-            table.addCell(new ListItem("Matricula  ", font));
             switch (objeto) {
                 case "Professor":
+                    table = new PdfPTable(2);
+                    table.setTotalWidth(523);
+                    table.setLockedWidth(true);
+                    table.addCell(new ListItem("Nome  ", font));
+                    table.addCell(new ListItem("Matricula  ", font));
                     for (int i = 0; i < lista.size(); i++) {
                         Professor professor = (Professor) lista.get(i);
                         table.addCell(professor.getNome());
@@ -47,6 +47,11 @@ public class GerarRelatorio {
                     }
                     break;
                 case "Aluno":
+                    table = new PdfPTable(2);
+                    table.setTotalWidth(523);
+                    table.setLockedWidth(true);
+                    table.addCell(new ListItem("Nome  ", font));
+                    table.addCell(new ListItem("Matricula  ", font));
                     for (int i = 0; i < lista.size(); i++) {
                         Aluno aluno = (Aluno) lista.get(i);
                         table.addCell(aluno.getNome());
@@ -54,10 +59,76 @@ public class GerarRelatorio {
                     }
                     break;
                 case "Funcionario":
+                    table = new PdfPTable(2);
+                    table.setTotalWidth(523);
+                    table.setLockedWidth(true);
+                    table.addCell(new ListItem("Nome  ", font));
+                    table.addCell(new ListItem("Matricula  ", font));
                     for (int i = 0; i < lista.size(); i++) {
                         Administrativo adm = (Administrativo) lista.get(i);
                         table.addCell(adm.getNome());
                         table.addCell(Integer.toString(adm.getMatricula()));
+                    }
+                    break;
+                case "Turmas":
+                    table = new PdfPTable(4);
+                    table.setTotalWidth(523);
+                    table.setLockedWidth(true);
+                    table.addCell(new ListItem("Nome  ", font));
+                    table.addCell(new ListItem("Disciplina  ", font));
+                    table.addCell(new ListItem("Professor  ", font));
+                    table.addCell(new ListItem("Alunos  ", font));
+                    for (int i = 0; i < lista.size(); i++) {
+                    Turmas turma = (Turmas) lista.get(i);
+                    String exibirAlunos = "";
+                    for (int x = 0; x < turma.getAluno().size(); x++) {
+                    Aluno aluno = (Aluno) turma.getAluno().get(x);
+                    exibirAlunos += aluno.getNome() + "\n";
+                    }
+                    table.addCell(turma.getNome());
+                    table.addCell(turma.getDisciplinas().getNome());
+                    table.addCell(turma.getProfessor().getNome());
+                    table.addCell(exibirAlunos);
+                    }
+                    break;
+                case "Escolas":
+                    table = new PdfPTable(2);
+                    table.setTotalWidth(523);
+                    table.setLockedWidth(true);
+                    table.addCell(new ListItem("ID  ", font));
+                    table.addCell(new ListItem("Nome da Escola  ", font));
+                    for (int i = 0; i < lista.size(); i++) {
+                        Escolas escola = (Escolas) lista.get(i);
+                        table.addCell(Integer.toString(escola.getId()));
+                        table.addCell(escola.getNome());
+                    }
+                    break;
+                 case "Cursos":
+                    table = new PdfPTable(3);
+                    table.setTotalWidth(523);
+                    table.setLockedWidth(true);
+                    table.addCell(new ListItem("ID  ", font));
+                    table.addCell(new ListItem("Nome do Curso  ", font));
+                    table.addCell(new ListItem("Nome da Escola  ", font));
+                    for (int i = 0; i < lista.size(); i++) {
+                        Curso curso = (Curso) lista.get(i);
+                        table.addCell(Integer.toString(curso.getId()));
+                        table.addCell(curso.getNome());
+                        table.addCell(curso.getEscola().getNome());
+                    }
+                    break;
+                case "Disciplinas":
+                    table = new PdfPTable(3);
+                    table.setTotalWidth(523);
+                    table.setLockedWidth(true);
+                    table.addCell(new ListItem("ID  ", font));
+                    table.addCell(new ListItem("Nome da Disciplina  ", font));
+                    table.addCell(new ListItem("Nome do Curso  ", font));
+                    for (int i = 0; i < lista.size(); i++) {
+                        Disciplinas disc = (Disciplinas) lista.get(i);
+                        table.addCell(Integer.toString(disc.getId()));
+                        table.addCell(disc.getNome());
+                        table.addCell(disc.getCurso().getNome());
                     }
                     break;
             }

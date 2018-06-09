@@ -1,33 +1,27 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GNU GENERAL PUBLIC LICENSE
+ *  Version 3, 29 June 2007
  */
 package com.cleisson.gestaofacul;
 
 /**
  *
- * @author cleisson
+ * @author Cleisson Barbosa
  */
-public class Aluno extends Pessoa{
-    private String Curso;
-    
-    public Aluno(String endereco, int matricula, String nome, int telefone) {
+public class Aluno extends Pessoa {
+
+    private Curso Curso;
+
+    public Aluno(Curso curso, String endereco, int matricula, String nome, int telefone) {
         super(endereco, matricula, nome, telefone);
-    }
-    
-    public void inserirAluno(String curso){
         this.Curso = curso;
     }
 
-    public String getCurso() {
+    public Curso getCurso() {
         return Curso;
     }
 
-    public void setCurso(String Curso) {
+    public void setCurso(Curso Curso) {
         this.Curso = Curso;
     }
-    
-    
-    
 }

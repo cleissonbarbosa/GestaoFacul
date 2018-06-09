@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GNU GENERAL PUBLIC LICENSE
+ *  Version 3, 29 June 2007
  */
 package com.cleisson.gestaofacul;
 
@@ -9,7 +8,7 @@ import java.awt.Color;
 
 /**
  *
- * @author cleisson
+ * @author Cleisson Barbosa
  */
 public class VerificaErro {
 
@@ -23,6 +22,16 @@ public class VerificaErro {
         try {
             int aux = Integer.parseInt(campo.getText());
         } catch (NumberFormatException e) {
+            campo.setBackground(Color.red);
+            campo.setForeground(Color.white);
+            campo.setFocusable(true);
+            return true;
+        }
+        return false;
+    }
+    public boolean encontrarCampoVazio(javax.swing.JTextField campo) {
+        if(!campo.getText().equals("")){
+        } else{
             campo.setBackground(Color.red);
             campo.setForeground(Color.white);
             campo.setFocusable(true);

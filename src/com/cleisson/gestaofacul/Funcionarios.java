@@ -1,20 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GNU GENERAL PUBLIC LICENSE
+ *  Version 3, 29 June 2007
  */
 package com.cleisson.gestaofacul;
 
 /**
  *
- * @author cleisson
+ * @author Cleisson Barbosa
  */
 public class Funcionarios extends Pessoa{
     
     protected float salario;
     protected int dataDeAdimissao;
-    public Funcionarios(String endereco, int matricula, String nome, int telefone) {
+    
+    public Funcionarios(int dataDeAdimissao, float salario, String endereco, int matricula, String nome, int telefone) {
         super(endereco, matricula, nome, telefone);
+        this.dataDeAdimissao = dataDeAdimissao;
+        this.salario = salario;
     }
     
 

@@ -1,10 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GNU GENERAL PUBLIC LICENSE
+    Version 3, 29 June 2007
  */
 package com.cleisson.gestaofacul;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,33 +15,48 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author cleisson
+ * Gerenciar os registros salvos, modificando o arquivo ou excluindo-o 
+ * completamente.
+ * @author Cleisson Barbosa
  */
-public class DeletarRegistros {
+public class GerenciaRegistros {
 
+    //Variavel para identificar se o arquivo foi modificado ou deletado!
     private boolean deletado;
+    //Variavel para atualizar o arrayList modificado
     public ArrayList listaAtualizada;
 
     public void DeletFile(ArrayList lista, String deletar, String caminho) {
+        //Convertendo o caminho do arquivo em path
         Path arquivo = Paths.get(caminho);
 
+        //Verifica se o arquivo ja existe no caminho inserido
         if (!Files.exists(arquivo)) {
-
+            //se o arquivo não existe então não faz nada
         } else {
+            //se o arquivo existe
             try {
+                //se o usuario digitar tudo (ignorando a Case)
                 if (deletar.equalsIgnoreCase("tudo")) {
+                    //deleta o arquivo por completo
+                    File file = new File(caminho);
+                    file.setWritable(true);
                     Files.deleteIfExists(arquivo);
                 } else {
+                    /*se o usuario qualquer outra coisa, passa para a lista atualizada
+                      o retorno do metodo remover
+                     */
                     listaAtualizada = remover(lista, deletar);
                 }
             } catch (IOException ex) {
-                Logger.getLogger(DeletarRegistros.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GerenciaRegistros.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 
+    //Metodo para deletar todos os registros de uma unica vez
     public boolean todosRegistros() {
+        //convertendo todos os caminhos em path
         Path arquivo0 = Paths.get("registroProfessor.txt");
         Path arquivo1 = Paths.get("registroAluno.txt");
         Path arquivo2 = Paths.get("registroCurso.txt");
@@ -51,6 +66,7 @@ public class DeletarRegistros {
         Path arquivo6 = Paths.get("registroAdm.txt");
         Path arquivo7 = Paths.get("registroEscolas.txt");
         try {
+            //deleta os arquivos se eles existirem
             Files.deleteIfExists(arquivo0);
             Files.deleteIfExists(arquivo1);
             Files.deleteIfExists(arquivo2);
@@ -62,15 +78,17 @@ public class DeletarRegistros {
             this.deletado = true;
         } catch (IOException ex) {
             this.deletado = false;
-            Logger.getLogger(DeletarRegistros.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerenciaRegistros.class.getName()).log(Level.SEVERE, null, ex);
         }
         return deletado;
     }
 
+    //metodo para remover um elemento da lista e dos registros
     public ArrayList remover(ArrayList lista, String deletar) {
         for (int i = 0; i < lista.size(); i++) {
 
             try {
+                //professores
                 if (lista.equals(Main.professorDB) || lista.equals(Main.alunoDB) || lista.equals(Main.funcionarioDB)) {
                     Pessoa pessoa = (Pessoa) lista.get(i);
                     if (pessoa.getMatricula() == Integer.parseInt(deletar)) {
@@ -79,6 +97,7 @@ public class DeletarRegistros {
                             this.deletado = true;
                         }
                     }
+                    //turmas
                 } else if (lista.equals(Main.turmasDB)) {
                     Turmas turmas = (Turmas) lista.get(i);
                     if (turmas.getNome().contains(deletar)) {
@@ -87,6 +106,7 @@ public class DeletarRegistros {
                             this.deletado = true;
                         }
                     }
+                    //cursos
                 } else if (lista.equals(Main.cursosDB)) {
                     Curso curso = (Curso) lista.get(i);
                     if (curso.getNome().contains(deletar)) {
@@ -95,6 +115,7 @@ public class DeletarRegistros {
                             this.deletado = true;
                         }
                     }
+                    //disciplinas
                 } else if (lista.equals(Main.disciplinaDB)) {
                     Disciplinas disciplinas = (Disciplinas) lista.get(i);
                     if (disciplinas.getNome().contains(deletar)) {
@@ -103,6 +124,7 @@ public class DeletarRegistros {
                             this.deletado = true;
                         }
                     }
+                    //setor
                 } else if (lista.equals(Main.setorDB)) {
                     Setor setor = (Setor) lista.get(i);
                     if (setor.getNome().contains(deletar)) {
@@ -111,6 +133,7 @@ public class DeletarRegistros {
                             this.deletado = true;
                         }
                     }
+                    //escolas
                 } else if (lista.equals(Main.escolasDB)) {
                     Escolas escolas = (Escolas) lista.get(i);
                     if (escolas.getNome().contains(deletar)) {

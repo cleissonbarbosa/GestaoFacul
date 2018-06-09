@@ -1,28 +1,33 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GNU GENERAL PUBLIC LICENSE
+    Version 3, 29 June 2007
  */
 package com.cleisson.gestaofacul;
 
+import java.security.SecureRandom;
+
 /**
  *
- * @author cleisson
+ * @author Cleisson Barbosa
  */
 public class Setor {
 
-    private String nomeEscolas;
+    SecureRandom aleatorio = new SecureRandom();
+    private int id;
+    private String nome;
 
     public Setor(String Nome) {
-        this.nomeEscolas = Nome;
+        this.nome = Nome;
+        id = aleatorio.hashCode();
     }
 
+    
     public String getNome() {
-        return nomeEscolas;
+        return nome;
     }
 
     public void setNome(String Nome) {
-        this.nomeEscolas = Nome;
+        this.nome = Nome;
     }
 
 }

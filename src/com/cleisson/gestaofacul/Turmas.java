@@ -1,33 +1,41 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GNU GENERAL PUBLIC LICENSE
+ *  Version 3, 29 June 2007
  */
 package com.cleisson.gestaofacul;
 
+import java.security.SecureRandom;
+import java.util.ArrayList;
+
 /**
  *
- * @author cleisson
+ * @author Cleisson Barbosa
  */
 public class Turmas {
-    private int ID;
+    SecureRandom aleatorio = new SecureRandom();
+    private int id;
     private String nome;
-    private String disciplinas;
-    private String professor;
+    private Disciplinas disciplinas;
+    private Professor professor;
+    private ArrayList<Aluno> aluno = new ArrayList();
 
-    public Turmas(int id, String nome, String disciplina, String professor) {
-        this.ID = id;
+    public Turmas(String nome, Disciplinas disciplina, Professor professor) {
+         id = aleatorio.hashCode();
         this.nome = nome;
         this.disciplinas = disciplina;
         this.professor = professor;
+        //this.aluno = getAluno();
+    }
+    public Turmas(){
+        
     }
 
     public int getID() {
-        return this.ID;
+        return this.id;
     }
 
     public void setID(int id) {
-        this.ID = id;
+        this.id = id;
     }
 
     public String getNome() {
@@ -38,20 +46,28 @@ public class Turmas {
         this.nome = nome;
     }
 
-    public String getEscola() {
+    public Disciplinas getDisciplinas() {
         return this.disciplinas;
     }
 
-    public void setEscola(String disciplina) {
+    public void setDisciplinas(Disciplinas disciplina) {
         this.disciplinas = disciplina;
     }
 
-    public String getProfessor() {
+    public Professor getProfessor() {
         return professor;
     }
 
-    public void setProfessor(String professor) {
+    public void setProfessor(Professor professor) {
         this.professor = professor;
+    }
+
+    public ArrayList getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(ArrayList aluno) {
+        this.aluno = aluno;
     }
     
 }
