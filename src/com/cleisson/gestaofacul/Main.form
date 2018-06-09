@@ -121,8 +121,8 @@
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="0">
                         <Column editable="true" title="Nome" type="java.lang.String"/>
-                        <Column editable="true" title="Matricula" type="java.lang.Integer"/>
-                        <Column editable="true" title="Endere&#xe7;o" type="java.lang.String"/>
+                        <Column editable="false" title="Matricula" type="java.lang.Object"/>
+                        <Column editable="true" title="Endere&#xe7;o" type="java.lang.Object"/>
                         <Column editable="true" title="Telefone" type="java.lang.Integer"/>
                       </Table>
                     </Property>
@@ -865,7 +865,7 @@
                           <Component id="btnCadastrarSetor" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="54" max="32767" attributes="0"/>
+                      <EmptySpace pref="52" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

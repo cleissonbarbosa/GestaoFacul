@@ -4,15 +4,15 @@
  */
 package com.cleisson.gestaofacul;
 
-import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
  * @author Cleisson Barbosa
  */
 public class Turmas {
-    SecureRandom aleatorio = new SecureRandom();
+    Random aleatorio = new Random();
     private int id;
     private String nome;
     private Disciplinas disciplinas;

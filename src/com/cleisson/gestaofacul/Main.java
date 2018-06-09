@@ -20,11 +20,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 
 /**
  *
@@ -195,11 +197,18 @@ public class Main extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane3.setViewportView(TabelaEditar);
@@ -572,7 +581,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastrarSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         nome.getAccessibleContext().setAccessibleName("");
@@ -1392,6 +1401,7 @@ public class Main extends javax.swing.JFrame {
                         escolas.addItem(novaEscola.getNome());
                         escolasCurso.addItem(novaEscola.getNome());
                         salvarDados(escolasDB, "registroEscolas.txt");
+                        JOptionPane.showMessageDialog(null, "Salvo com sucesso! ", "Sucesso !",JOptionPane.INFORMATION_MESSAGE);
                     }
 
                 } else {
@@ -1400,6 +1410,7 @@ public class Main extends javax.swing.JFrame {
                     escolas.addItem(novaEscola.getNome());
                     escolasCurso.addItem(novaEscola.getNome());
                     salvarDados(escolasDB, "registroEscolas.txt");
+                    JOptionPane.showMessageDialog(null, "Salvo com sucesso! ", "Sucesso !",JOptionPane.INFORMATION_MESSAGE);
                 }
             } else {
                 VerificaErro erro = new VerificaErro();
@@ -1598,23 +1609,6 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_dataDeAdimissaoFocusLost
 
-    private void salarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_salarioFocusGained
-        if (salario.getText().equals("Salario")) {
-            salario.setText("");
-        }
-        if (salario.getBackground().equals(Color.red)) {
-            salario.setBackground(Color.white);
-            salario.setForeground(Color.black);
-        }
-
-    }//GEN-LAST:event_salarioFocusGained
-
-    private void salarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_salarioFocusLost
-        if (salario.getText().equals("")) {
-            salario.setText("Salario");
-        }
-    }//GEN-LAST:event_salarioFocusLost
-
     private void telefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneFocusLost
         if (telefone.getText().equals("")) {
             telefone.setText("Telefone");
@@ -1638,6 +1632,7 @@ public class Main extends javax.swing.JFrame {
                 setorSeletor.addItem(setor.getNome());
                 setorDB.add(setor);
                 salvarDados(setorDB, "registroSetor.txt");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Invalido! Escreva o nome do setor", "ERRO!",
                         JOptionPane.WARNING_MESSAGE);
@@ -1673,6 +1668,7 @@ public class Main extends javax.swing.JFrame {
         cursosSeletor.addItem(curso.getNome());
         cursosSeletorAluno.addItem(curso.getNome());
         salvarDados(cursosDB, "registroCurso.txt");
+        JOptionPane.showMessageDialog(null, "Salvo com sucesso! ", "Sucesso !",JOptionPane.INFORMATION_MESSAGE);
         }else{
             VerificaErro erro = new VerificaErro();
             erro.encontrar(escolasCurso);
@@ -1689,11 +1685,12 @@ public class Main extends javax.swing.JFrame {
             }
         }
         if (disciplinaDB.isEmpty()) {
-            if(nomeDisciplina.getText().equals("") && curso != null){
+            if(!nomeDisciplina.getText().equals("") && curso != null){
             Disciplinas disciplina = new Disciplinas( nomeDisciplina.getText(), curso);
             disciplinaDB.add(disciplina);
             DisciplinaSeletor.addItem(disciplina.getNome());
             salvarDados(disciplinaDB, "registroDisciplina.txt");
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso! ", "Sucesso !",JOptionPane.INFORMATION_MESSAGE);
             }else{
                 VerificaErro erro = new VerificaErro();
                 erro.encontrar(cursosSeletor);
@@ -1715,6 +1712,7 @@ public class Main extends javax.swing.JFrame {
             disciplinaDB.add(disciplina);
             DisciplinaSeletor.addItem(disciplina.getNome());
             salvarDados(disciplinaDB, "registroDisciplina.txt");
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso! ", "Sucesso !",JOptionPane.INFORMATION_MESSAGE);
         }
 
     }//GEN-LAST:event_btnSalvarDisciplinasActionPerformed
@@ -2273,7 +2271,7 @@ public class Main extends javax.swing.JFrame {
         JTable t1 = new JTable(TabelaEditar.getModel());
         DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
         modelo1.setNumRows(0);
-        String vetor[] = {"Nome da Escola","","",""};
+        String vetor[] = {"Nome da Escola","ID","",""};
         modelo1.setColumnIdentifiers(vetor);
         SwingUtilities.invokeLater(() -> {
             int matriculaAnterior = 0;
@@ -2287,6 +2285,7 @@ public class Main extends javax.swing.JFrame {
                     try {
                         //Enquanto houver linhas suficientes na tabela, vai preenchendo..
                         TabelaEditar.setValueAt(escola.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(escola.getId(), linhas, 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
                         //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                         JTable t = new JTable(TabelaEditar.getModel());
@@ -2294,12 +2293,14 @@ public class Main extends javax.swing.JFrame {
                         modelo.addRow(new Object[]{null, null});
                         //Preenche a linha vazia que foi criada
                         TabelaEditar.setValueAt(escola.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(escola.getId(), linhas, 1);
                     }
                     //Verifica se é a primeira passagem do loop
                 } else if (i == 0) {
                     try {
                         //Enquanto houver linhas suficientes na tabela..
                         TabelaEditar.setValueAt(escola.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(escola.getId(), linhas, 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
                         //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                         JTable t = new JTable(TabelaEditar.getModel());
@@ -2307,6 +2308,7 @@ public class Main extends javax.swing.JFrame {
                         modelo.addRow(new Object[]{null, null});
                         //Preenche a linha vazia que foi criada
                         TabelaEditar.setValueAt(escola.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(escola.getId(), linhas, 1);
                     }
                 } 
                 linhas++;
@@ -2329,7 +2331,7 @@ public class Main extends javax.swing.JFrame {
         JTable t1 = new JTable(TabelaEditar.getModel());
         DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
         modelo1.setNumRows(0);
-        String vetor[] = {"Nome do curso","","",""};
+        String vetor[] = {"Nome do curso","ID","",""};
         modelo1.setColumnIdentifiers(vetor);
         SwingUtilities.invokeLater(() -> {
             int matriculaAnterior = 0;
@@ -2343,6 +2345,7 @@ public class Main extends javax.swing.JFrame {
                     try {
                         //Enquanto houver linhas suficientes na tabela, vai preenchendo..
                         TabelaEditar.setValueAt(curso.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(curso.getId(), linhas, 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
                         //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                         JTable t = new JTable(TabelaEditar.getModel());
@@ -2350,12 +2353,14 @@ public class Main extends javax.swing.JFrame {
                         modelo.addRow(new Object[]{null, null});
                         //Preenche a linha vazia que foi criada
                         TabelaEditar.setValueAt(curso.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(curso.getId(), linhas, 1);
                     }
                     //Verifica se é a primeira passagem do loop
                 } else if (i == 0) {
                     try {
                         //Enquanto houver linhas suficientes na tabela..
                         TabelaEditar.setValueAt(curso.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(curso.getId(), linhas, 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
                         //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                         JTable t = new JTable(TabelaEditar.getModel());
@@ -2363,6 +2368,7 @@ public class Main extends javax.swing.JFrame {
                         modelo.addRow(new Object[]{null, null});
                         //Preenche a linha vazia que foi criada
                         TabelaEditar.setValueAt(curso.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(curso.getId(), linhas, 1);
                     }
                 } 
                 linhas++;
@@ -2385,7 +2391,7 @@ public class Main extends javax.swing.JFrame {
         JTable t1 = new JTable(TabelaEditar.getModel());
         DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
         modelo1.setNumRows(0);
-        String vetor[] = {"Nome da disciplina","","",""};
+        String vetor[] = {"Nome da disciplina","ID","",""};
         modelo1.setColumnIdentifiers(vetor);
         SwingUtilities.invokeLater(() -> {
             int matriculaAnterior = 0;
@@ -2399,6 +2405,7 @@ public class Main extends javax.swing.JFrame {
                     try {
                         //Enquanto houver linhas suficientes na tabela, vai preenchendo..
                         TabelaEditar.setValueAt(disciplina.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(disciplina.getId(), linhas, 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
                         //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                         JTable t = new JTable(TabelaEditar.getModel());
@@ -2406,12 +2413,14 @@ public class Main extends javax.swing.JFrame {
                         modelo.addRow(new Object[]{null, null});
                         //Preenche a linha vazia que foi criada
                         TabelaEditar.setValueAt(disciplina.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(disciplina.getId(), linhas, 1);
                     }
                     //Verifica se é a primeira passagem do loop
                 } else if (i == 0) {
                     try {
                         //Enquanto houver linhas suficientes na tabela..
                         TabelaEditar.setValueAt(disciplina.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(disciplina.getId(), linhas, 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
                         //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                         JTable t = new JTable(TabelaEditar.getModel());
@@ -2419,6 +2428,7 @@ public class Main extends javax.swing.JFrame {
                         modelo.addRow(new Object[]{null, null});
                         //Preenche a linha vazia que foi criada
                         TabelaEditar.setValueAt(disciplina.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(disciplina.getId(), linhas, 1);
                     }
                 } 
                 linhas++;
@@ -2441,7 +2451,7 @@ public class Main extends javax.swing.JFrame {
         JTable t1 = new JTable(TabelaEditar.getModel());
         DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
         modelo1.setNumRows(0);
-        String vetor[] = {"Nome da Turma","","",""};
+        String vetor[] = {"Nome da Turma","ID","",""};
         modelo1.setColumnIdentifiers(vetor);
         SwingUtilities.invokeLater(() -> {
             int matriculaAnterior = 0;
@@ -2455,6 +2465,7 @@ public class Main extends javax.swing.JFrame {
                     try {
                         //Enquanto houver linhas suficientes na tabela, vai preenchendo..
                         TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(turma.getID(), linhas, 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
                         //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                         JTable t = new JTable(TabelaEditar.getModel());
@@ -2462,12 +2473,14 @@ public class Main extends javax.swing.JFrame {
                         modelo.addRow(new Object[]{null, null});
                         //Preenche a linha vazia que foi criada
                         TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(turma.getID(), linhas, 1);
                     }
                     //Verifica se é a primeira passagem do loop
                 } else if (i == 0) {
                     try {
                         //Enquanto houver linhas suficientes na tabela..
                         TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(turma.getID(), linhas, 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
                         //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                         JTable t = new JTable(TabelaEditar.getModel());
@@ -2475,6 +2488,7 @@ public class Main extends javax.swing.JFrame {
                         modelo.addRow(new Object[]{null, null});
                         //Preenche a linha vazia que foi criada
                         TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(turma.getID(), linhas, 1);
                     }
                 } 
                 linhas++;
@@ -2598,6 +2612,22 @@ public class Main extends javax.swing.JFrame {
     private void nomeEscolaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeEscolaFocusGained
         nomeEscola.setBackground(Color.white);
     }//GEN-LAST:event_nomeEscolaFocusGained
+
+    private void salarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_salarioFocusLost
+        if (salario.getText().equals("")) {
+            salario.setText("Salario");
+        }
+    }//GEN-LAST:event_salarioFocusLost
+
+    private void salarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_salarioFocusGained
+        if (salario.getText().equals("Salario")) {
+            salario.setText("");
+        }
+        if (salario.getBackground().equals(Color.red)) {
+            salario.setBackground(Color.white);
+            salario.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_salarioFocusGained
 
     //METODO PARA REINICIALIZAR O PROGRAMA
     private void reiniciarApp() {

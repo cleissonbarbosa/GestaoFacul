@@ -4,7 +4,6 @@
  */
 package com.cleisson.gestaofacul;
 
-import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Random;
  */
 public class Escolas {
 
-    SecureRandom aleatorio = new SecureRandom();
+    Random aleatorio = new Random();
     private String nome;
     private int id;
     public Escolas(String Nome) {

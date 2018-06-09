@@ -4,7 +4,7 @@
  */
 package com.cleisson.gestaofacul;
 
-import java.security.SecureRandom;
+import java.util.Random;
 
 /**
  *
@@ -12,7 +12,7 @@ import java.security.SecureRandom;
  */
 public class Setor {
 
-    SecureRandom aleatorio = new SecureRandom();
+    Random aleatorio = new Random();
     private int id;
     private String nome;
 
