@@ -2,10 +2,10 @@
  * GNU GENERAL PUBLIC LICENSE
  *  Version 3, 29 June 2007
  */
-package com.cleisson.gestaofacul;
+package com.cleisson.gestaofacul.modelos;
 
 /**
- *
+ * Classe modelo para os registros de aluno, classe filha da classe Pessoa
  * @author Cleisson Barbosa
  */
 public class Aluno extends Pessoa {

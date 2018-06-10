@@ -1,12 +1,23 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GNU GENERAL PUBLIC LICENSE
+ *  Version 3, 29 June 2007
  */
 package com.cleisson.gestaofacul;
 
-import static com.cleisson.gestaofacul.GerenciaArmazenamento.ReadFile;
-import static com.cleisson.gestaofacul.GerenciaArmazenamento.WriteFile;
+import com.cleisson.gestaofacul.util.VerificaErro;
+import com.cleisson.gestaofacul.util.GerenciaRegistros;
+import com.cleisson.gestaofacul.modelos.Aluno;
+import com.cleisson.gestaofacul.modelos.Professor;
+import com.cleisson.gestaofacul.modelos.Disciplinas;
+import com.cleisson.gestaofacul.modelos.Administrativo;
+import com.cleisson.gestaofacul.modelos.Setor;
+import com.cleisson.gestaofacul.modelos.Turmas;
+import com.cleisson.gestaofacul.modelos.Curso;
+import com.cleisson.gestaofacul.modelos.Funcionarios;
+import com.cleisson.gestaofacul.modelos.Escolas;
+import com.cleisson.gestaofacul.util.GerarRelatorio;
+import static com.cleisson.gestaofacul.util.GerenciaArmazenamento.ReadFile;
+import static com.cleisson.gestaofacul.util.GerenciaArmazenamento.WriteFile;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.awt.Color;
@@ -20,17 +31,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
 
 /**
- *
- * @author cleisson
+ * classe principal com a interface
+ * @author Cleisson Barbosa
  */
 public class Main extends javax.swing.JFrame {
 
@@ -158,7 +167,6 @@ public class Main extends javax.swing.JFrame {
         editarTurmas = new javax.swing.JMenuItem();
 
         frameEditorPessoas.setMinimumSize(new java.awt.Dimension(700, 500));
-        frameEditorPessoas.setPreferredSize(new java.awt.Dimension(743, 533));
         frameEditorPessoas.setResizable(false);
         frameEditorPessoas.setSize(new java.awt.Dimension(690, 500));
         frameEditorPessoas.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -262,7 +270,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         frameSelecionarAlunos.setTitle("Selecionar Alunos");
-        frameSelecionarAlunos.setMaximumSize(frameEditorPessoas.getMaximumSize());
         frameSelecionarAlunos.setMinimumSize(frameEditorPessoas.getMinimumSize());
         frameSelecionarAlunos.setName("Selecionar Alunos"); // NOI18N
         frameSelecionarAlunos.setResizable(false);
@@ -362,6 +369,7 @@ public class Main extends javax.swing.JFrame {
 
         painelTabsPrincipal.setBackground(new java.awt.Color(204, 204, 204));
         painelTabsPrincipal.setForeground(new java.awt.Color(255, 0, 0));
+        painelTabsPrincipal.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         tabCadastroProfFun.setBackground(java.awt.SystemColor.controlLtHighlight);
 
@@ -581,7 +589,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastrarSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         nome.getAccessibleContext().setAccessibleName("");
@@ -762,10 +770,10 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(escolasCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(btnSalvarCurso)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
-        painelTabsPrincipal.addTab("Cadstro de Curso", tabCurso);
+        painelTabsPrincipal.addTab("Cadastro de Curso", tabCurso);
 
         tabDisciplinas.setBackground(java.awt.SystemColor.controlLtHighlight);
 
@@ -827,7 +835,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(cursosSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(btnSalvarDisciplinas)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         painelTabsPrincipal.addTab("Cadastro Disciplinas", tabDisciplinas);
@@ -930,7 +938,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(btnSelecionarAlunos))
                 .addGap(23, 23, 23)
                 .addComponent(btnSalvarTurmas)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         painelTabsPrincipal.addTab("Cadastro de Turmas", tabTurmas);
@@ -978,6 +986,7 @@ public class Main extends javax.swing.JFrame {
         });
         menuGerarRelatorio.add(relatorioAlunos);
 
+        relatorioescolas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         relatorioescolas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/escolasImagem.png"))); // NOI18N
         relatorioescolas.setText("Escolas");
         relatorioescolas.addActionListener(new java.awt.event.ActionListener() {
@@ -987,6 +996,7 @@ public class Main extends javax.swing.JFrame {
         });
         menuGerarRelatorio.add(relatorioescolas);
 
+        relatorioCursos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         relatorioCursos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/cursosImagem.png"))); // NOI18N
         relatorioCursos.setText("Cursos");
         relatorioCursos.addActionListener(new java.awt.event.ActionListener() {
@@ -996,6 +1006,7 @@ public class Main extends javax.swing.JFrame {
         });
         menuGerarRelatorio.add(relatorioCursos);
 
+        relatorioDisciplinas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         relatorioDisciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/disciplinasImagemIcone.png"))); // NOI18N
         relatorioDisciplinas.setText("Disciplinas");
         relatorioDisciplinas.addActionListener(new java.awt.event.ActionListener() {
@@ -1005,6 +1016,7 @@ public class Main extends javax.swing.JFrame {
         });
         menuGerarRelatorio.add(relatorioDisciplinas);
 
+        relatorioTurmas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         relatorioTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turmasImagensIcone.png"))); // NOI18N
         relatorioTurmas.setText("Turmas");
         relatorioTurmas.addActionListener(new java.awt.event.ActionListener() {
@@ -1198,15 +1210,17 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(txtDesenvolvedor)
-                .addGap(19, 19, 19))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparador)
-                    .addComponent(painelTabsPrincipal, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtDesenvolvedor)
+                        .addGap(19, 19, 19))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparador)
+                            .addComponent(painelTabsPrincipal, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1215,7 +1229,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(painelTabsPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(txtDesenvolvedor)
                 .addContainerGap())
         );
@@ -1345,10 +1359,9 @@ public class Main extends javax.swing.JFrame {
                     alunoDB.add(aluno);
                     salvarDados(alunoDB, "registroAluno.txt");
                 }
+                JOptionPane.showMessageDialog(null, exibeCadastro + "Salvo", "Salvo!", JOptionPane.INFORMATION_MESSAGE);
+                btnSalvar.setName("Salvo");
             }
-
-            JOptionPane.showMessageDialog(null, exibeCadastro + "Salvo", "Salvo!", JOptionPane.INFORMATION_MESSAGE);
-            btnSalvar.setName("Salvo");
         } catch (Exception e) {
 
             //Menssagem de Erro caso usuario insira uma entrada invalida
@@ -2628,7 +2641,6 @@ public class Main extends javax.swing.JFrame {
             salario.setForeground(Color.black);
         }
     }//GEN-LAST:event_salarioFocusGained
-
     //METODO PARA REINICIALIZAR O PROGRAMA
     private void reiniciarApp() {
         
@@ -2654,6 +2666,8 @@ public class Main extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        java.awt.EventQueue.invokeLater(() -> {
         /* Set the Nimbus look and feel */
         
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2662,7 +2676,7 @@ public class Main extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if (VISUALDOAPP.equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
@@ -2689,7 +2703,6 @@ public class Main extends javax.swing.JFrame {
          ar = args;
         /* Create and display the form */
         //RECUPERANDO TODOS OS DADOS SALVOS
-        java.awt.EventQueue.invokeLater(() -> {
             new Main().setVisible(true);
             Gson gson = new Gson();
             //Recupera professores
@@ -2877,6 +2890,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel txtTurmas;
     // End of variables declaration//GEN-END:variables
     //Objetos
+    
+    private static final String VISUALDOAPP = "Nimbus";
     GerarRelatorio relatorio = new GerarRelatorio();
     GerenciaRegistros deletar = new GerenciaRegistros();
     Professor professor;

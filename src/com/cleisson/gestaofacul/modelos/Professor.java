@@ -2,10 +2,10 @@
  * GNU GENERAL PUBLIC LICENSE
  *  Version 3, 29 June 2007
  */
-package com.cleisson.gestaofacul;
+package com.cleisson.gestaofacul.modelos;
 
 /**
- *
+ * classe modelo
  * @author Cleisson Barbosa
  */
 public class Professor extends Funcionarios{

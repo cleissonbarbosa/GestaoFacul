@@ -2,13 +2,13 @@
  * GNU GENERAL PUBLIC LICENSE
  *  Version 3, 29 June 2007
  */
-package com.cleisson.gestaofacul;
+package com.cleisson.gestaofacul.modelos;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
+ * classe modelo
  * @author Cleisson Barbosa
  */
 public class Turmas {

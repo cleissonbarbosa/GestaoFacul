@@ -1,25 +1,27 @@
 /*
  * GNU GENERAL PUBLIC LICENSE
- *  Version 3, 29 June 2007
+    Version 3, 29 June 2007
  */
-package com.cleisson.gestaofacul;
+package com.cleisson.gestaofacul.modelos;
 
 import java.util.Random;
 
 /**
- *
+ * classe modelo
  * @author Cleisson Barbosa
  */
-public class Escolas {
+public class Setor {
 
     Random aleatorio = new Random();
-    private String nome;
     private int id;
-    public Escolas(String Nome) {
+    private String nome;
+
+    public Setor(String Nome) {
         this.nome = Nome;
         id = aleatorio.hashCode();
     }
 
+    
     public String getNome() {
         return nome;
     }
@@ -27,14 +29,5 @@ public class Escolas {
     public void setNome(String Nome) {
         this.nome = Nome;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
 
 }

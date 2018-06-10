@@ -2,7 +2,7 @@
  * GNU GENERAL PUBLIC LICENSE
     Version 3, 29 June 2007
  */
-package com.cleisson.gestaofacul;
+package com.cleisson.gestaofacul.util;
 
 import java.io.BufferedWriter;
 import java.io.File;

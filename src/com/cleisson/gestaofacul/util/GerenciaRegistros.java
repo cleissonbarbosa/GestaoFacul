@@ -2,8 +2,15 @@
  * GNU GENERAL PUBLIC LICENSE
     Version 3, 29 June 2007
  */
-package com.cleisson.gestaofacul;
+package com.cleisson.gestaofacul.util;
 
+import com.cleisson.gestaofacul.Main;
+import com.cleisson.gestaofacul.modelos.Disciplinas;
+import com.cleisson.gestaofacul.modelos.Setor;
+import com.cleisson.gestaofacul.modelos.Turmas;
+import com.cleisson.gestaofacul.modelos.Curso;
+import com.cleisson.gestaofacul.modelos.Pessoa;
+import com.cleisson.gestaofacul.modelos.Escolas;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

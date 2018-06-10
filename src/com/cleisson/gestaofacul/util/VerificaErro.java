@@ -2,12 +2,12 @@
  * GNU GENERAL PUBLIC LICENSE
  *  Version 3, 29 June 2007
  */
-package com.cleisson.gestaofacul;
+package com.cleisson.gestaofacul.util;
 
 import java.awt.Color;
 
 /**
- *
+ * classe com metodos para verificar onde esta o erro nos relatorios e destaca-los
  * @author Cleisson Barbosa
  */
 public class VerificaErro {
