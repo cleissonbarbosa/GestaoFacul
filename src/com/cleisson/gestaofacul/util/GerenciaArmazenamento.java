@@ -24,16 +24,19 @@ import java.util.logging.Logger;
 public class GerenciaArmazenamento {
     
     public static void WriteFile(String json, String caminho) {
-        Path arquivo = Paths.get(caminho);
+        Path pasta = Paths.get("arquivos");
+        Path arquivo = Paths.get("arquivos\\" + caminho);
         
         //se o arquivo não existir
         if (!Files.exists(arquivo)) {
             BufferedWriter bw = null;
             try {
                 //cria o arquivo
-                Files.createFile(arquivo);
+                Files.createDirectories(pasta);
+                File file = new File("arquivos\\" + caminho);
+                //Files.createFile(arquivo);
                 //escreve no arquivo os registros do usuario
-                bw = new BufferedWriter(new FileWriter(arquivo.toFile(), true));
+                bw = new BufferedWriter(new FileWriter(file, true));
                 bw.write(json);
             } catch (IOException ex) {
                 Logger.getLogger(GerenciaArmazenamento.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,6 +47,8 @@ public class GerenciaArmazenamento {
                     //passando para o arquivo o atributo SOMENTE LEITURA
                     File file = new File(caminho);
                     file.setWritable(false);
+                    String comando = "C:\\WINDOWS\\System32\\ATTRIB.EXE +H arquivos";
+                    Runtime.getRuntime().exec(comando );
                 } catch (IOException ex) {
                     Logger.getLogger(GerenciaArmazenamento.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -54,12 +59,12 @@ public class GerenciaArmazenamento {
             BufferedWriter bw2 = null;
             try {
                 //Deixando o arquivo editavel temporariamente
-                File file = new File(caminho);
+                File file = new File("arquivos\\" + caminho);
                 file.setWritable(true);
                 
                 //Atualizando o arquivo com o novo registro
-                bw2 = new BufferedWriter(new FileWriter(arquivo.toFile()));
-                bw = new BufferedWriter(new FileWriter(arquivo.toFile(), true));
+                bw2 = new BufferedWriter(new FileWriter(file));
+                bw = new BufferedWriter(new FileWriter(file, true));
                 //bw.newLine();
 
                 bw.write(json);
@@ -70,8 +75,10 @@ public class GerenciaArmazenamento {
                     bw2.close();
                     bw.close();
                     //passando para o arquivo o atributo SOMENTE LEITURA
-                    File file = new File(caminho);
+                    File file = new File("arquivos\\" + caminho);
                     file.setWritable(false);
+                    String comando = "C:\\WINDOWS\\System32\\ATTRIB.EXE +H arquivos";
+                    Runtime.getRuntime().exec(comando );
                 } catch (IOException ex) {
                     Logger.getLogger(GerenciaArmazenamento.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -87,7 +94,7 @@ public class GerenciaArmazenamento {
      */
     public static ArrayList<String> ReadFile(String caminho) {
         ArrayList<String> linhas = new ArrayList<>();
-        Path arquivo = Paths.get(caminho);
+        Path arquivo = Paths.get("arquivos\\" + caminho);
         if (Files.exists(arquivo)) {
             try {
                 linhas = (ArrayList<String>) Files.readAllLines(arquivo, Charset.defaultCharset());

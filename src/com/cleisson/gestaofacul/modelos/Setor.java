@@ -13,7 +13,7 @@ import java.util.Random;
 public class Setor {
 
     Random aleatorio = new Random();
-    private int id;
+    private final int id;
     private String nome;
 
     public Setor(String Nome) {
