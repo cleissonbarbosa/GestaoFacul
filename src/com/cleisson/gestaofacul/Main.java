@@ -74,8 +74,22 @@ public class Main extends javax.swing.JFrame {
         btnSelecionarAluno = new javax.swing.JButton();
         btnCalcelarSelecaoAluno = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        painelTabsPrincipal = new javax.swing.JTabbedPane();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        painelAEsquerda = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        txtTituloApp = new javax.swing.JLabel();
+        btnTabPessoas = new javax.swing.JButton();
+        btnTabEscolas = new javax.swing.JButton();
+        btnTabCursos = new javax.swing.JButton();
+        btnTabDiaciplinas = new javax.swing.JButton();
+        btnTabTurmas = new javax.swing.JButton();
+        btnSairEsq = new javax.swing.JButton();
+        btnSobre = new javax.swing.JButton();
+        txtDesenvolvedor = new javax.swing.JLabel();
+        jSeparador = new javax.swing.JSeparator();
+        painelADireita = new javax.swing.JPanel();
         tabCadastroProfFun = new javax.swing.JPanel();
+        tabCadastroProfFun.setVisible(false);
         nome = new javax.swing.JTextField();
         matricula = new javax.swing.JTextField();
         endereco = new javax.swing.JTextField();
@@ -89,8 +103,6 @@ public class Main extends javax.swing.JFrame {
 
         setorSeletor = new javax.swing.JComboBox<>();
         this.setorSeletor.setEnabled(false);
-        txtCadastroDePessoas = new javax.swing.JLabel();
-        imgCadastroDePessoas = new javax.swing.JLabel();
         txtEscolhaEscola = new javax.swing.JLabel();
         btnCadastrarSetor = new javax.swing.JButton();
         this.btnCadastrarSetor.setEnabled(false);
@@ -100,32 +112,42 @@ public class Main extends javax.swing.JFrame {
         this.txtEscolhaSetor.setEnabled(false);
         txtEscolhaCurso = new javax.swing.JLabel();
         this.txtEscolhaCurso.setEnabled(false);
+        jPanel3 = new javax.swing.JPanel();
+        txtCadastroDePessoas = new javax.swing.JLabel();
+        imgCadastroDePessoas = new javax.swing.JLabel();
+        IconePessoa = new javax.swing.JLabel();
         tabCadastroEscolas = new javax.swing.JPanel();
-        nomeEscola = new javax.swing.JTextField();
-        btnSalvarEscola = new javax.swing.JButton();
+        tabCadastroEscolas.setVisible(false);
         escolhaEscola = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaVerProfessores = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
-        imgEscola = new javax.swing.JLabel();
         progressoTabela = new javax.swing.JProgressBar();
-        txtCadastrarEscola = new javax.swing.JLabel();
         txtListarProfessores = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        imgEscola = new javax.swing.JLabel();
+        nomeEscola = new javax.swing.JTextField();
+        btnSalvarEscola = new javax.swing.JButton();
+        txtCadastrarEscola = new javax.swing.JLabel();
         tabCurso = new javax.swing.JPanel();
-        txtCurso = new javax.swing.JLabel();
+        tabCurso.setVisible(false);
         nomeCurso = new javax.swing.JTextField();
         escolasCurso = new javax.swing.JComboBox<>();
         btnSalvarCurso = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        txtCurso = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
         imgCursos = new javax.swing.JLabel();
         tabDisciplinas = new javax.swing.JPanel();
-        txtDisciplinas = new javax.swing.JLabel();
-        imgDisciplinas = new javax.swing.JLabel();
+        tabDisciplinas.setVisible(false);
         nomeDisciplina = new javax.swing.JTextField();
         cursosSeletor = new javax.swing.JComboBox<>();
         btnSalvarDisciplinas = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        imgDisciplinas = new javax.swing.JLabel();
+        txtDisciplinas = new javax.swing.JLabel();
         tabTurmas = new javax.swing.JPanel();
-        txtTurmas = new javax.swing.JLabel();
-        imgTurmas = new javax.swing.JLabel();
+        tabTurmas.setVisible(false);
         nomeTurma = new javax.swing.JTextField();
         DisciplinaSeletor = new javax.swing.JComboBox<>();
         btnSalvarTurmas = new javax.swing.JButton();
@@ -134,8 +156,11 @@ public class Main extends javax.swing.JFrame {
         txtEscolhaProfessor = new javax.swing.JLabel();
         txtAlunosParticipantesTurmas = new javax.swing.JLabel();
         btnSelecionarAlunos = new javax.swing.JButton();
-        txtDesenvolvedor = new javax.swing.JLabel();
-        jSeparador = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
+        imgTurmas = new javax.swing.JLabel();
+        txtTurmas = new javax.swing.JLabel();
+        backGround = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         menuBarPrincipal = new javax.swing.JMenuBar();
         MenuGerarRelatorio = new javax.swing.JMenu();
         menuGerarRelatorio = new javax.swing.JMenu();
@@ -363,15 +388,210 @@ public class Main extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImages(null);
         setLocation(new java.awt.Point(150, 150));
+        setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(700, 500));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(980, 532));
         setResizable(false);
         setSize(new java.awt.Dimension(690, 500));
 
-        painelTabsPrincipal.setBackground(new java.awt.Color(204, 204, 204));
-        painelTabsPrincipal.setForeground(new java.awt.Color(255, 0, 0));
-        painelTabsPrincipal.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jLayeredPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jLayeredPane1.setPreferredSize(new java.awt.Dimension(980, 500));
 
-        tabCadastroProfFun.setBackground(java.awt.SystemColor.controlLtHighlight);
+        painelAEsquerda.setBackground(new java.awt.Color(28, 31, 39));
+        painelAEsquerda.setPreferredSize(new java.awt.Dimension(252, 500));
+        painelAEsquerda.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                painelAEsquerdaMouseDragged(evt);
+            }
+        });
+        painelAEsquerda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                painelAEsquerdaMousePressed(evt);
+            }
+        });
+
+        txtTituloApp.setFont(new java.awt.Font("Perpetua Titling MT", 1, 14)); // NOI18N
+        txtTituloApp.setForeground(new java.awt.Color(255, 255, 255));
+        txtTituloApp.setText("Gestão Universidade");
+
+        btnTabPessoas.setBackground(new java.awt.Color(39, 39, 39));
+        btnTabPessoas.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        btnTabPessoas.setForeground(new java.awt.Color(255, 255, 255));
+        btnTabPessoas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/pessoasIconeBranco.png"))); // NOI18N
+        btnTabPessoas.setText("Cadastrar Pessoas");
+        btnTabPessoas.setBorder(null);
+        btnTabPessoas.setContentAreaFilled(false);
+        btnTabPessoas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnTabPessoas.setIconTextGap(20);
+        btnTabPessoas.setOpaque(true);
+        btnTabPessoas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTabPessoasActionPerformed(evt);
+            }
+        });
+
+        btnTabEscolas.setBackground(btnTabPessoas.getBackground());
+        btnTabEscolas.setFont(btnTabPessoas.getFont());
+        btnTabEscolas.setForeground(new java.awt.Color(255, 255, 255));
+        btnTabEscolas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/escolasIconeBranco.png"))); // NOI18N
+        btnTabEscolas.setText("Cadastrar Escolas");
+        btnTabEscolas.setBorder(null);
+        btnTabEscolas.setContentAreaFilled(false);
+        btnTabEscolas.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnTabEscolas.setIconTextGap(20);
+        btnTabEscolas.setOpaque(true);
+        btnTabEscolas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTabEscolasActionPerformed(evt);
+            }
+        });
+
+        btnTabCursos.setBackground(btnTabPessoas.getBackground());
+        btnTabCursos.setFont(btnTabPessoas.getFont());
+        btnTabCursos.setForeground(new java.awt.Color(255, 255, 255));
+        btnTabCursos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CursoIconeBranco.png"))); // NOI18N
+        btnTabCursos.setText("Cadastrar Cursos");
+        btnTabCursos.setBorder(null);
+        btnTabCursos.setContentAreaFilled(false);
+        btnTabCursos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnTabCursos.setIconTextGap(20);
+        btnTabCursos.setOpaque(true);
+        btnTabCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTabCursosActionPerformed(evt);
+            }
+        });
+
+        btnTabDiaciplinas.setBackground(btnTabPessoas.getBackground());
+        btnTabDiaciplinas.setFont(btnTabPessoas.getFont());
+        btnTabDiaciplinas.setForeground(new java.awt.Color(255, 255, 255));
+        btnTabDiaciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/disciplinaIconeBranco.png"))); // NOI18N
+        btnTabDiaciplinas.setText("Cadastrar Disciplinas");
+        btnTabDiaciplinas.setBorder(null);
+        btnTabDiaciplinas.setContentAreaFilled(false);
+        btnTabDiaciplinas.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnTabDiaciplinas.setIconTextGap(20);
+        btnTabDiaciplinas.setOpaque(true);
+        btnTabDiaciplinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTabDiaciplinasActionPerformed(evt);
+            }
+        });
+
+        btnTabTurmas.setBackground(btnTabPessoas.getBackground());
+        btnTabTurmas.setFont(btnTabPessoas.getFont());
+        btnTabTurmas.setForeground(new java.awt.Color(255, 255, 255));
+        btnTabTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turmasIconeBranco.png"))); // NOI18N
+        btnTabTurmas.setText("Cadastrar Turmas");
+        btnTabTurmas.setBorder(null);
+        btnTabTurmas.setContentAreaFilled(false);
+        btnTabTurmas.setIconTextGap(20);
+        btnTabTurmas.setOpaque(true);
+        btnTabTurmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTabTurmasActionPerformed(evt);
+            }
+        });
+
+        btnSairEsq.setBackground(new java.awt.Color(255, 51, 51));
+        btnSairEsq.setFont(btnTabPessoas.getFont());
+        btnSairEsq.setForeground(new java.awt.Color(255, 255, 255));
+        btnSairEsq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sairImagem.png"))); // NOI18N
+        btnSairEsq.setText("Sair");
+        btnSairEsq.setBorder(null);
+        btnSairEsq.setContentAreaFilled(false);
+        btnSairEsq.setIconTextGap(10);
+        btnSairEsq.setOpaque(true);
+        btnSairEsq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairEsqActionPerformed(evt);
+            }
+        });
+
+        btnSobre.setBackground(new java.awt.Color(102, 153, 255));
+        btnSobre.setFont(btnTabPessoas.getFont());
+        btnSobre.setForeground(new java.awt.Color(255, 255, 255));
+        btnSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/selecionarImagem.png"))); // NOI18N
+        btnSobre.setText("Sobre");
+        btnSobre.setBorder(null);
+        btnSobre.setContentAreaFilled(false);
+        btnSobre.setIconTextGap(20);
+        btnSobre.setOpaque(true);
+        btnSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSobreActionPerformed(evt);
+            }
+        });
+
+        txtDesenvolvedor.setForeground(new java.awt.Color(255, 255, 255));
+        txtDesenvolvedor.setText("Desenvolvido por: Cleisson B.");
+
+        javax.swing.GroupLayout painelAEsquerdaLayout = new javax.swing.GroupLayout(painelAEsquerda);
+        painelAEsquerda.setLayout(painelAEsquerdaLayout);
+        painelAEsquerdaLayout.setHorizontalGroup(
+            painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnTabPessoas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnTabEscolas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnTabDiaciplinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnTabTurmas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnTabCursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                        .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
+                            .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                                .addComponent(btnSairEsq, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                                .addComponent(btnSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                        .addComponent(jSeparador)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAEsquerdaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAEsquerdaLayout.createSequentialGroup()
+                                .addComponent(txtTituloApp)
+                                .addGap(35, 35, 35))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAEsquerdaLayout.createSequentialGroup()
+                                .addComponent(txtDesenvolvedor)
+                                .addGap(49, 49, 49))))))
+        );
+        painelAEsquerdaLayout.setVerticalGroup(
+            painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(txtTituloApp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTabPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTabEscolas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTabCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTabDiaciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTabTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSairEsq, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtDesenvolvedor)
+                .addGap(19, 19, 19))
+        );
+
+        painelADireita.setBackground(new java.awt.Color(255, 255, 255));
+        painelADireita.setPreferredSize(new java.awt.Dimension(748, 500));
+
+        tabCadastroProfFun.setBackground(new java.awt.Color(255, 255, 255));
 
         nome.setText("Nome completo");
         nome.setToolTipText("Informe o nome completo");
@@ -446,21 +666,27 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        btnSalvar.setBackground(new java.awt.Color(255, 255, 255));
         btnSalvar.setFont(new java.awt.Font("Tekton Pro Cond", 0, 18)); // NOI18N
-        btnSalvar.setForeground(new java.awt.Color(0, 153, 51));
+        btnSalvar.setForeground(new java.awt.Color(55, 38, 91));
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/save.png"))); // NOI18N
         btnSalvar.setText("Salvar");
+        btnSalvar.setBorder(btnCadastrarSetor.getBorder());
         btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvar.setIconTextGap(8);
         btnSalvar.setName(""); // NOI18N
+        btnSalvar.setOpaque(true);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
             }
         });
 
+        escolha.setBackground(new java.awt.Color(55, 38, 91));
         escolha.setFont(escolas.getFont());
         escolha.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professores", "Funcionarios", "Alunos" }));
+        escolha.setBorder(null);
+        escolha.setOpaque(false);
         escolha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 escolhaActionPerformed(evt);
@@ -469,8 +695,10 @@ public class Main extends javax.swing.JFrame {
 
         txtQuemVoceQuerCadastrar.setText("Quem você quer cadastrar?");
 
+        escolas.setBackground(new java.awt.Color(55, 38, 91));
         escolas.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
 
+        setorSeletor.setBackground(new java.awt.Color(55, 38, 91));
         setorSeletor.setFont(escolas.getFont());
         setorSeletor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -478,145 +706,160 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        txtCadastroDePessoas.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
-        txtCadastroDePessoas.setForeground(new java.awt.Color(102, 102, 102));
-        txtCadastroDePessoas.setText("Cadastro de pessoas");
-
-        imgCadastroDePessoas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroImagem.png"))); // NOI18N
-
         txtEscolhaEscola.setText("Escolha a escola:");
 
+        btnCadastrarSetor.setBackground(new java.awt.Color(255, 255, 255));
+        btnCadastrarSetor.setForeground(new java.awt.Color(55, 38, 91));
         btnCadastrarSetor.setText("Cadastrar setor");
+        btnCadastrarSetor.setOpaque(true);
         btnCadastrarSetor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarSetorActionPerformed(evt);
             }
         });
 
+        cursosSeletorAluno.setBackground(new java.awt.Color(55, 38, 91));
         cursosSeletorAluno.setFont(escolas.getFont());
 
         txtEscolhaSetor.setText("Escolha o Setor:");
 
         txtEscolhaCurso.setText("Escolha o Curso:");
 
+        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+
+        txtCadastroDePessoas.setBackground(new java.awt.Color(255, 255, 255));
+        txtCadastroDePessoas.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
+        txtCadastroDePessoas.setForeground(new java.awt.Color(255, 255, 255));
+        txtCadastroDePessoas.setText("Cadastro de pessoas");
+
+        imgCadastroDePessoas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroImagem.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imgCadastroDePessoas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCadastroDePessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(145, 145, 145))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(txtCadastroDePessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imgCadastroDePessoas))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        IconePessoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/professorImagem.png"))); // NOI18N
+
         javax.swing.GroupLayout tabCadastroProfFunLayout = new javax.swing.GroupLayout(tabCadastroProfFun);
         tabCadastroProfFun.setLayout(tabCadastroProfFunLayout);
         tabCadastroProfFunLayout.setHorizontalGroup(
             tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nome, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(matricula))
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(dataDeAdimissao, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(telefone)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroProfFunLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnSalvar)
-                                .addGap(191, 191, 191)
-                                .addComponent(btnCadastrarSetor)
-                                .addGap(51, 51, 51))
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEscolhaEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEscolhaSetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(setorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(cursosSeletorAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(txtEscolhaCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                        .addGap(239, 239, 239)
-                        .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(txtQuemVoceQuerCadastrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                                .addComponent(imgCadastroDePessoas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCadastroDePessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 86, Short.MAX_VALUE)))
+                        .addComponent(dataDeAdimissao, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                        .addComponent(txtEscolhaEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(163, 163, 163)
+                        .addComponent(txtEscolhaSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                        .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(setorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEscolhaCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cursosSeletorAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                        .addGap(241, 241, 241)
+                        .addComponent(btnSalvar)
+                        .addGap(191, 191, 191)
+                        .addComponent(btnCadastrarSetor)))
                 .addContainerGap())
+            .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                .addGap(205, 205, 205)
+                .addComponent(txtQuemVoceQuerCadastrar)
+                .addGap(10, 10, 10)
+                .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(IconePessoa)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         tabCadastroProfFunLayout.setVerticalGroup(
             tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtCadastroDePessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imgCadastroDePessoas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtQuemVoceQuerCadastrar)
-                    .addComponent(escolha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(tabCadastroProfFunLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(txtQuemVoceQuerCadastrar))
+                    .addComponent(escolha)
+                    .addComponent(IconePessoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(matricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(matricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dataDeAdimissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(6, 6, 6)
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEscolhaEscola)
                     .addComponent(txtEscolhaSetor))
                 .addGap(6, 6, 6)
-                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(setorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(escolas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(setorSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addComponent(txtEscolhaCurso)
                 .addGap(5, 5, 5)
                 .addComponent(cursosSeletorAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addGroup(tabCadastroProfFunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCadastrarSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(btnSalvar)
+                    .addComponent(btnCadastrarSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         nome.getAccessibleContext().setAccessibleName("");
 
-        painelTabsPrincipal.addTab("Cadastro de Pessoas", tabCadastroProfFun);
+        tabCadastroEscolas.setBackground(new java.awt.Color(255, 255, 255));
 
-        nomeEscola.setText("Nome Da Escola");
-        nomeEscola.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                nomeEscolaFocusGained(evt);
-            }
-        });
-
-        btnSalvarEscola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/save.png"))); // NOI18N
-        btnSalvarEscola.setText("Salvar");
-        btnSalvarEscola.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarEscolaActionPerformed(evt);
-            }
-        });
-
+        escolhaEscola.setBackground(new java.awt.Color(0, 102, 102));
         escolhaEscola.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha uma Escola" }));
         escolhaEscola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 escolhaEscolaActionPerformed(evt);
             }
         });
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setForeground(new java.awt.Color(102, 0, 0));
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setOpaque(false);
 
         tabelaVerProfessores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -639,36 +882,77 @@ public class Main extends javax.swing.JFrame {
             tabelaVerProfessores.getColumnModel().getColumn(0).setPreferredWidth(150);
         }
 
-        imgEscola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/EscolaImagem.png"))); // NOI18N
-
-        progressoTabela.setBackground(new java.awt.Color(204, 204, 204));
+        progressoTabela.setBackground(new java.awt.Color(0, 153, 51));
         progressoTabela.setForeground(new java.awt.Color(102, 102, 102));
+        progressoTabela.setOpaque(true);
         progressoTabela.setStringPainted(true);
-
-        txtCadastrarEscola.setFont(new java.awt.Font("SimSun", 0, 24)); // NOI18N
-        txtCadastrarEscola.setForeground(new java.awt.Color(102, 102, 102));
-        txtCadastrarEscola.setText("Cadastrar Escolas");
 
         txtListarProfessores.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
         txtListarProfessores.setText("Lista de Professores relacionados a escolas");
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+
+        imgEscola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/EscolaImagem.png"))); // NOI18N
+
+        nomeEscola.setText("Nome Da Escola");
+        nomeEscola.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomeEscolaFocusGained(evt);
+            }
+        });
+
+        btnSalvarEscola.setBackground(new java.awt.Color(255, 255, 255));
+        btnSalvarEscola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/save.png"))); // NOI18N
+        btnSalvarEscola.setText("Salvar");
+        btnSalvarEscola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarEscolaActionPerformed(evt);
+            }
+        });
+
+        txtCadastrarEscola.setFont(new java.awt.Font("Rockwell Condensed", 0, 36)); // NOI18N
+        txtCadastrarEscola.setForeground(new java.awt.Color(255, 255, 255));
+        txtCadastrarEscola.setText("Cadastrar Escolas");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(nomeEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalvarEscola))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addComponent(imgEscola)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCadastrarEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(imgEscola)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtCadastrarEscola)
+                        .addGap(27, 27, 27)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nomeEscola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvarEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout tabCadastroEscolasLayout = new javax.swing.GroupLayout(tabCadastroEscolas);
         tabCadastroEscolas.setLayout(tabCadastroEscolasLayout);
         tabCadastroEscolasLayout.setHorizontalGroup(
             tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroEscolasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imgEscola)
-                .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(txtCadastrarEscola))
-                    .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nomeEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalvarEscola)))
-                .addGap(28, 28, 28))
             .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -679,23 +963,14 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(escolhaEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtListarProfessores))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 12, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         tabCadastroEscolasLayout.setVerticalGroup(
             tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tabCadastroEscolasLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(txtCadastrarEscola)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(tabCadastroEscolasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nomeEscola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSalvarEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3))
-                    .addComponent(imgEscola, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
@@ -705,22 +980,17 @@ public class Main extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(progressoTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        painelTabsPrincipal.addTab("Cadastro de Escolas", tabCadastroEscolas);
 
         tabCurso.setBackground(java.awt.SystemColor.window);
 
-        txtCurso.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
-        txtCurso.setForeground(new java.awt.Color(102, 102, 102));
-        txtCurso.setText("Cadastro de Cursos");
-
         nomeCurso.setText("Nome do Curso");
 
+        escolasCurso.setBackground(new java.awt.Color(0, 153, 153));
         escolasCurso.setFont(escolas.getFont());
 
+        btnSalvarCurso.setBackground(new java.awt.Color(255, 255, 255));
         btnSalvarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/save.png"))); // NOI18N
         btnSalvarCurso.setText("Salvar");
         btnSalvarCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -729,8 +999,51 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jPanel5.setBackground(new java.awt.Color(153, 153, 153));
+
+        txtCurso.setFont(new java.awt.Font("SimSun-ExtB", 1, 24)); // NOI18N
+        txtCurso.setForeground(new java.awt.Color(255, 255, 255));
+        txtCurso.setText("Cadastro de Cursos");
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        imgCursos.setBackground(new java.awt.Color(255, 255, 255));
         imgCursos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CursoImagem.png"))); // NOI18N
         imgCursos.setMinimumSize(new java.awt.Dimension(341, 300));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imgCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(326, 326, 326))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(imgCursos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(248, Short.MAX_VALUE)
+                .addComponent(txtCurso)
+                .addGap(247, 247, 247))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCurso)
+                .addGap(5, 5, 5))
+        );
 
         javax.swing.GroupLayout tabCursoLayout = new javax.swing.GroupLayout(tabCurso);
         tabCurso.setLayout(tabCursoLayout);
@@ -744,50 +1057,33 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(nomeCurso)
                             .addComponent(escolasCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(tabCursoLayout.createSequentialGroup()
-                        .addGroup(tabCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabCursoLayout.createSequentialGroup()
-                                .addGap(306, 306, 306)
-                                .addComponent(btnSalvarCurso))
-                            .addGroup(tabCursoLayout.createSequentialGroup()
-                                .addGap(248, 248, 248)
-                                .addComponent(txtCurso))
-                            .addGroup(tabCursoLayout.createSequentialGroup()
-                                .addGap(318, 318, 318)
-                                .addComponent(imgCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 244, Short.MAX_VALUE)))
+                        .addGap(306, 306, 306)
+                        .addComponent(btnSalvarCurso)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         tabCursoLayout.setVerticalGroup(
             tabCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabCursoLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(imgCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCurso)
-                .addGap(52, 52, 52)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
                 .addComponent(nomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(escolasCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(btnSalvarCurso)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
-
-        painelTabsPrincipal.addTab("Cadastro de Curso", tabCurso);
 
         tabDisciplinas.setBackground(java.awt.SystemColor.controlLtHighlight);
 
-        txtDisciplinas.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
-        txtDisciplinas.setForeground(new java.awt.Color(102, 102, 102));
-        txtDisciplinas.setText("Cadastro de Disciplinas");
-
-        imgDisciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/disciplinasImagem.png"))); // NOI18N
-        imgDisciplinas.setMinimumSize(new java.awt.Dimension(341, 300));
-
         nomeDisciplina.setText("Nome da disciplina");
 
+        cursosSeletor.setBackground(new java.awt.Color(153, 153, 0));
         cursosSeletor.setFont(escolas.getFont());
 
+        btnSalvarDisciplinas.setBackground(new java.awt.Color(255, 255, 255));
         btnSalvarDisciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/save.png"))); // NOI18N
         btnSalvarDisciplinas.setText("Salvar");
         btnSalvarDisciplinas.addActionListener(new java.awt.event.ActionListener() {
@@ -795,6 +1091,39 @@ public class Main extends javax.swing.JFrame {
                 btnSalvarDisciplinasActionPerformed(evt);
             }
         });
+
+        jPanel4.setBackground(new java.awt.Color(153, 153, 153));
+
+        imgDisciplinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/disciplinasImagem.png"))); // NOI18N
+        imgDisciplinas.setMinimumSize(new java.awt.Dimension(341, 300));
+
+        txtDisciplinas.setBackground(new java.awt.Color(255, 255, 255));
+        txtDisciplinas.setFont(new java.awt.Font("SimSun-ExtB", 1, 24)); // NOI18N
+        txtDisciplinas.setForeground(new java.awt.Color(255, 255, 255));
+        txtDisciplinas.setText("Cadastro de Disciplinas");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(221, Short.MAX_VALUE)
+                .addComponent(txtDisciplinas)
+                .addGap(210, 210, 210))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(317, 317, 317)
+                .addComponent(imgDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(imgDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtDisciplinas)
+                .addGap(20, 20, 20))
+        );
 
         javax.swing.GroupLayout tabDisciplinasLayout = new javax.swing.GroupLayout(tabDisciplinas);
         tabDisciplinas.setLayout(tabDisciplinasLayout);
@@ -808,51 +1137,35 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(nomeDisciplina)
                             .addComponent(cursosSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(tabDisciplinasLayout.createSequentialGroup()
-                        .addGroup(tabDisciplinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabDisciplinasLayout.createSequentialGroup()
-                                .addGap(306, 306, 306)
-                                .addComponent(btnSalvarDisciplinas))
-                            .addGroup(tabDisciplinasLayout.createSequentialGroup()
-                                .addGap(205, 205, 205)
-                                .addComponent(txtDisciplinas)))
-                        .addGap(0, 227, Short.MAX_VALUE)))
+                        .addGap(306, 306, 306)
+                        .addComponent(btnSalvarDisciplinas)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(tabDisciplinasLayout.createSequentialGroup()
-                .addGap(307, 307, 307)
-                .addComponent(imgDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         tabDisciplinasLayout.setVerticalGroup(
             tabDisciplinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabDisciplinasLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(imgDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDisciplinas)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(nomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(cursosSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(btnSalvarDisciplinas)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        painelTabsPrincipal.addTab("Cadastro Disciplinas", tabDisciplinas);
-
         tabTurmas.setBackground(java.awt.SystemColor.controlLtHighlight);
-
-        txtTurmas.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
-        txtTurmas.setForeground(new java.awt.Color(102, 102, 102));
-        txtTurmas.setText("Cadastro de Turmas");
-
-        imgTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turmasImagem.png"))); // NOI18N
-        imgTurmas.setMinimumSize(new java.awt.Dimension(341, 300));
+        tabTurmas.setOpaque(false);
 
         nomeTurma.setText("Nome da Turma");
 
+        DisciplinaSeletor.setBackground(new java.awt.Color(0, 153, 153));
         DisciplinaSeletor.setFont(escolas.getFont());
+        DisciplinaSeletor.setForeground(new java.awt.Color(204, 204, 0));
 
+        btnSalvarTurmas.setBackground(new java.awt.Color(255, 255, 255));
         btnSalvarTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/save.png"))); // NOI18N
         btnSalvarTurmas.setText("Salvar");
         btnSalvarTurmas.addActionListener(new java.awt.event.ActionListener() {
@@ -861,7 +1174,9 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        ProfessorSeletor.setBackground(new java.awt.Color(0, 153, 153));
         ProfessorSeletor.setFont(escolas.getFont());
+        ProfessorSeletor.setForeground(new java.awt.Color(204, 0, 204));
 
         txtEscolhaDisciplina.setText("Escolha uma disciplina:");
 
@@ -877,51 +1192,76 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+
+        imgTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turmasImagem.png"))); // NOI18N
+        imgTurmas.setMinimumSize(new java.awt.Dimension(341, 300));
+
+        txtTurmas.setBackground(new java.awt.Color(255, 255, 255));
+        txtTurmas.setFont(new java.awt.Font("SimSun-ExtB", 1, 24)); // NOI18N
+        txtTurmas.setForeground(new java.awt.Color(255, 255, 255));
+        txtTurmas.setText("Cadastro de Turmas");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(326, 326, 326)
+                        .addComponent(imgTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(246, 246, 246)
+                        .addComponent(txtTurmas)))
+                .addContainerGap(248, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imgTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtTurmas)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout tabTurmasLayout = new javax.swing.GroupLayout(tabTurmas);
         tabTurmas.setLayout(tabTurmasLayout);
         tabTurmasLayout.setHorizontalGroup(
             tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabTurmasLayout.createSequentialGroup()
-                .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tabTurmasLayout.createSequentialGroup()
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabTurmasLayout.createSequentialGroup()
+                .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabTurmasLayout.createSequentialGroup()
                         .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabTurmasLayout.createSequentialGroup()
-                                .addGap(307, 307, 307)
-                                .addComponent(imgTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(tabTurmasLayout.createSequentialGroup()
-                                .addGap(237, 237, 237)
-                                .addComponent(txtTurmas))
                             .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addGap(307, 307, 307)
                                 .addComponent(btnSalvarTurmas))
                             .addGroup(tabTurmasLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(txtEscolhaDisciplina)))
+                                .addComponent(txtEscolhaDisciplina))
+                            .addGroup(tabTurmasLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEscolhaProfessor)
+                                    .addGroup(tabTurmasLayout.createSequentialGroup()
+                                        .addComponent(txtAlunosParticipantesTurmas)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnSelecionarAlunos)))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(tabTurmasLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomeTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+                        .addGroup(tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nomeTurma)
                             .addComponent(DisciplinaSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ProfessorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(tabTurmasLayout.createSequentialGroup()
-                                .addComponent(txtEscolhaProfessor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 590, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(ProfessorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
-            .addGroup(tabTurmasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtAlunosParticipantesTurmas)
-                .addGap(18, 18, 18)
-                .addComponent(btnSelecionarAlunos)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tabTurmasLayout.setVerticalGroup(
             tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabTurmasLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(imgTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTurmas)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(nomeTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
@@ -938,12 +1278,114 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(btnSelecionarAlunos))
                 .addGap(23, 23, 23)
                 .addComponent(btnSalvarTurmas)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        painelTabsPrincipal.addTab("Cadastro de Turmas", tabTurmas);
+        backGround.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtDesenvolvedor.setText("Desenvolvido por: Cleisson B.");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeApp.png"))); // NOI18N
+
+        javax.swing.GroupLayout backGroundLayout = new javax.swing.GroupLayout(backGround);
+        backGround.setLayout(backGroundLayout);
+        backGroundLayout.setHorizontalGroup(
+            backGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backGroundLayout.createSequentialGroup()
+                .addContainerGap(114, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103))
+        );
+        backGroundLayout.setVerticalGroup(
+            backGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout painelADireitaLayout = new javax.swing.GroupLayout(painelADireita);
+        painelADireita.setLayout(painelADireitaLayout);
+        painelADireitaLayout.setHorizontalGroup(
+            painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelADireitaLayout.createSequentialGroup()
+                .addComponent(tabCadastroProfFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 23, Short.MAX_VALUE))
+            .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelADireitaLayout.createSequentialGroup()
+                    .addComponent(tabCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 19, Short.MAX_VALUE)))
+            .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelADireitaLayout.createSequentialGroup()
+                    .addComponent(tabDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 18, Short.MAX_VALUE)))
+            .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelADireitaLayout.createSequentialGroup()
+                    .addComponent(tabTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 20, Short.MAX_VALUE)))
+            .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelADireitaLayout.createSequentialGroup()
+                    .addComponent(tabCadastroEscolas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 18, Short.MAX_VALUE)))
+            .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(backGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        painelADireitaLayout.setVerticalGroup(
+            painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelADireitaLayout.createSequentialGroup()
+                .addComponent(tabCadastroProfFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 121, Short.MAX_VALUE))
+            .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelADireitaLayout.createSequentialGroup()
+                    .addComponent(tabCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 147, Short.MAX_VALUE)))
+            .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelADireitaLayout.createSequentialGroup()
+                    .addComponent(tabDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 167, Short.MAX_VALUE)))
+            .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelADireitaLayout.createSequentialGroup()
+                    .addComponent(tabTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 79, Short.MAX_VALUE)))
+            .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelADireitaLayout.createSequentialGroup()
+                    .addComponent(tabCadastroEscolas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 95, Short.MAX_VALUE)))
+            .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelADireitaLayout.createSequentialGroup()
+                    .addComponent(backGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 82, Short.MAX_VALUE)))
+        );
+
+        tabCadastroEscolas.getAccessibleContext().setAccessibleName("");
+        tabCadastroEscolas.getAccessibleContext().setAccessibleParent(jLayeredPane1);
+
+        jLayeredPane1.setLayer(painelAEsquerda, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(painelADireita, javax.swing.JLayeredPane.PALETTE_LAYER);
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                .addComponent(painelAEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelADireita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(painelAEsquerda, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+            .addComponent(painelADireita, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+        );
+
+        menuBarPrincipal.setBackground(painelAEsquerda.getBackground());
+        menuBarPrincipal.setForeground(new java.awt.Color(255, 102, 102));
+        menuBarPrincipal.setOpaque(false);
+        menuBarPrincipal.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                menuBarPrincipalMouseDragged(evt);
+            }
+        });
+        menuBarPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menuBarPrincipalMousePressed(evt);
+            }
+        });
 
         MenuGerarRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/opcoesImagem.png"))); // NOI18N
         MenuGerarRelatorio.setText("Opções");
@@ -1209,29 +1651,11 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtDesenvolvedor)
-                        .addGap(19, 19, 19))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparador)
-                            .addComponent(painelTabsPrincipal, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1006, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(painelTabsPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(txtDesenvolvedor)
-                .addContainerGap())
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
         );
 
         pack();
@@ -1243,6 +1667,7 @@ public class Main extends javax.swing.JFrame {
             //Verifica se foi selecionado o item professor
             if (escolha.getSelectedItem().equals("Professores")) {
                 //Habilita o escolas e desabilita o setor
+                IconePessoa.setIcon(MenuItemProfessor.getIcon());
                 escolas.setEnabled(true);
                 dataDeAdimissao.setEnabled(true);
                 txtEscolhaEscola.setEnabled(true);
@@ -1254,6 +1679,7 @@ public class Main extends javax.swing.JFrame {
                 salario.setEnabled(true);
             } else if (escolha.getSelectedItem().equals("Funcionarios")) {
                 //inverte caso seja selecionado outra opção
+                IconePessoa.setIcon(MenuItemFunc.getIcon());
                 escolas.setEnabled(false);
                 dataDeAdimissao.setEnabled(true);
                 txtEscolhaEscola.setEnabled(false);
@@ -1263,6 +1689,7 @@ public class Main extends javax.swing.JFrame {
                 cursosSeletorAluno.setEnabled(false);
                 salario.setEnabled(true);
             } else if (escolha.getSelectedItem().equals("Alunos")) {
+                IconePessoa.setIcon(MenuItemAluno.getIcon());
                 escolas.setEnabled(false);
                 txtEscolhaCurso.setEnabled(true);
                 txtEscolhaSetor.setEnabled(false);
@@ -1965,6 +2392,8 @@ public class Main extends javax.swing.JFrame {
         JTable t1 = new JTable(TabelaEditar.getModel());
         DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
         modelo1.setNumRows(0);
+        String vetor[] = {"Nome do Professor","Matricula","Endereço","Telefone"};
+        modelo1.setColumnIdentifiers(vetor);
         SwingUtilities.invokeLater(() -> {
             int matriculaAnterior = 0;
             int linhas = 0;
@@ -2126,6 +2555,8 @@ public class Main extends javax.swing.JFrame {
         JTable t1 = new JTable(TabelaEditar.getModel());
         DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
         modelo1.setNumRows(0);
+        String vetor[] = {"Nome do Aluno","Matricula","Endereço","Telefone"};
+        modelo1.setColumnIdentifiers(vetor);
         SwingUtilities.invokeLater(() -> {
             int matriculaAnterior = 0;
             int linhas = 0;
@@ -2205,6 +2636,8 @@ public class Main extends javax.swing.JFrame {
         JTable t1 = new JTable(TabelaEditar.getModel());
         DefaultTableModel modelo1 = (DefaultTableModel) t1.getModel();
         modelo1.setNumRows(0);
+        String vetor[] = {"Nome do Funcionario","Matricula","Endereço","Telefone"};
+        modelo1.setColumnIdentifiers(vetor);
         SwingUtilities.invokeLater(() -> {
             int matriculaAnterior = 0;
             int linhas = 0;
@@ -2641,6 +3074,118 @@ public class Main extends javax.swing.JFrame {
             salario.setForeground(Color.black);
         }
     }//GEN-LAST:event_salarioFocusGained
+
+    private void btnTabPessoasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTabPessoasActionPerformed
+        btnTabDiaciplinas.setBackground(Color.DARK_GRAY);
+        btnTabCursos.setBackground(Color.DARK_GRAY);
+        btnTabTurmas.setBackground(Color.DARK_GRAY);
+        btnTabEscolas.setBackground(Color.DARK_GRAY);
+        btnTabPessoas.setBackground(Color.LIGHT_GRAY);
+        backGround.setVisible(false);
+        tabCadastroProfFun.setVisible(true);
+        tabCadastroEscolas.setVisible(false);
+        tabCurso.setVisible(false);
+        tabDisciplinas.setVisible(false);
+        tabTurmas.setVisible(false);
+    }//GEN-LAST:event_btnTabPessoasActionPerformed
+
+    private void btnTabEscolasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTabEscolasActionPerformed
+        btnTabDiaciplinas.setBackground(Color.DARK_GRAY);
+        btnTabCursos.setBackground(Color.DARK_GRAY);
+        btnTabTurmas.setBackground(Color.DARK_GRAY);
+        btnTabEscolas.setBackground(Color.LIGHT_GRAY);
+        btnTabPessoas.setBackground(Color.DARK_GRAY);
+        backGround.setVisible(false);
+        tabCadastroProfFun.setVisible(false);
+        tabCadastroEscolas.setVisible(true);
+        tabCurso.setVisible(false);
+        tabDisciplinas.setVisible(false);
+        tabTurmas.setVisible(false);
+    }//GEN-LAST:event_btnTabEscolasActionPerformed
+
+    private void btnTabCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTabCursosActionPerformed
+        btnTabDiaciplinas.setBackground(Color.DARK_GRAY);
+        btnTabCursos.setBackground(Color.LIGHT_GRAY);
+        btnTabTurmas.setBackground(Color.DARK_GRAY);
+        btnTabEscolas.setBackground(Color.DARK_GRAY);
+        btnTabPessoas.setBackground(Color.DARK_GRAY);
+        backGround.setVisible(false);
+        tabCadastroProfFun.setVisible(false);
+        tabCadastroEscolas.setVisible(false);
+        tabCurso.setVisible(true);
+        tabDisciplinas.setVisible(false);
+        tabTurmas.setVisible(false);
+    }//GEN-LAST:event_btnTabCursosActionPerformed
+
+    private void btnTabDiaciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTabDiaciplinasActionPerformed
+        btnTabDiaciplinas.setBackground(Color.LIGHT_GRAY);
+        btnTabCursos.setBackground(Color.DARK_GRAY);
+        btnTabTurmas.setBackground(Color.DARK_GRAY);
+        btnTabEscolas.setBackground(Color.DARK_GRAY);
+        btnTabPessoas.setBackground(Color.DARK_GRAY);
+        backGround.setVisible(false);
+        tabCadastroProfFun.setVisible(false);
+        tabCadastroEscolas.setVisible(false);
+        tabCurso.setVisible(false);
+        tabDisciplinas.setVisible(true);
+        tabTurmas.setVisible(false);
+    }//GEN-LAST:event_btnTabDiaciplinasActionPerformed
+
+    private void btnTabTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTabTurmasActionPerformed
+        btnTabDiaciplinas.setBackground(Color.DARK_GRAY);
+        btnTabCursos.setBackground(Color.DARK_GRAY);
+        btnTabTurmas.setBackground(Color.LIGHT_GRAY);
+        btnTabEscolas.setBackground(Color.DARK_GRAY);
+        btnTabPessoas.setBackground(Color.DARK_GRAY);
+        backGround.setVisible(false);
+        tabCadastroProfFun.setVisible(false);
+        tabCadastroEscolas.setVisible(false);
+        tabCurso.setVisible(false);
+        tabDisciplinas.setVisible(false);
+        tabTurmas.setVisible(true);
+    }//GEN-LAST:event_btnTabTurmasActionPerformed
+
+    private void btnSairEsqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairEsqActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSairEsqActionPerformed
+
+    private void btnSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSobreActionPerformed
+        btnTabDiaciplinas.setBackground(Color.DARK_GRAY);
+        btnTabCursos.setBackground(Color.DARK_GRAY);
+        btnTabTurmas.setBackground(Color.DARK_GRAY);
+        btnTabEscolas.setBackground(Color.DARK_GRAY);
+        btnTabPessoas.setBackground(Color.DARK_GRAY);
+        btnSobre.setFocusable(true);
+        backGround.setVisible(true);
+        tabCadastroProfFun.setVisible(false);
+        tabCadastroEscolas.setVisible(false);
+        tabCurso.setVisible(false);
+        tabDisciplinas.setVisible(false);
+        tabTurmas.setVisible(false);
+    }//GEN-LAST:event_btnSobreActionPerformed
+
+    int xx, xy;
+    private void painelAEsquerdaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelAEsquerdaMousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_painelAEsquerdaMousePressed
+
+    private void painelAEsquerdaMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelAEsquerdaMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x-xx,y-xy);
+    }//GEN-LAST:event_painelAEsquerdaMouseDragged
+
+    private void menuBarPrincipalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBarPrincipalMousePressed
+         xx = evt.getX();
+         xy = evt.getY();
+    }//GEN-LAST:event_menuBarPrincipalMousePressed
+
+    private void menuBarPrincipalMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBarPrincipalMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x-xx,y-xy);
+    }//GEN-LAST:event_menuBarPrincipalMouseDragged
     //METODO PARA REINICIALIZAR O PROGRAMA
     private void reiniciarApp() {
         
@@ -2791,6 +3336,7 @@ public class Main extends javax.swing.JFrame {
 //Variaveis da interface grafica
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JComboBox<String> DisciplinaSeletor;
+    private javax.swing.JLabel IconePessoa;
     private javax.swing.JMenu MenuGerarRelatorio;
     private javax.swing.JMenuItem MenuItemAluno;
     private javax.swing.JMenuItem MenuItemCurso;
@@ -2803,10 +3349,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuItemTurma;
     private static javax.swing.JComboBox<String> ProfessorSeletor;
     private javax.swing.JTable TabelaEditar;
+    private javax.swing.JPanel backGround;
     private javax.swing.JButton btnCadastrarSetor;
     private javax.swing.JButton btnCalcelarEditar;
     private javax.swing.JButton btnCalcelarSelecaoAluno;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnSairEsq;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvarCurso;
     private javax.swing.JButton btnSalvarDisciplinas;
@@ -2814,6 +3362,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvarTurmas;
     private javax.swing.JButton btnSelecionarAluno;
     private javax.swing.JButton btnSelecionarAlunos;
+    private javax.swing.JButton btnSobre;
+    private javax.swing.JButton btnTabCursos;
+    private javax.swing.JButton btnTabDiaciplinas;
+    private javax.swing.JButton btnTabEscolas;
+    private javax.swing.JButton btnTabPessoas;
+    private javax.swing.JButton btnTabTurmas;
     private static javax.swing.JComboBox<String> cursosSeletor;
     private static javax.swing.JComboBox<String> cursosSeletorAluno;
     private javax.swing.JTextField dataDeAdimissao;
@@ -2837,11 +3391,20 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel imgEscola;
     private javax.swing.JLabel imgTurmas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparador;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField matricula;
     private javax.swing.JMenuBar menuBarPrincipal;
@@ -2853,9 +3416,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField nomeDisciplina;
     private javax.swing.JTextField nomeEscola;
     private javax.swing.JTextField nomeTurma;
+    private javax.swing.JPanel painelADireita;
+    private javax.swing.JPanel painelAEsquerda;
     private javax.swing.JInternalFrame painelEditar;
     private javax.swing.JInternalFrame painelSelecionarAlunos;
-    private javax.swing.JTabbedPane painelTabsPrincipal;
     private javax.swing.JProgressBar progressoTabela;
     private javax.swing.JMenuItem relatorioAlunos;
     private javax.swing.JMenuItem relatorioCursos;
@@ -2887,6 +3451,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel txtEscolhaSetor;
     private javax.swing.JLabel txtListarProfessores;
     private javax.swing.JLabel txtQuemVoceQuerCadastrar;
+    private javax.swing.JLabel txtTituloApp;
     private javax.swing.JLabel txtTurmas;
     // End of variables declaration//GEN-END:variables
     //Objetos
