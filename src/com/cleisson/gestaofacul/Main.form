@@ -809,6 +809,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Component id="txtVoceEstaUsando" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtgetSo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -831,6 +838,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnTabTurmas" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtVoceEstaUsando" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtgetSo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnSairEsq" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="btnSobre" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
@@ -1053,6 +1065,24 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparador">
+            </Component>
+            <Component class="javax.swing.JLabel" name="txtVoceEstaUsando">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Voc&#xea; esta usando:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="txtgetSo">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="txtgetSo.setText(System.getProperty(&quot;os.name&quot;));&#xd;&#xa;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

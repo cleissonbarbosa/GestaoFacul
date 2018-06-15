@@ -40,11 +40,12 @@ import javax.swing.table.DefaultTableModel;
 /**
  * classe principal com a interface
  * @author Cleisson Barbosa
+ * @version 1.0.4
  */
 public class Main extends javax.swing.JFrame {
 
     /**
-     * Creates new form professores
+     * Creates new form Main
      */
     public Main() {
         initComponents();
@@ -87,6 +88,9 @@ public class Main extends javax.swing.JFrame {
         btnSobre = new javax.swing.JButton();
         txtDesenvolvedor = new javax.swing.JLabel();
         jSeparador = new javax.swing.JSeparator();
+        txtVoceEstaUsando = new javax.swing.JLabel();
+        txtgetSo = new javax.swing.JLabel();
+        txtgetSo.setText(System.getProperty("os.name"));
         painelADireita = new javax.swing.JPanel();
         tabCadastroProfFun = new javax.swing.JPanel();
         tabCadastroProfFun.setVisible(false);
@@ -527,6 +531,11 @@ public class Main extends javax.swing.JFrame {
         txtDesenvolvedor.setForeground(new java.awt.Color(255, 255, 255));
         txtDesenvolvedor.setText("Desenvolvido por: Cleisson B.");
 
+        txtVoceEstaUsando.setForeground(new java.awt.Color(255, 255, 255));
+        txtVoceEstaUsando.setText("Você esta usando:");
+
+        txtgetSo.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout painelAEsquerdaLayout = new javax.swing.GroupLayout(painelAEsquerda);
         painelAEsquerda.setLayout(painelAEsquerdaLayout);
         painelAEsquerdaLayout.setHorizontalGroup(
@@ -556,7 +565,13 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                                 .addComponent(btnSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparador))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(txtVoceEstaUsando)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtgetSo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         painelAEsquerdaLayout.setVerticalGroup(
             painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -576,6 +591,10 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTabTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtVoceEstaUsando)
+                    .addComponent(txtgetSo))
+                .addGap(59, 59, 59)
                 .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSairEsq, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -3245,15 +3264,18 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         //RECUPERANDO TODOS OS DADOS SALVOS
             new Main().setVisible(true);
+            
             Gson gson = new Gson();
             //Recupera professores
             java.lang.reflect.Type tipoProf = new TypeToken<ArrayList<Professor>>() {
             }.getType();
+            
             ReadFile("registroProfessor.txt").forEach((s) -> {
                 professorDB = gson.fromJson(s, tipoProf);
                 for (int i = 0; i < professorDB.size(); i++) {
                     Professor professor = (Professor) professorDB.get(i);
                     ProfessorSeletor.addItem(professor.getNome());
+                    
                 }
             });
             //Recupera Alunos
@@ -3449,6 +3471,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel txtQuemVoceQuerCadastrar;
     private javax.swing.JLabel txtTituloApp;
     private javax.swing.JLabel txtTurmas;
+    private javax.swing.JLabel txtVoceEstaUsando;
+    private javax.swing.JLabel txtgetSo;
     // End of variables declaration//GEN-END:variables
     //Objetos
     

@@ -20,18 +20,28 @@ import java.util.logging.Logger;
  * Gerenciar o armazenamento dos registros salvos, criando o arquivo
  * e atribuindo a ele os registros do usuario
  * @author Cleisson Barbosa
+ * @version 1.0.4
  */
 public class GerenciaArmazenamento {
     
     public static void WriteFile(String json, String caminho) {
-        Path pasta = Paths.get("arquivos");
-        Path arquivo = Paths.get("arquivos\\" + caminho);
+        Path pasta;
+        Path arquivo;
+        if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+            pasta = Paths.get(".arquivos");
+            arquivo = Paths.get(".arquivos\\" + caminho);
+        } else {
+            pasta = Paths.get("arquivos");
+            arquivo = Paths.get("arquivos\\" + caminho);
+        }
+        
         
         //se o arquivo não existir
         if (!Files.exists(arquivo)) {
             BufferedWriter bw = null;
             try {
                 //cria o arquivo
+                
                 Files.createDirectories(pasta);
                 File file = new File("arquivos\\" + caminho);
                 //Files.createFile(arquivo);
@@ -47,8 +57,10 @@ public class GerenciaArmazenamento {
                     //passando para o arquivo o atributo SOMENTE LEITURA
                     File file = new File(caminho);
                     file.setWritable(false);
+                    if(System.getProperty("os.name").toLowerCase().contains("windows")){
                     String comando = "C:\\WINDOWS\\System32\\ATTRIB.EXE +H arquivos";
                     Runtime.getRuntime().exec(comando );
+                    }
                 } catch (IOException ex) {
                     Logger.getLogger(GerenciaArmazenamento.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -77,8 +89,10 @@ public class GerenciaArmazenamento {
                     //passando para o arquivo o atributo SOMENTE LEITURA
                     File file = new File("arquivos\\" + caminho);
                     file.setWritable(false);
+                    if(System.getProperty("os.name").toLowerCase().contains("windows")){
                     String comando = "C:\\WINDOWS\\System32\\ATTRIB.EXE +H arquivos";
                     Runtime.getRuntime().exec(comando );
+                    }
                 } catch (IOException ex) {
                     Logger.getLogger(GerenciaArmazenamento.class.getName()).log(Level.SEVERE, null, ex);
                 }
