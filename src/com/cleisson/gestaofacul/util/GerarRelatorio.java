@@ -157,7 +157,7 @@ public class GerarRelatorio {
     public void gerarPDF(ArrayList lista, String classe) {
         // criação do documento
         Document document = new Document();
-        Professor professor;
+        //Professor professor;
 
         try {
             Tabela tabela = new Tabela(lista, classe);
@@ -167,11 +167,11 @@ public class GerarRelatorio {
             // adicionando ao documento
             Font font = new Font(Font.FontFamily.HELVETICA, 18, 3);
             document.addTitle("Relatorio Completo de " + classe + " - Projeto de P.O.O.");
-            document.add(new ListItem("Relatorio Completo  de " + classe + " -  Gestão Faculdade", font));
+            document.add(new ListItem("Relatorio Completo de " + classe + " - Gestão Faculdade", font));
             document.add(new LineSeparator(1, 100, BaseColor.RED, 1, -4));
             document.add(new Paragraph("\n\n"));
             document.add(new PdfPTable(tabela.table));
-            JOptionPane.showMessageDialog(null, "PDF de " + classe + " foi criado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "PDF de " + classe + " foi criado com sucesso!\n Clique em OK para abrir o PDF !", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
             java.awt.Desktop.getDesktop().open(new File("Relatorio-Completo__Gestão-Faculdade__" + classe + ".pdf"));
         } catch (DocumentException | IOException de) {
             System.err.println(de.getMessage());

@@ -1751,7 +1751,7 @@ public class Main extends javax.swing.JFrame {
                     Escolas escola = null;
                     for (int i = 0; i < escolasDB.size(); i++) {
                         escola = (Escolas) escolasDB.get(i);
-                        if (this.escolas.getSelectedItem().toString().equals(escola.getNome())) {
+                        if (Main.escolas.getSelectedItem().toString().equals(escola.getNome())) {
                             break;
                         }
                     }
@@ -1771,7 +1771,7 @@ public class Main extends javax.swing.JFrame {
                     Setor setor = null;
                     for (int i = 0; i < setorDB.size(); i++) {
                         setor = (Setor) setorDB.get(i);
-                        if (this.setorSeletor.getSelectedItem().toString().equals(setor.getNome())) {
+                        if (Main.setorSeletor.getSelectedItem().toString().equals(setor.getNome())) {
                             break;
                         }
                     }
@@ -1780,7 +1780,7 @@ public class Main extends javax.swing.JFrame {
                             salarioFunc, this.endereco.getText(), matriculaFunc, nome.getText(), telefoneFunc);
 
                     exibeCadastro = administrativo.getNome() + " | " + administrativo.getMatricula() + " | "
-                            + this.setorSeletor.getSelectedItem().toString() + "\n";
+                            + Main.setorSeletor.getSelectedItem().toString() + "\n";
 
                     //Adicionando o novo objeto no Arrey List
                     funcionarioDB.add(administrativo);
@@ -3474,21 +3474,22 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel txtVoceEstaUsando;
     private javax.swing.JLabel txtgetSo;
     // End of variables declaration//GEN-END:variables
+
     //Objetos
-    
     private static final String VISUALDOAPP = "Nimbus";
     GerarRelatorio relatorio = new GerarRelatorio();
     GerenciaRegistros deletar = new GerenciaRegistros();
     Professor professor;
-    Administrativo administrativo;
+    Funcionarios administrativo;
     Funcionarios funcionario;
     Aluno aluno;
     Professor anterior;
-    
     Turmas turma = new Turmas();
+    
     //Strings
     private String exibeCadastro = "";
     private static String[] ar;
+    
     //Arrays
     public static ArrayList alunosSelecionados = new ArrayList(); 
     public static ArrayList professorDB = new ArrayList();
@@ -3499,6 +3500,7 @@ public class Main extends javax.swing.JFrame {
     public static ArrayList disciplinaDB = new ArrayList();
     public static ArrayList turmasDB = new ArrayList();
     public static ArrayList setorDB = new ArrayList();
+    
     //Variaveis do tipo primitivo
     private int dataAdimicao;
     private int matriculaFunc;

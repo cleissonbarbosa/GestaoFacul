@@ -8,7 +8,7 @@ package com.cleisson.gestaofacul.modelos;
  * classe modelo para o registro de funcionarios classe filha da classe pessoa
  * @author Cleisson Barbosa
  */
-public class Funcionarios extends Pessoa{
+abstract public class Funcionarios extends Pessoa{
     
     protected float salario;
     protected int dataDeAdimissao;

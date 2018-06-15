@@ -8,7 +8,7 @@ package com.cleisson.gestaofacul.modelos;
  * classe modelo pai
  * @author Cleisson Barbosa
  */
-public class Pessoa {
+abstract public class Pessoa {
     
     protected String endereco;
     protected int matricula;
