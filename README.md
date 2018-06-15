@@ -16,10 +16,14 @@ Cadastro de pessoas
 Cadastro de Escolas
 ![alt text](https://uploaddeimagens.com.br/images/001/466/043/full/CE-GU.png?1529031722)
 
-![alt text](https://uploaddeimagens.com.br/images/001/457/806/full/TelaSelecionarAlunos.png?1528532243)
+Cadastro de Cursos:
+![alt text](https://uploaddeimagens.com.br/images/001/466/044/full/CC-GU.png?1529031781)
 
-![alt text](https://uploaddeimagens.com.br/images/001/457/807/full/MenusGerarRelatorio.png?1528532281)
+Cadastro de Turmas:
+![alt text](https://uploaddeimagens.com.br/images/001/466/047/full/CT-GU.png?1529031952)
 
-![alt text](https://uploaddeimagens.com.br/images/001/457/808/full/MenusGerarRelatorio.png?1528532316)
+Ver ou Editar Registros:
+![alt text](https://uploaddeimagens.com.br/images/001/466/048/full/EDITAR-GU.png?1529031991)
 
-![alt text](https://uploaddeimagens.com.br/images/001/457/809/full/MenusVerEditarRegistros.png?1528532352)
+Deletar Registros:
+![alt text](https://uploaddeimagens.com.br/images/001/466/051/full/Screenshot_1.png?1529032053)
