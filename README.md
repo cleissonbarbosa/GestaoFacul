@@ -1,16 +1,20 @@
 # GestaoFacul
 Projeto da disciplina de Programação Orientada a Objetos
 # Screenshot's
+Home da aplicação:
+![alt text](https://uploaddeimagens.com.br/images/001/466/034/full/homeGU.png?1529031437)
 
-![alt text](https://uploaddeimagens.com.br/images/001/457/800/full/CadastroDeAlunos-ScrennShot.png?1528531947)
+Menu Gerar Relatorio:
+![alt text](https://uploaddeimagens.com.br/images/001/466/038/full/MENU-GU.png?1529031526)
 
-![alt text](https://uploaddeimagens.com.br/images/001/457/801/full/TelaCadastro.png?1528532003)
+Menu Deletar Registros
+![alt text](https://uploaddeimagens.com.br/images/001/466/036/full/MENUDEL-GU.png?1529031506)
 
-![alt text](https://uploaddeimagens.com.br/images/001/457/802/full/TelaEscolas.png?1528532064)
+Cadastro de pessoas
+![alt text](https://uploaddeimagens.com.br/images/001/466/041/full/CPGU.png?1529031648)
 
-![alt text](https://uploaddeimagens.com.br/images/001/457/803/full/TelaCursos.png?1528532157)
-
-![alt text](https://uploaddeimagens.com.br/images/001/457/805/full/TelaDisciplinas.png?1528532194)
+Cadastro de Escolas
+![alt text](https://uploaddeimagens.com.br/images/001/466/043/full/CE-GU.png?1529031722)
 
 ![alt text](https://uploaddeimagens.com.br/images/001/457/806/full/TelaSelecionarAlunos.png?1528532243)
 
