@@ -497,7 +497,7 @@ public class Main extends javax.swing.JFrame {
         btnSairEsq.setBackground(new java.awt.Color(255, 51, 51));
         btnSairEsq.setFont(btnTabPessoas.getFont());
         btnSairEsq.setForeground(new java.awt.Color(255, 255, 255));
-        btnSairEsq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sairImagem.png"))); // NOI18N
+        btnSairEsq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/sairImagem.png"))); // NOI18N
         btnSairEsq.setText("Sair");
         btnSairEsq.setBorder(null);
         btnSairEsq.setContentAreaFilled(false);
@@ -512,7 +512,7 @@ public class Main extends javax.swing.JFrame {
         btnSobre.setBackground(new java.awt.Color(102, 153, 255));
         btnSobre.setFont(btnTabPessoas.getFont());
         btnSobre.setForeground(new java.awt.Color(255, 255, 255));
-        btnSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/selecionarImagem.png"))); // NOI18N
+        btnSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/selecionarImagem.png"))); // NOI18N
         btnSobre.setText("Sobre");
         btnSobre.setBorder(null);
         btnSobre.setContentAreaFilled(false);
@@ -539,17 +539,6 @@ public class Main extends javax.swing.JFrame {
             .addGroup(painelAEsquerdaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelAEsquerdaLayout.createSequentialGroup()
-                        .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1)
-                            .addGroup(painelAEsquerdaLayout.createSequentialGroup()
-                                .addComponent(btnSairEsq, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                                .addComponent(btnSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(painelAEsquerdaLayout.createSequentialGroup()
-                        .addComponent(jSeparador)
-                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAEsquerdaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,7 +547,16 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(35, 35, 35))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAEsquerdaLayout.createSequentialGroup()
                                 .addComponent(txtDesenvolvedor)
-                                .addGap(49, 49, 49))))))
+                                .addGap(49, 49, 49))))
+                    .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                        .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
+                            .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                                .addComponent(btnSairEsq, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                                .addComponent(btnSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparador))
+                        .addContainerGap())))
         );
         painelAEsquerdaLayout.setVerticalGroup(
             painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -675,7 +673,6 @@ public class Main extends javax.swing.JFrame {
         btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvar.setIconTextGap(8);
         btnSalvar.setName(""); // NOI18N
-        btnSalvar.setOpaque(true);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -711,7 +708,6 @@ public class Main extends javax.swing.JFrame {
         btnCadastrarSetor.setBackground(new java.awt.Color(255, 255, 255));
         btnCadastrarSetor.setForeground(new java.awt.Color(55, 38, 91));
         btnCadastrarSetor.setText("Cadastrar setor");
-        btnCadastrarSetor.setOpaque(true);
         btnCadastrarSetor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarSetorActionPerformed(evt);
@@ -757,7 +753,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        IconePessoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/professorImagem.png"))); // NOI18N
+        IconePessoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/professorImagem.png"))); // NOI18N
 
         javax.swing.GroupLayout tabCadastroProfFunLayout = new javax.swing.GroupLayout(tabCadastroProfFun);
         tabCadastroProfFun.setLayout(tabCadastroProfFunLayout);
@@ -1283,7 +1279,7 @@ public class Main extends javax.swing.JFrame {
 
         backGround.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeApp.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconeApp.png"))); // NOI18N
 
         javax.swing.GroupLayout backGroundLayout = new javax.swing.GroupLayout(backGround);
         backGround.setLayout(backGroundLayout);
