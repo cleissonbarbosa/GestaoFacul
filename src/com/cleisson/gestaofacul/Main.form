@@ -800,23 +800,37 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jSeparator1" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
+                                  <Component id="jSeparador" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Component id="btnSairEsq" min="-2" pref="101" max="-2" attributes="0"/>
                                       <EmptySpace pref="22" max="32767" attributes="0"/>
                                       <Component id="btnSobre" min="-2" pref="109" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jSeparador" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="txtArquitetura" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtSetArquitetura" min="-2" pref="105" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Component id="txtVoceEstaUsando" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtgetSo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="txtUsuario" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtNomeUsuario" min="-2" pref="105" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -837,12 +851,22 @@
                       <Component id="btnTabDiaciplinas" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnTabTurmas" min="-2" pref="33" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtVoceEstaUsando" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtgetSo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtArquitetura" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSetArquitetura" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNomeUsuario" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnSairEsq" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="btnSobre" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
@@ -1081,8 +1105,44 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="txtgetSo.setText(System.getProperty(&quot;os.name&quot;));&#xd;&#xa;"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="txtgetSo.setText(System.getProperty(&quot;os.name&quot;, &quot;N&#xe3;o encontrado&quot;));&#xd;&#xa;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="txtArquitetura">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Arquitetura:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="txtSetArquitetura">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="txtSetArquitetura.setText(System.getProperty(&quot;os.arch&quot;, &quot;N&#xe3;o encontrada&quot;));&#xd;&#xa; "/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="txtNomeUsuario">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="txtNomeUsuario.setText(System.getProperty(&quot;user.name&quot;, &quot;N&#xe3;o encontrado&quot;));&#xd;&#xa; "/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="txtUsuario">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Usuario:"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

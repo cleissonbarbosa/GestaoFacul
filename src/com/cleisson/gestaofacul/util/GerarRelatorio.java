@@ -138,6 +138,9 @@ public class GerarRelatorio {
                         table.addCell(disc.getCurso().getNome());
                     }
                     break;
+                default:
+                    System.err.println("Nenhuma das opções correspondentes");
+                    break;
             }
             tableHeight = table.getTotalHeight();
         }
@@ -171,7 +174,7 @@ public class GerarRelatorio {
             document.add(new LineSeparator(1, 100, BaseColor.RED, 1, -4));
             document.add(new Paragraph("\n\n"));
             document.add(new PdfPTable(tabela.table));
-            JOptionPane.showMessageDialog(null, "PDF de " + classe + " foi criado com sucesso!\n Clique em OK para abrir o PDF !", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "PDF de " + classe + " foi criado com sucesso!\nClique em OK para abrir o PDF !", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
             java.awt.Desktop.getDesktop().open(new File("Relatorio-Completo__Gestão-Faculdade__" + classe + ".pdf"));
         } catch (DocumentException | IOException de) {
             System.err.println(de.getMessage());

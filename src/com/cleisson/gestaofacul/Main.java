@@ -90,7 +90,15 @@ public class Main extends javax.swing.JFrame {
         jSeparador = new javax.swing.JSeparator();
         txtVoceEstaUsando = new javax.swing.JLabel();
         txtgetSo = new javax.swing.JLabel();
-        txtgetSo.setText(System.getProperty("os.name"));
+        txtgetSo.setText(System.getProperty("os.name", "Não encontrado"));
+        txtArquitetura = new javax.swing.JLabel();
+        txtSetArquitetura = new javax.swing.JLabel();
+        txtSetArquitetura.setText(System.getProperty("os.arch", "Não encontrada"));
+
+        txtNomeUsuario = new javax.swing.JLabel();
+        txtNomeUsuario.setText(System.getProperty("user.name", "Não encontrado"));
+
+        txtUsuario = new javax.swing.JLabel();
         painelADireita = new javax.swing.JPanel();
         tabCadastroProfFun = new javax.swing.JPanel();
         tabCadastroProfFun.setVisible(false);
@@ -536,6 +544,16 @@ public class Main extends javax.swing.JFrame {
 
         txtgetSo.setForeground(new java.awt.Color(255, 255, 255));
 
+        txtArquitetura.setForeground(new java.awt.Color(255, 255, 255));
+        txtArquitetura.setText("Arquitetura:");
+
+        txtSetArquitetura.setForeground(new java.awt.Color(255, 255, 255));
+
+        txtNomeUsuario.setForeground(new java.awt.Color(255, 255, 255));
+
+        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setText("Usuario:");
+
         javax.swing.GroupLayout painelAEsquerdaLayout = new javax.swing.GroupLayout(painelAEsquerda);
         painelAEsquerda.setLayout(painelAEsquerdaLayout);
         painelAEsquerdaLayout.setHorizontalGroup(
@@ -560,18 +578,28 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(painelAEsquerdaLayout.createSequentialGroup()
                         .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1)
-                            .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                            .addComponent(jSeparador)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAEsquerdaLayout.createSequentialGroup()
                                 .addComponent(btnSairEsq, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                                .addComponent(btnSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparador))
-                        .addContainerGap())
+                                .addComponent(btnSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
+            .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAEsquerdaLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addComponent(txtArquitetura)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSetArquitetura, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelAEsquerdaLayout.createSequentialGroup()
                         .addComponent(txtVoceEstaUsando)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtgetSo)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(txtgetSo))
+                    .addGroup(painelAEsquerdaLayout.createSequentialGroup()
+                        .addComponent(txtUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         painelAEsquerdaLayout.setVerticalGroup(
             painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -590,11 +618,19 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(btnTabDiaciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTabTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtVoceEstaUsando)
                     .addComponent(txtgetSo))
-                .addGap(59, 59, 59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtArquitetura)
+                    .addComponent(txtSetArquitetura, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsuario)
+                    .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSairEsq, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1740,7 +1776,7 @@ public class Main extends javax.swing.JFrame {
                     String dataFormatada = formato.format(data);
                     dataAdimicao = Integer.parseInt(dataFormatada);
                 }
-                matriculaFunc = Integer.parseInt(this.matricula.getText()) + 1;
+                matriculaFunc = Integer.parseInt(this.matricula.getText());
                 if (!this.escolha.getSelectedItem().equals("Alunos")) {
                     salarioFunc = Float.parseFloat(this.salario.getText());
                 }
@@ -3457,6 +3493,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable tabelaVerProfessores;
     private javax.swing.JTextField telefone;
     private javax.swing.JLabel txtAlunosParticipantesTurmas;
+    private javax.swing.JLabel txtArquitetura;
     private javax.swing.JLabel txtCadastrarEscola;
     private javax.swing.JLabel txtCadastroDePessoas;
     private javax.swing.JLabel txtCurso;
@@ -3468,9 +3505,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel txtEscolhaProfessor;
     private javax.swing.JLabel txtEscolhaSetor;
     private javax.swing.JLabel txtListarProfessores;
+    private javax.swing.JLabel txtNomeUsuario;
     private javax.swing.JLabel txtQuemVoceQuerCadastrar;
+    private javax.swing.JLabel txtSetArquitetura;
     private javax.swing.JLabel txtTituloApp;
     private javax.swing.JLabel txtTurmas;
+    private javax.swing.JLabel txtUsuario;
     private javax.swing.JLabel txtVoceEstaUsando;
     private javax.swing.JLabel txtgetSo;
     // End of variables declaration//GEN-END:variables
