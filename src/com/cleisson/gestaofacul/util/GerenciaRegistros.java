@@ -62,32 +62,16 @@ public class GerenciaRegistros {
     }
 
     //Metodo para deletar todos os registros de uma unica vez
-    public boolean todosRegistros() {
+    public boolean todosRegistros(File arquivo) {
         //convertendo todos os caminhos em path
-        Path arquivo0 = Paths.get("registroProfessor.txt");
-        Path arquivo1 = Paths.get("registroAluno.txt");
-        Path arquivo2 = Paths.get("registroCurso.txt");
-        Path arquivo3 = Paths.get("registroDisciplina.txt");
-        Path arquivo4 = Paths.get("registroTurma.txt");
-        Path arquivo5 = Paths.get("registroSetor.txt");
-        Path arquivo6 = Paths.get("registroAdm.txt");
-        Path arquivo7 = Paths.get("registroEscolas.txt");
-        try {
-            //deleta os arquivos se eles existirem
-            Files.deleteIfExists(arquivo0);
-            Files.deleteIfExists(arquivo1);
-            Files.deleteIfExists(arquivo2);
-            Files.deleteIfExists(arquivo3);
-            Files.deleteIfExists(arquivo4);
-            Files.deleteIfExists(arquivo5);
-            Files.deleteIfExists(arquivo6);
-            Files.deleteIfExists(arquivo7);
-            this.deletado = true;
-        } catch (IOException ex) {
-            this.deletado = false;
-            Logger.getLogger(GerenciaRegistros.class.getName()).log(Level.SEVERE, null, ex);
+        if (arquivo.isDirectory()) {
+            File[] files = arquivo.listFiles();
+            for (int i = 0; i < files.length; ++i) {
+                todosRegistros (files[i]);
+            }
         }
-        return deletado;
+        arquivo.delete();
+        return true;
     }
 
     //metodo para remover um elemento da lista e dos registros

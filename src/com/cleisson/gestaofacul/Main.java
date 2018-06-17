@@ -212,7 +212,9 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        painelEditar.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         painelEditar.setTitle("Ver e/ou Editar os Registros");
+        painelEditar.setAutoscrolls(true);
         painelEditar.setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/editarImagem.png"))); // NOI18N
         painelEditar.setVisible(true);
 
@@ -312,7 +314,9 @@ public class Main extends javax.swing.JFrame {
         frameSelecionarAlunos.setResizable(false);
         frameSelecionarAlunos.setSize(new java.awt.Dimension(690, 500));
 
+        painelSelecionarAlunos.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         painelSelecionarAlunos.setTitle("Selecione os alunos desta turma");
+        painelSelecionarAlunos.setAutoscrolls(true);
         painelSelecionarAlunos.setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/alunoImagen.png"))); // NOI18N
         painelSelecionarAlunos.setVisible(true);
 
@@ -623,11 +627,11 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txtVoceEstaUsando)
                     .addComponent(txtgetSo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtArquitetura)
                     .addComponent(txtSetArquitetura, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelAEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUsuario)
                     .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -805,7 +809,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addComponent(txtCadastroDePessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(imgCadastroDePessoas))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         IconePessoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/professorImagem.png"))); // NOI18N
@@ -2303,7 +2307,7 @@ public class Main extends javax.swing.JFrame {
     private void MenuItemDelTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemDelTudoActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR TODOS os registros?", "Deletar tudo!",
                 JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION)
-            if (deletar.todosRegistros())
+            if (deletar.todosRegistros(new File("arquivos")))
             JOptionPane.showMessageDialog(null, "Deletado com sucesso");
     }//GEN-LAST:event_MenuItemDelTudoActionPerformed
 
@@ -3514,13 +3518,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel txtVoceEstaUsando;
     private javax.swing.JLabel txtgetSo;
     // End of variables declaration//GEN-END:variables
-
-    //Objetos
+    
     private static final String VISUALDOAPP = "Nimbus";
+    
+    //Objetos
     GerarRelatorio relatorio = new GerarRelatorio();
     GerenciaRegistros deletar = new GerenciaRegistros();
     Professor professor;
-    Funcionarios administrativo;
+    Administrativo administrativo;
     Funcionarios funcionario;
     Aluno aluno;
     Professor anterior;

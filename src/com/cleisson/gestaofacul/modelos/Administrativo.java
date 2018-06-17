@@ -24,4 +24,6 @@ public class Administrativo extends Funcionarios{
     public void setSetor(Setor Setor) {
         this.setor = Setor;
     }
+
+    
 }

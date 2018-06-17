@@ -39,7 +39,9 @@
       <SubComponents>
         <Container class="javax.swing.JInternalFrame" name="painelEditar">
           <Properties>
+            <Property name="defaultCloseOperation" type="int" value="1"/>
             <Property name="title" type="java.lang.String" value="Ver e/ou Editar os Registros"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
             <Property name="frameIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagens/editarImagem.png"/>
             </Property>
@@ -189,7 +191,9 @@
       <SubComponents>
         <Container class="javax.swing.JInternalFrame" name="painelSelecionarAlunos">
           <Properties>
+            <Property name="defaultCloseOperation" type="int" value="1"/>
             <Property name="title" type="java.lang.String" value="Selecione os alunos desta turma"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
             <Property name="frameIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagens/alunoImagen.png"/>
             </Property>
@@ -857,14 +861,14 @@
                           <Component id="txtgetSo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtArquitetura" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtSetArquitetura" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="txtSetArquitetura" min="-2" pref="14" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNomeUsuario" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="txtNomeUsuario" min="-2" pref="14" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1605,7 +1609,7 @@
                                   </Group>
                                   <Component id="imgCadastroDePessoas" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
