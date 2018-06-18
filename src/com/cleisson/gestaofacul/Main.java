@@ -1405,10 +1405,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jLayeredPane2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(imgTurmas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addComponent(imgTurmas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtTurmas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE))
                 .addGap(36, 36, 36))
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1463,7 +1460,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(DisciplinaSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ProfessorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 720, Short.MAX_VALUE)
         );
         tabTurmasLayout.setVerticalGroup(
             tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3386,7 +3383,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTabTurmasActionPerformed
 
     private void btnSairEsqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairEsqActionPerformed
-        System.exit(0);
+        if (JOptionPane.showConfirmDialog(null, "Tém certeza que deseja sair da aplicação?",
+                "Sair da aplicação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_btnSairEsqActionPerformed
 
     private void btnSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSobreActionPerformed
@@ -3413,26 +3413,26 @@ public class Main extends javax.swing.JFrame {
     private void painelAEsquerdaMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelAEsquerdaMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x-xx,y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_painelAEsquerdaMouseDragged
 
     private void menuBarPrincipalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBarPrincipalMousePressed
-         xx = evt.getX();
-         xy = evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_menuBarPrincipalMousePressed
 
     private void menuBarPrincipalMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBarPrincipalMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x-xx,y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_menuBarPrincipalMouseDragged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String urlGithub = "https://github.com/cleissonbarbosa/GestaoFacul";
-        java.awt.Desktop myNewBrowserDesktop = java.awt.Desktop.getDesktop ();
-        try { 
+        java.awt.Desktop myNewBrowserDesktop = java.awt.Desktop.getDesktop();
+        try {
             java.net.URI myNewLocation = new java.net.URI(urlGithub);
-            myNewBrowserDesktop.browse(myNewLocation); 
+            myNewBrowserDesktop.browse(myNewLocation);
         } catch (URISyntaxException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
