@@ -1,6 +1,15 @@
 # GestaoFacul
 Projeto da disciplina de Programação Orientada a Objetos
-# Screenshot's
+
+### Como compilar o projeto
+
+A seguir passos necessarios para compilar o projeto utilizando a IDE Netbeans 8.2
+
+* ¹Primeiramente clone o projeto para o netbeans.
+* ²Baixe [lib.zip](lib.zip) - Separadamente
+* ³Adicione as dependencias do arquivo [lib.zip](lib.zip)
+
+## Screenshot's
 Home da aplicação:
 ![alt text](https://uploaddeimagens.com.br/images/001/466/034/full/homeGU.png?1529031437)
 
@@ -27,3 +36,7 @@ Ver ou Editar Registros:
 
 Deletar Registros:
 ![alt text](https://uploaddeimagens.com.br/images/001/466/051/full/Screenshot_1.png?1529032053)
+
+## License
+
+Este projeto esta sob a  [GNU General Public License v3.0](LICENSE) clique no arquivo para mais detalhes
