@@ -16,16 +16,27 @@ public class Setor {
     private final int id;
     private String nome;
 
+    /**
+     * Construtor
+     * @param Nome
+     */
     public Setor(String Nome) {
         this.nome = Nome;
         id = aleatorio.hashCode();
     }
 
-    
+    /**
+     *
+     * @return
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     *
+     * @param Nome
+     */
     public void setNome(String Nome) {
         this.nome = Nome;
     }

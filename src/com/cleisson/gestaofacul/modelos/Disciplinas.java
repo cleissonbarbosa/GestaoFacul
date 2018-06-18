@@ -17,32 +17,61 @@ public class Disciplinas {
     private String nome;
     private Curso curso;
 
+    /**
+     * Construtor
+     * @param nome
+     * @param curso
+     */
     public Disciplinas( String nome, Curso curso) {
         id = aleatorio.hashCode();
         this.nome = nome;
         this.curso = curso;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return this.id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNome() {
         return this.nome;
     }
 
+    /**
+     *
+     * @param nome
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /**
+     *
+     * @return
+     */
     public Curso getCurso() {
         return this.curso;
     }
 
+    /**
+     *
+     * @param curso
+     */
     public void setCurso(Curso curso) {
         this.curso = curso;
     }

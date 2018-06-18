@@ -15,19 +15,36 @@ public class Escolas {
     Random aleatorio = new Random();
     private String nome;
     private int id;
+
+    /**
+     * Construtor
+     * @param Nome
+     */
     public Escolas(String Nome) {
         this.nome = Nome;
         id = aleatorio.hashCode();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     *
+     * @param Nome
+     */
     public void setNome(String Nome) {
         this.nome = Nome;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }

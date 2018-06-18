@@ -34,10 +34,13 @@ import javax.swing.JOptionPane;
 public class GerarRelatorio {
 
     public class Tabela {
-
         protected PdfPTable table;
         protected float tableHeight;
-
+        /**
+         *
+         * @param lista
+         * @param objeto
+         */
         public Tabela(ArrayList lista, String objeto) {
             Font font = new Font(Font.FontFamily.TIMES_ROMAN, 14, 3, BaseColor.BLUE);
             switch (objeto) {
@@ -145,10 +148,19 @@ public class GerarRelatorio {
             tableHeight = table.getTotalHeight();
         }
 
+        /**
+         *
+         * @return altura da tabela
+         */
         public float getTableHeight() {
             return tableHeight;
         }
 
+        /**
+         *
+         * @param writer
+         * @param document
+         */
         public void onEndPage(PdfWriter writer, Document document) {
             table.writeSelectedRows(0, -1,
                     document.left(),
@@ -157,6 +169,11 @@ public class GerarRelatorio {
         }
     }
 
+    /**
+     *
+     * @param lista
+     * @param classe
+     */
     public void gerarPDF(ArrayList lista, String classe) {
         // criação do documento
         Document document = new Document();

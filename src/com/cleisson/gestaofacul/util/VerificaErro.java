@@ -18,6 +18,12 @@ public class VerificaErro {
     //public VerificaErro(javax.swing.JTextField campo){
     //  this.campo = campo;
     //}
+
+    /**
+     *
+     * @param campo
+     * @return
+     */
     public boolean encontrar(javax.swing.JTextField campo) {
         try {
             int aux = Integer.parseInt(campo.getText());
@@ -29,6 +35,12 @@ public class VerificaErro {
         }
         return false;
     }
+
+    /**
+     *
+     * @param campo
+     * @return
+     */
     public boolean encontrarCampoVazio(javax.swing.JTextField campo) {
         if(!campo.getText().equals("")){
         } else{
@@ -40,6 +52,11 @@ public class VerificaErro {
         return false;
     }
 
+    /**
+     *
+     * @param escolha
+     * @return
+     */
     public boolean encontrar(javax.swing.JComboBox<String> escolha) {
         if (escolha.getSelectedItem() == null) {
             escolha.setBackground(Color.red);

@@ -30,9 +30,17 @@ public class GerenciaRegistros {
 
     //Variavel para identificar se o arquivo foi modificado ou deletado!
     private boolean deletado;
-    //Variavel para atualizar o arrayList modificado
+    /**
+     * Variavel para atualizar o arrayList modificado
+     */
     public ArrayList listaAtualizada;
 
+    /**
+     *
+     * @param lista
+     * @param deletar
+     * @param caminho
+     */
     public void DeletFile(ArrayList lista, String deletar, String caminho) {
         //Convertendo o caminho do arquivo em path
         Path arquivo = Paths.get(caminho);
@@ -62,6 +70,12 @@ public class GerenciaRegistros {
     }
 
     //Metodo para deletar todos os registros de uma unica vez
+
+    /**
+     *
+     * @param arquivo
+     * @return
+     */
     public boolean todosRegistros(File arquivo) {
         //convertendo todos os caminhos em path
         if (arquivo.isDirectory()) {
@@ -74,7 +88,12 @@ public class GerenciaRegistros {
         return true;
     }
 
-    //metodo para remover um elemento da lista e dos registros
+    /**
+     * metodo para remover um elemento da lista e dos registros
+     * @param lista
+     * @param deletar
+     * @return lista atualizada
+     */
     public ArrayList remover(ArrayList lista, String deletar) {
         for (int i = 0; i < lista.size(); i++) {
 
@@ -158,10 +177,18 @@ public class GerenciaRegistros {
         return lista;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isDeletado() {
         return deletado;
     }
 
+    /**
+     *
+     * @param deletado
+     */
     public void setDeletado(boolean deletado) {
         this.deletado = deletado;
     }

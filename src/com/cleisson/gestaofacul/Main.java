@@ -3747,15 +3747,49 @@ public class Main extends javax.swing.JFrame {
     private String exibeCadastro = "";
     private static String[] ar;
     
-    //Arrays
+    /**
+     * Guardar os alunos selecionados para a turma
+     */
     public static ArrayList alunosSelecionados = new ArrayList(); 
+
+    /**
+     * Guardar professores registrados pelo usuario
+     */
     public static ArrayList professorDB = new ArrayList();
+
+    /**
+     * guardar os funcionarios registrados pelo usuario
+     */
     public static ArrayList funcionarioDB = new ArrayList();
+
+    /**
+     * Guardar alunos registrados pelo usuario
+     */
     public static ArrayList alunoDB = new ArrayList();
+
+    /**
+     * Guardar Escolas registradas pelo usuario
+     */
     public static ArrayList escolasDB = new ArrayList();
+
+    /**
+     * Guardar Cursos registrados pelo usuario
+     */
     public static ArrayList cursosDB = new ArrayList();
+
+    /**
+     * Guardar Disciplinas registrados pelo usuario
+     */
     public static ArrayList disciplinaDB = new ArrayList();
+
+    /**
+     * Guardar Turmas registrados pelo usuario
+     */
     public static ArrayList turmasDB = new ArrayList();
+
+    /**
+     * Guardar Setores registrados pelo usuario
+     */
     public static ArrayList setorDB = new ArrayList();
     
     //Variaveis do tipo primitivo

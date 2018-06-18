@@ -19,6 +19,12 @@ public class Turmas {
     private Professor professor;
     private ArrayList<Aluno> aluno = new ArrayList();
 
+    /**
+     * Construtor
+     * @param nome
+     * @param disciplina
+     * @param professor
+     */
     public Turmas(String nome, Disciplinas disciplina, Professor professor) {
          id = aleatorio.hashCode();
         this.nome = nome;
@@ -26,46 +32,90 @@ public class Turmas {
         this.professor = professor;
         //this.aluno = getAluno();
     }
+
+    /**
+     * Construtor vazio
+     */
     public Turmas(){
         
     }
 
+    /**
+     *
+     * @return
+     */
     public int getID() {
         return this.id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setID(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNome() {
         return this.nome;
     }
 
+    /**
+     *
+     * @param nome
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /**
+     *
+     * @return
+     */
     public Disciplinas getDisciplinas() {
         return this.disciplinas;
     }
 
+    /**
+     *
+     * @param disciplina
+     */
     public void setDisciplinas(Disciplinas disciplina) {
         this.disciplinas = disciplina;
     }
 
+    /**
+     *
+     * @return
+     */
     public Professor getProfessor() {
         return professor;
     }
 
+    /**
+     *
+     * @param professor
+     */
     public void setProfessor(Professor professor) {
         this.professor = professor;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList getAluno() {
         return aluno;
     }
 
+    /**
+     *
+     * @param aluno
+     */
     public void setAluno(ArrayList aluno) {
         this.aluno = aluno;
     }

@@ -24,6 +24,11 @@ import java.util.logging.Logger;
  */
 public class GerenciaArmazenamento {
     
+    /**
+     *
+     * @param json
+     * @param caminho
+     */
     public static void WriteFile(String json, String caminho) {
         Path pasta;
         Path arquivo;
