@@ -48,11 +48,17 @@ public class GerenciaArmazenamento {
                 //cria o arquivo
                 
                 Files.createDirectories(pasta);
-                File file = new File("arquivos\\" + caminho);
+                if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+                    File file = new File(".arquivos\\" + caminho);
+                    bw = new BufferedWriter(new FileWriter(file, true));
+                    bw.write(json);
+                } else {
+                    File file = new File("arquivos\\" + caminho);
+                    bw = new BufferedWriter(new FileWriter(file, true));
+                    bw.write(json);
+                }
                 //Files.createFile(arquivo);
                 //escreve no arquivo os registros do usuario
-                bw = new BufferedWriter(new FileWriter(file, true));
-                bw.write(json);
             } catch (IOException ex) {
                 Logger.getLogger(GerenciaArmazenamento.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
@@ -76,14 +82,19 @@ public class GerenciaArmazenamento {
             BufferedWriter bw2 = null;
             try {
                 //Deixando o arquivo editavel temporariamente
-                File file = new File("arquivos\\" + caminho);
-                file.setWritable(true);
-                
-                //Atualizando o arquivo com o novo registro
-                bw2 = new BufferedWriter(new FileWriter(file));
-                bw = new BufferedWriter(new FileWriter(file, true));
-                //bw.newLine();
-
+                if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+                    File file = new File(".arquivos\\" + caminho);
+                    file.setWritable(true);
+                    //Atualizando o arquivo com o novo registro
+                    bw2 = new BufferedWriter(new FileWriter(file));
+                    bw = new BufferedWriter(new FileWriter(file, true));
+                } else {
+                    File file = new File("arquivos\\" + caminho);
+                    file.setWritable(true);
+                    //Atualizando o arquivo com o novo registro
+                    bw2 = new BufferedWriter(new FileWriter(file));
+                    bw = new BufferedWriter(new FileWriter(file, true));
+                }
                 bw.write(json);
             } catch (IOException ex) {
                 Logger.getLogger(GerenciaArmazenamento.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,12 +124,23 @@ public class GerenciaArmazenamento {
      */
     public static ArrayList<String> ReadFile(String caminho) {
         ArrayList<String> linhas = new ArrayList<>();
-        Path arquivo = Paths.get("arquivos\\" + caminho);
-        if (Files.exists(arquivo)) {
-            try {
-                linhas = (ArrayList<String>) Files.readAllLines(arquivo, Charset.defaultCharset());
-            } catch (IOException ex) {
-                Logger.getLogger(GerenciaArmazenamento.class.getName()).log(Level.SEVERE, null, ex);
+        if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+            Path arquivo = Paths.get(".arquivos\\" + caminho);
+            if (Files.exists(arquivo)) {
+                try {
+                    linhas = (ArrayList<String>) Files.readAllLines(arquivo, Charset.defaultCharset());
+                } catch (IOException ex) {
+                    Logger.getLogger(GerenciaArmazenamento.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            Path arquivo = Paths.get("arquivos\\" + caminho);
+            if (Files.exists(arquivo)) {
+                try {
+                    linhas = (ArrayList<String>) Files.readAllLines(arquivo, Charset.defaultCharset());
+                } catch (IOException ex) {
+                    Logger.getLogger(GerenciaArmazenamento.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         return linhas;

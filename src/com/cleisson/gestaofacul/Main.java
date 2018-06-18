@@ -36,14 +36,12 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
-import java.net.URI;
-import java.awt.Desktop; 
 import java.net.URISyntaxException;
 
 /**
  * classe principal com a interface
  * @author Cleisson Barbosa
- * @version 1.0.4
+ * @version 1.1.4
  */
 public class Main extends javax.swing.JFrame {
 
