@@ -1458,7 +1458,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(DisciplinaSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ProfessorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
         tabTurmasLayout.setVerticalGroup(
             tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
