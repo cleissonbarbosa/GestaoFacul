@@ -2486,9 +2486,11 @@ public class Main extends javax.swing.JFrame {
 
     private void MenuItemDelTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemDelTudoActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja DELETAR TODOS os registros?", "Deletar tudo!",
-                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION)
-            if (deletar.todosRegistros(new File("arquivos")))
+                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION){
+            if (deletar.todosRegistros(new File("arquivos"))){
             JOptionPane.showMessageDialog(null, "Deletado com sucesso");
+            }
+        }
     }//GEN-LAST:event_MenuItemDelTudoActionPerformed
 
     private void MenuItemProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemProfessorActionPerformed

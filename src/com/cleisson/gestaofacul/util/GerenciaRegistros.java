@@ -43,8 +43,12 @@ public class GerenciaRegistros {
      */
     public void DeletFile(ArrayList lista, String deletar, String caminho) {
         //Convertendo o caminho do arquivo em path
-        Path arquivo = Paths.get(caminho);
-
+        Path arquivo;
+        if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+            arquivo = Paths.get("." + caminho);
+        } else {
+            arquivo = Paths.get("arquivos//"+caminho);
+        }
         //Verifica se o arquivo ja existe no caminho inserido
         if (!Files.exists(arquivo)) {
             //se o arquivo não existe então não faz nada
@@ -83,8 +87,14 @@ public class GerenciaRegistros {
             for (int i = 0; i < files.length; ++i) {
                 todosRegistros (files[i]);
             }
-        }
+        }if(!System.getProperty("os.name").toLowerCase().contains("linux")) {
         arquivo.delete();
+        }
+        if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+            if(arquivo.exists()){
+                arquivo.delete();
+            }
+        }
         return true;
     }
 

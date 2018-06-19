@@ -30,13 +30,11 @@ public class GerenciaArmazenamento {
      * @param caminho
      */
     public static void WriteFile(String json, String caminho) {
-        Path pasta;
+        Path pasta = Paths.get("arquivos");
         Path arquivo;
         if (System.getProperty("os.name").toLowerCase().contains("linux")) {
-            pasta = Paths.get(".arquivos");
-            arquivo = Paths.get(".arquivos\\" + caminho);
+            arquivo = Paths.get("." + caminho);
         } else {
-            pasta = Paths.get("arquivos");
             arquivo = Paths.get("arquivos\\" + caminho);
         }
         
@@ -47,12 +45,13 @@ public class GerenciaArmazenamento {
             try {
                 //cria o arquivo
                 
-                Files.createDirectories(pasta);
+                
                 if (System.getProperty("os.name").toLowerCase().contains("linux")) {
-                    File file = new File(".arquivos\\" + caminho);
+                    File file = new File("." + caminho);
                     bw = new BufferedWriter(new FileWriter(file, true));
                     bw.write(json);
                 } else {
+                    Files.createDirectories(pasta);
                     File file = new File("arquivos\\" + caminho);
                     bw = new BufferedWriter(new FileWriter(file, true));
                     bw.write(json);
@@ -83,7 +82,7 @@ public class GerenciaArmazenamento {
             try {
                 //Deixando o arquivo editavel temporariamente
                 if (System.getProperty("os.name").toLowerCase().contains("linux")) {
-                    File file = new File(".arquivos\\" + caminho);
+                    File file = new File("." + caminho);
                     file.setWritable(true);
                     //Atualizando o arquivo com o novo registro
                     bw2 = new BufferedWriter(new FileWriter(file));
@@ -125,7 +124,7 @@ public class GerenciaArmazenamento {
     public static ArrayList<String> ReadFile(String caminho) {
         ArrayList<String> linhas = new ArrayList<>();
         if (System.getProperty("os.name").toLowerCase().contains("linux")) {
-            Path arquivo = Paths.get(".arquivos\\" + caminho);
+            Path arquivo = Paths.get("." + caminho);
             if (Files.exists(arquivo)) {
                 try {
                     linhas = (ArrayList<String>) Files.readAllLines(arquivo, Charset.defaultCharset());
