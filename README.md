@@ -6,8 +6,7 @@ Projeto da disciplina de Programação Orientada a Objetos
 A seguir passos necessarios para compilar o projeto utilizando a IDE Netbeans 8.2
 
 * ¹Primeiramente clone o projeto para o netbeans.
-* ²Baixe [lib.zip](lib.zip) - Separadamente
-* ³Adicione as dependencias do arquivo [lib.zip](lib.zip)
+* ³Adicione as dependencias da pasta [lib](lib)
 
 ## Screenshot's
 Home da aplicação:
