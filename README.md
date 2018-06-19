@@ -21,33 +21,30 @@ Utilizando conceitos de P.O.O
 4 }
 ```
 
-### Screenshot's
-Home da aplicação:
-![alt text](https://uploaddeimagens.com.br/images/001/466/034/full/homeGU.png?1529031437)
+## Screenshot's
+####Home + Menu Ver/Editar:
+![alt text](Screenshots/Menu_VerOuEditar.png)
 
-Menu Gerar Relatorio:
-![alt text](https://uploaddeimagens.com.br/images/001/466/038/full/MENU-GU.png?1529031526)
+####Menu Opções:
+![alt text](Screenshots/Menus_Opções.png)
 
-Menu Deletar Registros
-![alt text](https://uploaddeimagens.com.br/images/001/466/036/full/MENUDEL-GU.png?1529031506)
+####Cadastro de pessoas
+![alt text](Screenshots/Tela_CadastroDePessoas.png)
 
-Cadastro de pessoas
-![alt text](https://uploaddeimagens.com.br/images/001/466/041/full/CPGU.png?1529031648)
+####Cadastro de Escolas
+![alt text](Screenshots/Tela_CadastrarEscolas.png)
 
-Cadastro de Escolas
-![alt text](https://uploaddeimagens.com.br/images/001/466/043/full/CE-GU.png?1529031722)
+####Cadastro de Cursos:
+![alt text](Screenshots/Tela_CadastroCursos.png)
 
-Cadastro de Cursos:
-![alt text](https://uploaddeimagens.com.br/images/001/466/044/full/CC-GU.png?1529031781)
+####Cadastro de Turmas:
+![alt text](Screenshots/Tela_CadastroDeTurmas.png)
 
-Cadastro de Turmas:
-![alt text](https://uploaddeimagens.com.br/images/001/466/047/full/CT-GU.png?1529031952)
+####Cadastro Disciplinas:
+![alt text](Screenshots/Tela_CadastroDeDisciplinas.png)
 
-Ver ou Editar Registros:
-![alt text](https://uploaddeimagens.com.br/images/001/466/048/full/EDITAR-GU.png?1529031991)
-
-Deletar Registros:
-![alt text](https://uploaddeimagens.com.br/images/001/466/051/full/Screenshot_1.png?1529032053)
+####Tela Ver ou Editar Registros:
+![alt text](Screenshots/Tela_VerOuEditarRegistros.png)
 
 ## License
 
