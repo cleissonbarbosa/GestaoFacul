@@ -22,28 +22,28 @@ Utilizando conceitos de P.O.O
 ```
 
 ## Screenshot's
-####Home + Menu Ver/Editar:
+#### Home + Menu Ver/Editar:
 ![alt text](Screenshots/Menu_VerOuEditar.png)
 
-####Menu Opções:
+#### Menu Opções:
 ![alt text](Screenshots/Menus_Opções.png)
 
-####Cadastro de pessoas
+#### Cadastro de pessoas
 ![alt text](Screenshots/Tela_CadastroDePessoas.png)
 
-####Cadastro de Escolas
+#### Cadastro de Escolas
 ![alt text](Screenshots/Tela_CadastrarEscolas.png)
 
-####Cadastro de Cursos:
+#### Cadastro de Cursos:
 ![alt text](Screenshots/Tela_CadastroCursos.png)
 
-####Cadastro de Turmas:
+#### Cadastro de Turmas:
 ![alt text](Screenshots/Tela_CadastroDeTurmas.png)
 
-####Cadastro Disciplinas:
+#### Cadastro Disciplinas:
 ![alt text](Screenshots/Tela_CadastroDeDisciplinas.png)
 
-####Tela Ver ou Editar Registros:
+#### Tela Ver ou Editar Registros:
 ![alt text](Screenshots/Tela_VerOuEditarRegistros.png)
 
 ## License
