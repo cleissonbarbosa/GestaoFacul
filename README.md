@@ -6,9 +6,22 @@ Projeto da disciplina de Programação Orientada a Objetos
 A seguir passos necessarios para compilar o projeto utilizando a IDE Netbeans 8.2
 
 * ¹Primeiramente clone o projeto para o netbeans.
-* ³Adicione as dependencias da pasta [lib](lib)
+* ²Adicione as dependencias da pasta [lib](lib)
+### Bibliotecas externas utilizadas
 
-## Screenshot's
+* [itext PDF](https://github.com/itext/itextpdf)
+* [Gson Google](https://github.com/google/gson)
+
+#### Conceitos de P.O.O
+Utilizando conceitos de P.O.O
+```
+1 //Classe Super Abstrata
+2 abstract public class Pessoa{
+3      ..... Contexto
+4 }
+```
+
+### Screenshot's
 Home da aplicação:
 ![alt text](https://uploaddeimagens.com.br/images/001/466/034/full/homeGU.png?1529031437)
 
