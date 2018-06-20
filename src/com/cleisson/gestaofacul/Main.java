@@ -37,6 +37,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
 import java.net.URISyntaxException;
+import javax.swing.ImageIcon;
 
 /**
  * classe principal com a interface
@@ -62,6 +63,7 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         frameEditorPessoas = new javax.swing.JFrame();
+        this.setIconImage(new ImageIcon(getClass().getResource("/Imagens/githubIcone.png")).getImage());
         painelEditar = new javax.swing.JInternalFrame();
         painelEditar.setEnabled(false);
         btnEditar = new javax.swing.JButton();
@@ -217,6 +219,7 @@ public class Main extends javax.swing.JFrame {
         editarDisciplinas = new javax.swing.JMenuItem();
         editarTurmas = new javax.swing.JMenuItem();
 
+        frameEditorPessoas.setIconImages(null);
         frameEditorPessoas.setMinimumSize(new java.awt.Dimension(700, 500));
         frameEditorPessoas.setResizable(false);
         frameEditorPessoas.setSize(new java.awt.Dimension(690, 500));
@@ -416,7 +419,7 @@ public class Main extends javax.swing.JFrame {
         setTitle("Sistema de Gestão - Projeto da disciplina P.O.O");
         setBackground(java.awt.SystemColor.controlLtHighlight);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setIconImages(null);
+        setIconImage(new ImageIcon(getClass().getResource("/Imagens/iconeUniversidade.png")).getImage());
         setLocation(new java.awt.Point(150, 150));
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -1045,7 +1048,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(imgEscola)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCadastrarEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLayeredPane6, javax.swing.GroupLayout.Alignment.TRAILING))
         );
@@ -1082,7 +1085,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(escolhaEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtListarProfessores))
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1149,23 +1152,23 @@ public class Main extends javax.swing.JFrame {
             jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane5Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(txtTurmas2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTurmas2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(imgTurmas2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addComponent(imgTurmas2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(backgroundCabeçalho2, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
         );
         jLayeredPane5Layout.setVerticalGroup(
             jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane5Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(imgTurmas2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
             .addGroup(jLayeredPane5Layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(txtTurmas2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane5Layout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(imgTurmas2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(backgroundCabeçalho2, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
         );
@@ -1197,7 +1200,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(tabCursoLayout.createSequentialGroup()
                         .addGap(306, 306, 306)
                         .addComponent(btnSalvarCurso)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 322, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(tabCursoLayout.createSequentialGroup()
@@ -1221,6 +1224,7 @@ public class Main extends javax.swing.JFrame {
         );
 
         tabDisciplinas.setBackground(java.awt.SystemColor.controlLtHighlight);
+        tabDisciplinas.setPreferredSize(new java.awt.Dimension(720, 390));
 
         nomeDisciplina.setText("Nome da disciplina");
 
@@ -1316,14 +1320,14 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(296, 296, 296)
                                 .addComponent(btnSalvarDisciplinas))
                             .addComponent(txtEscolhaCursoDisciplina))
-                        .addGap(0, 378, Short.MAX_VALUE)))
+                        .addGap(0, 322, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         tabDisciplinasLayout.setVerticalGroup(
             tabDisciplinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabDisciplinasLayout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(nomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(txtEscolhaCursoDisciplina)
@@ -1336,6 +1340,7 @@ public class Main extends javax.swing.JFrame {
 
         tabTurmas.setBackground(java.awt.SystemColor.controlLtHighlight);
         tabTurmas.setOpaque(false);
+        tabTurmas.setPreferredSize(new java.awt.Dimension(715, 425));
 
         nomeTurma.setText("Nome da Turma");
 
@@ -1458,7 +1463,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(DisciplinaSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ProfessorSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 720, Short.MAX_VALUE)
         );
         tabTurmasLayout.setVerticalGroup(
             tabTurmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1540,7 +1545,7 @@ public class Main extends javax.swing.JFrame {
             painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelADireitaLayout.createSequentialGroup()
                 .addComponent(tabCadastroProfFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 23, Short.MAX_VALUE))
             .addGroup(painelADireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(painelADireitaLayout.createSequentialGroup()
                     .addComponent(tabCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2771,10 +2776,10 @@ public class Main extends javax.swing.JFrame {
                 break;
             case "turmas":
                 for (int i = 0; i < TabelaEditar.getRowCount(); i++) {
-                    Turmas turma = (Turmas) turmasDB.get(i);
-                    turma.setNome((String) TabelaEditar.getValueAt(i, 0));
+                    Turmas turmas = (Turmas) turmasDB.get(i);
+                    turmas.setNome((String) TabelaEditar.getValueAt(i, 0));
                     turmasDB.remove(i);
-                    turmasDB.add(i, turma);
+                    turmasDB.add(i, turmas);
                 }   salvarDados(turmasDB, "registroTurma.txt");
                 JOptionPane.showMessageDialog(null, "As mudanças foram salvas com sucesso!", "Sucesso!",
                         JOptionPane.INFORMATION_MESSAGE);
@@ -3142,36 +3147,36 @@ public class Main extends javax.swing.JFrame {
             
             for (int i = 0; i < turmasDB.size(); i++) {
                 //atribui ao objeto um cadastro alocano na arrey
-                Turmas turma = (Turmas) turmasDB.get(i);
+                Turmas turmas = (Turmas) turmasDB.get(i);
                 //Enquanto o cadastro for diferente do loop anterior..
                 if (i > 0) {
                     try {
                         //Enquanto houver linhas suficientes na tabela, vai preenchendo..
-                        TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
-                        TabelaEditar.setValueAt(turma.getID(), linhas, 1);
+                        TabelaEditar.setValueAt(turmas.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(turmas.getID(), linhas, 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
                         //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                         JTable t = new JTable(TabelaEditar.getModel());
                         DefaultTableModel modelo = (DefaultTableModel) t.getModel();
                         modelo.addRow(new Object[]{null, null});
                         //Preenche a linha vazia que foi criada
-                        TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
-                        TabelaEditar.setValueAt(turma.getID(), linhas, 1);
+                        TabelaEditar.setValueAt(turmas.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(turmas.getID(), linhas, 1);
                     }
                     //Verifica se é a primeira passagem do loop
                 } else if (i == 0) {
                     try {
                         //Enquanto houver linhas suficientes na tabela..
-                        TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
-                        TabelaEditar.setValueAt(turma.getID(), linhas, 1);
+                        TabelaEditar.setValueAt(turmas.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(turmas.getID(), linhas, 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
                         //Se a tabela estiver cheias, acrescenta mais uma linha vazia.
                         JTable t = new JTable(TabelaEditar.getModel());
                         DefaultTableModel modelo = (DefaultTableModel) t.getModel();
                         modelo.addRow(new Object[]{null, null});
                         //Preenche a linha vazia que foi criada
-                        TabelaEditar.setValueAt(turma.getNome(), linhas, 0);
-                        TabelaEditar.setValueAt(turma.getID(), linhas, 1);
+                        TabelaEditar.setValueAt(turmas.getNome(), linhas, 0);
+                        TabelaEditar.setValueAt(turmas.getID(), linhas, 1);
                     }
                 } 
                 linhas++;
@@ -3461,6 +3466,7 @@ public class Main extends javax.swing.JFrame {
         System.exit(0);
 
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -3501,9 +3507,11 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
          ar = args;
         /* Create and display the form */
-        //RECUPERANDO TODOS OS DADOS SALVOS
+        
             new Main().setVisible(true);
+            //Setando Icone no JFrame
             
+            //RECUPERANDO TODOS OS DADOS SALVOS
             Gson gson = new Gson();
             //Recupera professores
             java.lang.reflect.Type tipoProf = new TypeToken<ArrayList<Professor>>() {
@@ -3746,7 +3754,7 @@ public class Main extends javax.swing.JFrame {
     //Strings
     private String exibeCadastro = "";
     private static String[] ar;
-    
+
     /**
      * Guardar os alunos selecionados para a turma
      */

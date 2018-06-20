@@ -24,6 +24,10 @@ import com.itextpdf.text.pdf.draw.LineSeparator;
 import com.itextpdf.text.Font;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
 import javax.swing.JOptionPane;
 
 /**
@@ -187,13 +191,16 @@ public class GerarRelatorio {
             // adicionando ao documento
             Font font = new Font(Font.FontFamily.HELVETICA, 18, 3);
             document.addTitle("Relatorio Completo de " + classe + " - Projeto de P.O.O.");
-            document.add(new ListItem("Relatorio Completo de " + classe + " - Gestão Faculdade", font));
+            document.add(new ListItem("    Relatorio Completo de " + classe + " - Gestão Faculdade", font));
             document.add(new LineSeparator(1, 100, BaseColor.RED, 1, -4));
             document.add(new Paragraph("\n\n"));
             document.add(new PdfPTable(tabela.table));
+            Calendar calendar = new GregorianCalendar(TimeZone.getDefault(), Locale.getDefault());
+            document.add(new Paragraph("\n\n" + calendar.getTime().toString()));
             JOptionPane.showMessageDialog(null, "PDF de " + classe + " foi criado com sucesso!\nClique em OK para abrir o PDF !", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
             java.awt.Desktop.getDesktop().open(new File("Relatorio-Completo__Gestão-Faculdade__" + classe + ".pdf"));
         } catch (DocumentException | IOException de) {
+            JOptionPane.showMessageDialog(null, de.getMessage(), "ERRO!", JOptionPane.ERROR_MESSAGE);
             System.err.println(de.getMessage());
         }
         document.close();
